@@ -1,0 +1,30 @@
+# Netlify yayın ayarı.
+# Depoyu Netlify'a bağladığında bu dosya otomatik okunur; panelde elle
+# bir şey ayarlaman gerekmez.
+
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# Fotoğraflar: dosya adı içerik damgası taşıdığı için içeriği asla değişmez.
+# Bir kareyi değiştirdiğinde `npm run photos` yeni bir ad üretir, yani bayat
+# önbellek diye bir şey olamaz — bir yıl saklat, bir daha sorma.
+[[headers]]
+  for = "/photos/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Vite çıktısı da adında hash taşır.
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Giriş sayfası her seferinde tazelensin ki yeni yayın anında görünsün.
+[[headers]]
+  for = "/index.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"

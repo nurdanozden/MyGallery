@@ -1,20 +1,20 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { photos } from './content/photos'
 import { exhibition } from './content/exhibition'
-import { resolvePhoto } from './lib/photoSources'
-import { DESIGN, layoutFrames } from './lib/room'
+import { DESIGN, WALL_SCALE, frameSize, layoutFrames } from './lib/room'
 import { useMediaQuery, useViewport } from './lib/useViewport'
 import { Ambience } from './lib/ambience'
+import type { Footstep } from './lib/ambience'
 import { TicketGate } from './components/TicketGate'
 import { Gallery } from './components/Gallery'
 import { Plaque } from './components/Plaque'
 import { Hud } from './components/Hud'
 import { MobileCorridor } from './components/MobileCorridor'
+import { Preload } from './components/Preload'
 
 export default function App() {
   const layout = useMemo(() => layoutFrames(photos), [])
   const frames = layout.frames
-  const sources = useMemo(() => photos.map((p) => resolvePhoto(p).src), [])
 
   const [phase, setPhase] = useState<'gate' | 'hall'>('gate')
   const [gateShown, setGateShown] = useState(true)
@@ -29,15 +29,43 @@ export default function App() {
   const reducedMotion = useMediaQuery('(prefers-reduced-motion: reduce)')
   const ambience = useRef<Ambience | null>(null)
   const isMobileRef = useRef(false)
+  const audioOnRef = useRef(false)
 
   useEffect(() => {
     isMobileRef.current = isMobile
   }, [isMobile])
 
-  const scale = useMemo(() => {
-    const k = Math.max(viewport.w / DESIGN.w, viewport.h / DESIGN.h)
-    return Math.min(2.1, Math.max(0.62, k))
-  }, [viewport])
+  useEffect(() => {
+    audioOnRef.current = audioOn
+  }, [audioOn])
+
+  // Siluetlerin adımları salonun yankısından duyulur.
+  const handleFootstep = useCallback((s: Footstep) => {
+    if (audioOnRef.current) ambience.current?.footstep(s)
+  }, [])
+
+  // Olcek yalnizca yukseklikten: duvar hatti her ekranda ayni dikey oranda durur.
+  const scale = useMemo(
+    () => Math.min(3.4, Math.max(1, viewport.h / DESIGN.h)),
+    [viewport.h],
+  )
+
+  /**
+   * Bilet ekraninda beklenen birkac saniye bos gecmesin: ziyaretci salona
+   * girdiginde ilk eserler cerceveye ASILMIS gelsin diye simdiden iniyorlar.
+   * `sizes` duvardaki (ya da koridordaki) gercek genislikle ayni olmali, yoksa
+   * tarayici srcset'ten baska bir boy secer ve dosya iki kere inerdi.
+   */
+  const preloadItems = useMemo(() => {
+    if (phase !== 'gate') return []
+    const wall = frames.slice(0, isMobile ? 3 : 5)
+    return wall.map((f) => ({
+      photo: f.photo,
+      sizes: isMobile
+        ? '66vw'
+        : `${Math.round(frameSize(f.photo).inner.w * scale * WALL_SCALE)}px`,
+    }))
+  }, [phase, frames, isMobile, scale])
 
   const flash = useCallback((text: string, ms = 5200) => {
     setHint(text)
@@ -96,7 +124,6 @@ export default function App() {
           {isMobile ? (
             <MobileCorridor
               frames={frames}
-              sources={sources}
               focusIndex={focusIndex}
               onSelect={setFocusIndex}
               onClose={() => setFocusIndex(null)}
@@ -107,7 +134,7 @@ export default function App() {
             <Gallery
               frames={frames}
               hallWidth={layout.width}
-              sources={sources}
+              viewportWidth={viewport.w}
               focusIndex={focusIndex}
               hovered={hovered}
               scale={scale}
@@ -116,6 +143,7 @@ export default function App() {
               onSelect={setFocusIndex}
               onBackdrop={() => setFocusIndex(null)}
               onVisitorCount={setVisitorCount}
+              onFootstep={handleFootstep}
             />
           )}
 
@@ -142,6 +170,8 @@ export default function App() {
           )}
         </>
       )}
+
+      {preloadItems.length > 0 && <Preload items={preloadItems} />}
 
       {gateShown && (
         <TicketGate

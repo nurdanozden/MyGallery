@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Orijinal fotograflar (optimize kopyalari public/photos altinda)
+photos-original/*
+!photos-original/README.md

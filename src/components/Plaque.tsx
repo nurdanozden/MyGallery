@@ -13,6 +13,9 @@ type Props = {
 export function Plaque({ frame, total, onPrev, onNext, onClose, variant = 'wall' }: Props) {
   const { photo } = frame
   const { exif } = photo
+  // Kunye alanlari otomatik doldugu icin bos kalabilir; bos satir gostermeyiz.
+  const origin = [photo.place, photo.year].filter(Boolean).join(', ')
+  const specs = [exif.lens, exif.aperture, exif.shutter, exif.iso].filter(Boolean)
 
   return (
     <aside className={`plaque plaque-${variant}`} onClick={(e) => e.stopPropagation()}>
@@ -26,18 +29,21 @@ export function Plaque({ frame, total, onPrev, onNext, onClose, variant = 'wall'
       </p>
 
       <h2 className="plaque-title">{photo.title}</h2>
-      <p className="plaque-origin">
-        {photo.place}, {photo.year}
-      </p>
+      {origin && <p className="plaque-origin">{origin}</p>}
 
       <div className="plaque-hair" aria-hidden="true" />
 
-      <p className="plaque-story">{photo.story}</p>
+      {photo.story && <p className="plaque-story">{photo.story}</p>}
 
-      <p className="plaque-exif">
-        {exif.lens} <span>|</span> {exif.aperture} <span>|</span> {exif.shutter} <span>|</span>{' '}
-        {exif.iso}
-      </p>
+      {specs.length > 0 && (
+        <p className="plaque-exif">
+          {specs.map((s, i) => (
+            <span key={s + i}>
+              {i > 0 && <span>|</span>} {s}
+            </span>
+          ))}
+        </p>
+      )}
 
       <div className="plaque-nav">
         <button type="button" onClick={onPrev} aria-label="Önceki eser">

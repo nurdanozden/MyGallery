@@ -7,14 +7,13 @@ export const exhibition = {
   subtitle: 'SOLO EXHIBITION',
 
   curator: {
-    name: 'Adınız Soyadınız',
+    name: 'Nurdan Özden',
     role: 'Bilgisayar Mühendisi & Fotoğrafçı',
   },
 
   manifesto: [
-    'Gündüzleri kod yazıyorum, akşamları ışığın peşinden gidiyorum.',
-    'Bu salonu, mühendislikte aradığım düzen ile fotoğrafta aradığım tesadüfü aynı odada buluşturmak için kurdum.',
-    'İçeride acele yok; her kare, önünde durulacak kadar zaman istiyor.',
+    'Sosyal medyanın hızından uzakta, çektiğim kareleri kendi kurduğum bu dijital alanda bir araya getirmek istedim.',
+    'İçeride aceleniz yok, keyifli gezmeler.',
   ],
 
   collection: {

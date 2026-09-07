@@ -10,15 +10,89 @@
       content="MyGallery - dijital bir solo fotograf sergisi. Bileti kopar, salona gir, isiklarin altinda dolas."
     />
     <title>MyGallery / Solo Exhibition</title>
+
+    <!--
+      Yazi tipleri sayfayi BEKLETMEZ. Eskiden buradaki stylesheet render-blocking
+      idi: tarayici Google'a baglanip CSS'i indirmeden tek piksel bile cizmiyordu,
+      yani sergi ucuncu bir sunucunun hizina bagliydi. Simdi ayni dosya "print"
+      medyasiyla, yani bloklamadan iniyor; gelince "all" olup devreye giriyor.
+      Fontlar gelene kadar yerel karsiliklari (Georgia / Segoe UI / Consolas)
+      gorunur - metin hicbir an kaybolmaz.
+    -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap"
       rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap"
+      media="print"
+      onload="this.media='all'"
     />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap"
+      />
+    </noscript>
+
+    <!--
+      Foyenin ilk karesi HTML'in kendisinde. Uygulama paketi inip calisana kadar
+      gecen surede ziyaretci bos beyaz bir sayfa degil, isiklari yeni yanmis bir
+      fuaye gorur; React #root'u devraldiginda bu kabuk kendiliginden gider.
+    -->
+    <style>
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        background: #08090b;
+        color: #e8e3d8;
+        color-scheme: dark;
+      }
+      #boot {
+        position: fixed;
+        inset: 0;
+        display: grid;
+        place-content: center;
+        gap: 14px;
+        justify-items: center;
+        text-align: center;
+        background: radial-gradient(ellipse 80% 70% at 50% 46%, #1a1c20 0%, #0c0d10 62%, #050506 100%);
+        font-family: Georgia, 'Times New Roman', serif;
+      }
+      #boot b {
+        font-weight: 500;
+        font-size: 26px;
+        letter-spacing: 0.16em;
+        color: #efe8d8;
+      }
+      #boot i {
+        font-family: Consolas, ui-monospace, monospace;
+        font-style: normal;
+        font-size: 11px;
+        letter-spacing: 0.32em;
+        text-transform: uppercase;
+        color: rgba(232, 227, 216, 0.42);
+        animation: boot-pulse 1600ms ease-in-out infinite;
+      }
+      @keyframes boot-pulse {
+        50% {
+          opacity: 0.42;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        #boot i {
+          animation: none;
+        }
+      }
+    </style>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <div id="boot">
+        <b>MyGallery</b>
+        <i>Salon hazırlanıyor</i>
+      </div>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

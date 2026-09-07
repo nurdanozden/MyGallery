@@ -31,6 +31,15 @@
   box-sizing: border-box;
 }
 
+/*
+ * <picture> yalnizca AVIF/WebP secimi icin var; kendi kutusunu uretmesin ki
+ * icindeki <img> cerceve, koridor karti ve yansima duzeninde eskisi gibi
+ * dogrudan ebeveyninin cocugu gibi davransin.
+ */
+picture {
+  display: contents;
+}
+
 html,
 body,
 #root {
@@ -56,6 +65,16 @@ button {
   position: fixed;
   inset: 0;
   overflow: hidden;
+}
+
+/* Bilet ekranindayken onden inen eserler: indirilirler ama cizilmezler. */
+.preload {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
 }
 
 .sr-only {
@@ -549,6 +568,26 @@ button {
   transform-style: preserve-3d;
 }
 
+/*
+ * Zemin, tavan ve arka duvar artik salonun tamami kadar genis degil: kameranin
+ * etrafinda birkac ekran genisliginde birer PENCERE. 95 eserlik duvar ~28.000px
+ * uzuyordu; tarayici bu boyda boyali yuzeyleri rasterleyemedigi icin salona
+ * girildiginde once hicbir sey, sonra parca parca zemin ve hali beliriyordu.
+ *
+ * Pencerenin ICINDEKI bu katman ise duvar koordinatinda kalir: eserler, isik
+ * havuzlari ve yansimalar dunyadaki yerlerinde durur, katman pencerenin
+ * kaymasini `left` ile geri alir (rAF icinde, React'e ugramadan).
+ */
+.surface-inner {
+  position: absolute;
+  top: 0;
+  height: 100%;
+}
+/* Eserlerin translateZ'i duvarin 3B uzayinda kalsin. */
+.surface-inner-3d {
+  transform-style: preserve-3d;
+}
+
 .wall {
   background:
     linear-gradient(
@@ -594,14 +633,28 @@ button {
 
 .ceiling {
   background:
-    radial-gradient(ellipse 90% 26% at 50% 0%, rgba(var(--light), 0.05), transparent 70%),
+    /* Tavanin duvar dibindeki aydinligi. Eskiden salonun ortasina yerlesmis
+       dev bir elips idi; pencere yontemiyle birlikte yataydan bagimsiz,
+       yalnizca derinlige bagli bir gecise donustu - goze farki yok. */
+    linear-gradient(to bottom, rgba(var(--light), 0.05) 0, rgba(var(--light), 0) 149px),
     linear-gradient(to bottom, #1b1e23 0%, #0e0f13 42%, #08090b 100%);
 }
 
 .floor {
   background:
-    radial-gradient(ellipse 72% 48% at 50% 0%, rgba(var(--light), 0.075), transparent 64%),
-    linear-gradient(to bottom, #272a31 0%, var(--floor-a) 30%, #131519 66%, var(--floor-b) 100%);
+    /* epoksi cilasinin genis parlamasi */
+    linear-gradient(
+      to bottom,
+      rgba(255, 244, 228, 0.045) 0,
+      rgba(255, 244, 228, 0.055) 41px,
+      rgba(255, 244, 228, 0) 200px
+    ),
+    /* parke tahtalarinin boyuna ek yerleri - periyot SURFACE_STEP'i boler */
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.016) 0 1px, transparent 1px 80px),
+    /* tahta baslarinin enine ek yerleri */
+    repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.055) 0 1px, transparent 1px 250px),
+    linear-gradient(to bottom, rgba(var(--light), 0.08) 0, rgba(var(--light), 0) 252px),
+    linear-gradient(to bottom, #2b2e35 0%, var(--floor-a) 28%, #131519 62%, var(--floor-b) 100%);
   overflow: hidden;
 }
 .floor::after {
@@ -611,6 +664,74 @@ button {
   background-image: var(--noise);
   opacity: 0.04;
   pointer-events: none;
+}
+
+/* --- Kirmizi halı: duvarın dibi ile ön plan arasında salon boyunca uzanır --- */
+/*
+ * Hali da zemin gibi kayan pencerenin icinde yasar: salon boyunca uzayan tek
+ * bir katman degil. Bu yuzden dokusu yatayda 8px periyotlu (160'i boler) ve
+ * govdesinde yatay konuma bagli hicbir sey yok - golgeler yalnizca ust ve alt
+ * kenardan gelir, yoksa pencerenin kenarinda salonun ortasinda duran koyu bir
+ * bant belirirdi.
+ */
+.carpet {
+  position: absolute;
+  left: 0;
+  right: 0;
+  background:
+    /* kadife hav dokusu */
+    repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.022) 0 2px,
+      rgba(0, 0, 0, 0.035) 2px 8px
+    ),
+    linear-gradient(to bottom, #8c2020 0%, #7a1818 24%, #661414 58%, #500f0f 100%);
+  box-shadow:
+    inset 0 40px 46px -40px rgba(28, 2, 2, 0.6),
+    inset 0 -40px 46px -40px rgba(28, 2, 2, 0.6),
+    inset 0 1px 0 rgba(255, 150, 130, 0.14),
+    0 24px 30px -24px rgba(0, 0, 0, 0.62),
+    0 -24px 30px -24px rgba(0, 0, 0, 0.62);
+}
+.carpet::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: var(--noise);
+  opacity: 0.07;
+  mix-blend-mode: overlay;
+}
+
+/* kenar dikişleri — kesik cizgi yerine 16px periyotlu desen: pencere kaydiginda
+   dikisin fazi kaymasin diye. */
+.carpet-stitch {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1.5px;
+  background: repeating-linear-gradient(
+    90deg,
+    rgba(34, 4, 4, 0.7) 0 6px,
+    transparent 6px 16px
+  );
+}
+.carpet-stitch-a {
+  top: 15px;
+}
+.carpet-stitch-b {
+  bottom: 15px;
+}
+
+/* kadifenin havına vuran yumuşak parlama */
+.carpet-sheen {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 168, 140, 0.14) 0%,
+    rgba(255, 120, 100, 0.05) 34%,
+    transparent 72%
+  );
 }
 
 .light-pool {
@@ -630,8 +751,9 @@ button {
 .floor-reflection {
   position: absolute;
   overflow: hidden;
-  opacity: 0.34;
-  filter: blur(4px) saturate(0.6);
+  opacity: 0.19;
+  filter: blur(5px) saturate(0.62) brightness(1.7);
+  mix-blend-mode: screen;
   pointer-events: none;
   -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.95), transparent 62%);
   mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.95), transparent 62%);
@@ -657,15 +779,15 @@ button {
 .spot-cone {
   position: absolute;
   top: 0;
-  clip-path: polygon(41% 0, 59% 0, 100% 100%, 0 100%);
+  clip-path: polygon(40% 0, 60% 0, 96% 100%, 4% 100%);
   background: linear-gradient(
     to bottom,
-    rgba(var(--light), 0.17) 0%,
-    rgba(var(--light), 0.075) 44%,
-    rgba(var(--light), 0.025) 76%,
-    transparent 100%
+    rgba(var(--light), 0.16) 0%,
+    rgba(var(--light), 0.07) 42%,
+    rgba(var(--light), 0.02) 74%,
+    transparent 96%
   );
-  filter: blur(7px);
+  filter: blur(14px);
   transform: translateZ(2px);
   pointer-events: none;
   opacity: 0;
@@ -712,7 +834,7 @@ button {
 }
 
 .art:hover .spot-cone {
-  filter: blur(6px) brightness(1.85);
+  filter: blur(13px) brightness(1.85);
 }
 .art:hover .spot-wash {
   filter: blur(11px) brightness(2.1);
@@ -782,8 +904,8 @@ button {
 
 .wall-plate {
   position: absolute;
-  width: 34px;
-  height: 22px;
+  width: 25px;
+  height: 16px;
   border-radius: 1px;
   background: linear-gradient(150deg, var(--brass-hi), var(--brass) 45%, var(--brass-lo));
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.6);
@@ -822,7 +944,7 @@ button {
 }
 .stage.is-focused .art.is-active .spot-cone {
   transform: translateZ(5px);
-  filter: blur(6px) brightness(1.25);
+  filter: blur(13px) brightness(1.25);
 }
 .stage.is-focused .art.is-active .spot-wash {
   transform: translateZ(5px);
@@ -847,6 +969,88 @@ button {
 }
 .stage.is-focused .vignette {
   background: radial-gradient(ellipse 52% 56% at 42% 50%, transparent 22%, rgba(0, 0, 0, 0.86) 100%);
+}
+
+/* --- Yatay gezinme: kenar okları ve sergi ilerleme çubuğu --- */
+
+.nav-arrow {
+  position: absolute;
+  top: 50%;
+  translate: 0 -50%;
+  z-index: 26;
+  display: grid;
+  place-items: center;
+  width: 58px;
+  height: 104px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: rgba(236, 229, 213, 0.55);
+  cursor: pointer;
+  opacity: 0.5;
+  transition: opacity 300ms ease, color 300ms ease, translate 300ms ease;
+}
+.nav-arrow::before {
+  content: '';
+  position: absolute;
+  inset: -20px -10px;
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.45), transparent 70%);
+  opacity: 0;
+  transition: opacity 300ms ease;
+}
+.nav-arrow svg {
+  position: relative;
+  width: 21px;
+  height: 35px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.nav-arrow:hover,
+.nav-arrow:focus-visible {
+  opacity: 1;
+  color: rgba(var(--light), 0.95);
+  outline: none;
+}
+.nav-arrow:hover::before {
+  opacity: 1;
+}
+.nav-arrow-left {
+  left: 12px;
+}
+.nav-arrow-right {
+  right: 12px;
+}
+.nav-arrow-left:hover {
+  translate: -4px -50%;
+}
+.nav-arrow-right:hover {
+  translate: 4px -50%;
+}
+
+.progress {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 26;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.055);
+}
+.progress-fill {
+  display: block;
+  height: 100%;
+  width: 100%;
+  transform-origin: 0 50%;
+  transform: scaleX(var(--progress, 0.5));
+  background: linear-gradient(
+    90deg,
+    rgba(var(--light), 0.18),
+    rgba(var(--light), 0.72)
+  );
+  box-shadow: 0 0 12px rgba(var(--light), 0.4);
 }
 
 /* ==========================================================================
@@ -880,15 +1084,37 @@ button {
   transform-style: preserve-3d;
 }
 
+/* Figürün zeminle temas ettiği noktaya oturan yumuşak eliptik gölge */
 .visitor-shadow {
   position: absolute;
-  left: -38px;
-  top: -12px;
-  width: 76px;
-  height: 24px;
+  left: calc(-42px * var(--scale, 1));
+  top: calc(-13px * var(--scale, 1));
+  width: calc(84px * var(--scale, 1));
+  height: calc(26px * var(--scale, 1));
   border-radius: 50%;
-  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.62), transparent 70%);
-  filter: blur(6px);
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0, 0, 0, 0.6) 0%,
+    rgba(0, 0, 0, 0) 75%
+  );
+  filter: blur(3.5px);
+  transform-origin: 50% 50%;
+}
+
+/* Ayakların hemen altındaki sıkı temas gölgesi: zemine tam basma hissi */
+.visitor-contact {
+  position: absolute;
+  left: calc(-16px * var(--scale, 1));
+  top: calc(-5px * var(--scale, 1));
+  width: calc(38px * var(--scale, 1));
+  height: calc(12px * var(--scale, 1));
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0, 0, 0, 0.72) 0%,
+    rgba(0, 0, 0, 0) 72%
+  );
+  filter: blur(2.5px);
   transform-origin: 50% 50%;
 }
 
@@ -907,32 +1133,56 @@ button {
   width: 100%;
   height: 100%;
   fill: #0d0f13;
-  opacity: 0.9;
   transform-origin: 50% 100%;
-  transform: scaleX(var(--face, 1)) scale(var(--scale, 1));
+  transform: scaleX(calc(var(--face, 1) * var(--turn, 1)))
+    scale(calc(var(--scale, 1) * var(--stature, 1)));
 }
-.visitor-svg .v-arm,
-.visitor-svg .v-leg path {
-  fill: #0c0d10;
+
+/* Ön plan: tam boy, daha net siyah. Arka plan: küçük, saydam, atmosferik. */
+.visitor[data-layer='front'] .visitor-svg {
+  fill: #07080a;
 }
-.visitor-svg .v-bag {
-  fill: #16181d;
+.visitor[data-layer='back'] .visitor-svg {
+  fill: #0a0c10;
+}
+
+/* Üç kalıcı duruş */
+.visitor[data-stance='0'] {
+  --lean: 2.6;
+  --stature: 0.97;
+}
+.visitor[data-stance='1'] {
+  --turn: 0.88;
+  --stature: 1.02;
+}
+.visitor[data-stance='2'] {
+  --stature: 1.1;
+}
+
+/* elleri arkada, hafif öne eğik duruş */
+.visitor[data-stance='0'] .v-arm-a {
+  transform: translateX(6px) rotate(5deg);
+}
+.visitor[data-stance='0'] .v-arm-b {
+  transform: translateX(-6px) rotate(-5deg);
+}
+/* Siluet tek düz renktir; üst üste gelen uzuvlar dikişsiz birleşir. */
+.visitor-svg path,
+.visitor-svg ellipse,
+.visitor-svg circle {
+  fill: inherit;
 }
 
 .v-body {
   transform-box: view-box;
   transform-origin: 32px 172px;
-  transform: rotate(calc(var(--tilt, 0) * -1.2deg));
+  transform: rotate(calc(var(--tilt, 0) * -1.2deg + var(--lean, 0) * 1deg));
 }
-.v-torso,
-.v-neck,
-.v-hair {
-  fill: inherit;
-}
+
 
 .v-head {
   transform-box: view-box;
-  transform-origin: 32px 32px;
+  transform-origin: 32px 27px;
   transform: rotate(calc(var(--tilt, 0) * -8deg + var(--side, 0) * 14deg))
     translateY(calc(var(--tilt, 0) * -1px));
 }
@@ -943,13 +1193,13 @@ button {
 }
 .v-leg-a,
 .v-leg-b {
-  transform-origin: 32px 94px;
+  transform-origin: 32px 88px;
 }
 .v-arm-a {
-  transform-origin: 18px 40px;
+  transform-origin: 16.5px 38px;
 }
 .v-arm-b {
-  transform-origin: 46px 40px;
+  transform-origin: 47.5px 38px;
 }
 
 .visitor[data-walking='yes'] .v-leg-a {
@@ -971,19 +1221,19 @@ button {
 @keyframes step-a {
   0%,
   100% {
-    transform: rotate(16deg);
+    transform: rotate(12deg);
   }
   50% {
-    transform: rotate(-16deg);
+    transform: rotate(-12deg);
   }
 }
 @keyframes step-b {
   0%,
   100% {
-    transform: rotate(-16deg);
+    transform: rotate(-12deg);
   }
   50% {
-    transform: rotate(16deg);
+    transform: rotate(12deg);
   }
 }
 @keyframes swing-a {
@@ -1010,23 +1260,20 @@ button {
   }
 }
 
-/* Elleri arkada kavusturmus, dusunen durus */
-.visitor[data-pose='ponder'] .v-arms {
-  opacity: 0.55;
-}
+/* Elleri arkada kavuşturmuş, düşünen duruş */
 .visitor[data-pose='ponder'] .v-arm-a {
-  transform: translateX(7px) rotate(5deg);
+  transform: translateX(6px) rotate(5deg);
 }
 .visitor[data-pose='ponder'] .v-arm-b {
-  transform: translateX(-7px) rotate(-5deg);
+  transform: translateX(-6px) rotate(-5deg);
 }
 .visitor[data-pose='view'] .v-arm-a,
 .visitor[data-pose='approach'] .v-arm-a {
-  transform: rotate(2deg);
+  transform: rotate(1.5deg);
 }
 .visitor[data-pose='view'] .v-arm-b,
 .visitor[data-pose='approach'] .v-arm-b {
-  transform: rotate(-2deg);
+  transform: rotate(-1.5deg);
 }
 
 /* ==========================================================================
@@ -1439,19 +1686,13 @@ button {
 }
 .corridor-frame img {
   display: block;
-  object-fit: cover;
-}
-.corridor-frame.is-landscape img {
-  width: 70vw;
-  height: 47vw;
-}
-.corridor-frame.is-portrait img {
-  width: 52vw;
-  height: 78vw;
-}
-.corridor-frame.is-square img {
-  width: 62vw;
-  height: 62vw;
+  /* Kare kendi oraninda durur: en/boy nitelikleri oraninı verir, iki ust sinir
+     da ekrana sigmasini saglar. Boylece hicbir kadraj kirpilmaz. */
+  width: auto;
+  height: auto;
+  max-width: 66vw;
+  max-height: 56vh;
+  object-fit: contain;
 }
 
 .corridor-caption {
@@ -1491,9 +1732,49 @@ button {
   background: radial-gradient(ellipse 60% 90% at 50% 0%, rgba(var(--light), 0.09), transparent 70%);
 }
 
+.corridor-carpet {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 64px;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(26, 3, 3, 0.5) 0%,
+      transparent 4%,
+      transparent 96%,
+      rgba(26, 3, 3, 0.5) 100%
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.022) 0 2px,
+      rgba(0, 0, 0, 0.035) 2px 6px
+    ),
+    linear-gradient(to bottom, #7a1818 0%, #601313 55%, #500f0f 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 150, 130, 0.16),
+    0 -10px 22px rgba(0, 0, 0, 0.55);
+}
+.corridor-carpet::before,
+.corridor-carpet::after {
+  content: '';
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  height: 0;
+  border-top: 1.5px dashed rgba(34, 4, 4, 0.7);
+}
+.corridor-carpet::before {
+  top: 9px;
+}
+.corridor-carpet::after {
+  bottom: 9px;
+}
+
 .corridor-walker {
   position: absolute;
-  bottom: 10px;
+  bottom: 17px;
   left: -80px;
   width: 64px;
   height: 172px;
@@ -1503,6 +1784,23 @@ button {
   animation-iteration-count: infinite;
   opacity: 0.75;
 }
+.corridor-walker::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -5px;
+  width: calc(52px * var(--walk-scale, 0.6));
+  height: calc(13px * var(--walk-scale, 0.6));
+  translate: -50% 0;
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0, 0, 0, 0.6) 0%,
+    rgba(0, 0, 0, 0) 75%
+  );
+  filter: blur(2.5px);
+}
+
 .corridor-walker .visitor-svg {
   --face: var(--walk-dir, 1);
   --scale: var(--walk-scale, 0.6);

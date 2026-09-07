@@ -1,94 +1,53 @@
-import type { Photo } from '../types'
+import type { Photo, PhotoVariant } from '../types'
 
-const modules = import.meta.glob('../assets/photos/*.{jpg,jpeg,png,webp,avif,JPG,JPEG,PNG,WEBP,AVIF}', {
-  eager: true,
-  query: '?url',
-  import: 'default',
-}) as Record<string, string>
+/** `public/photos/` alt yolu; alt dizine deploy edilse de doğru kalsın diye BASE_URL'den. */
+const BASE = `${import.meta.env.BASE_URL}photos/`
 
-const byName = new Map<string, string>()
-for (const [path, url] of Object.entries(modules)) {
-  const name = path.split('/').pop()
-  if (name) byName.set(name.toLowerCase(), url)
-}
+const isData = (name: string) => name.startsWith('data:')
+const url = (name: string) => (isData(name) ? name : BASE + name)
 
-/** Basit, tohumlanmış sözde-rastgele üreteç: yer tutucular her yüklemede aynı kalsın diye. */
-function seeded(seed: number) {
-  let s = seed >>> 0 || 1
-  return () => {
-    s ^= s << 13
-    s ^= s >>> 17
-    s ^= s << 5
-    return ((s >>> 0) % 100000) / 100000
-  }
-}
+const longEdge = (v: PhotoVariant) => Math.max(v.w, v.h)
 
-function hash(str: string) {
-  let h = 2166136261
-  for (let i = 0; i < str.length; i++) {
-    h ^= str.charCodeAt(i)
-    h = Math.imul(h, 16777619)
-  }
-  return h >>> 0
+/** Yedek `src` bu boya en yakın kopyayı seçer. */
+const FALLBACK_EDGE = 800
+
+export type PhotoSrc = {
+  /** srcset olmayan tarayıcılar ve `<img src>` için orta boy. */
+  src: string
+  webp: string
+  avif: string | null
 }
 
 /**
- * Gerçek fotoğraf yokken duvarın boş kalmaması için, esere ait renk tohumundan
- * atmosferik bir "yer tutucu baskı" üretir.
+ * `<img srcset>` için genişlik tanımlayıcılı liste. Tarayıcı `sizes` ile
+ * birlikte hangi boyu indireceğine kendi karar verir; biz üst sınırı koyarız.
  */
-function placeholder(photo: Photo, w: number, h: number) {
-  const r = seeded(hash(photo.file))
-  const [deep, mid, light] = photo.tint
-  const horizon = 0.42 + r() * 0.24
-  const sunX = 0.2 + r() * 0.6
-  const sunY = horizon - 0.06 - r() * 0.14
+export function photoSrc(photo: Photo): PhotoSrc {
+  const vs = photo.variants
 
-  const hills = Array.from({ length: 3 }, (_, i) => {
-    const base = horizon + 0.02 + i * 0.05
-    const amp = 0.05 - i * 0.012
-    const pts: string[] = []
-    for (let x = 0; x <= 10; x++) {
-      const t = x / 10
-      const y = base - Math.sin(t * (2 + i) * Math.PI + r() * 3) * amp
-      pts.push(`${(t * w).toFixed(1)},${(y * h).toFixed(1)}`)
-    }
-    const op = (0.55 - i * 0.13).toFixed(2)
-    return `<polygon points="0,${h} ${pts.join(' ')} ${w},${h}" fill="${deep}" opacity="${op}"/>`
-  }).join('')
+  // Demo modda "boy" diye bir sey yok: yer tutucu, icinde virgul gecen bir
+  // data URI. srcset virgulle ayrildigi icin orada listeye hic girmemeli.
+  if (isData(vs[0].webp)) return { src: vs[0].webp, webp: '', avif: null }
 
-  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}">
-<defs>
-<linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
-<stop offset="0" stop-color="${deep}"/><stop offset="${horizon.toFixed(2)}" stop-color="${mid}"/><stop offset="1" stop-color="${light}"/>
-</linearGradient>
-<radialGradient id="sun" cx="${sunX.toFixed(2)}" cy="${sunY.toFixed(2)}" r="0.55">
-<stop offset="0" stop-color="${light}" stop-opacity="0.95"/><stop offset="1" stop-color="${light}" stop-opacity="0"/>
-</radialGradient>
-<filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" seed="${hash(photo.title) % 90}"/><feColorMatrix type="saturate" values="0"/></filter>
-<linearGradient id="vig" x1="0" y1="0" x2="0" y2="1">
-<stop offset="0" stop-color="#000" stop-opacity="0.34"/><stop offset="0.5" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity="0.42"/>
-</linearGradient>
-</defs>
-<rect width="${w}" height="${h}" fill="url(#sky)"/>
-<rect width="${w}" height="${h}" fill="url(#sun)"/>
-${hills}
-<rect width="${w}" height="${h}" fill="url(#vig)"/>
-<rect width="${w}" height="${h}" filter="url(#grain)" opacity="0.13"/>
-</svg>`
+  const webp = vs.map((v) => `${url(v.webp)} ${v.w}w`).join(', ')
+  const avifs = vs.filter((v) => v.avif)
+  const avif = avifs.length ? avifs.map((v) => `${url(v.avif!)} ${v.w}w`).join(', ') : null
 
-  return `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`
+  // Yedek `src`: orta boy — srcset'i anlamayan tarayıcı da makul bir dosya
+  // indirsin, en büyüğünü değil.
+  let pick = vs[0]
+  for (const v of vs) {
+    if (Math.abs(longEdge(v) - FALLBACK_EDGE) < Math.abs(longEdge(pick) - FALLBACK_EDGE)) pick = v
+  }
+
+  return { src: url(pick.webp), webp, avif }
 }
 
-export function resolvePhoto(photo: Photo): { src: string; isPlaceholder: boolean } {
-  const found = byName.get(photo.file.toLowerCase())
-  if (found) return { src: found, isPlaceholder: false }
-  const dims =
-    photo.orientation === 'portrait'
-      ? { w: 800, h: 1200 }
-      : photo.orientation === 'square'
-        ? { w: 1000, h: 1000 }
-        : { w: 1200, h: 800 }
-  return { src: placeholder(photo, dims.w, dims.h), isPlaceholder: true }
+/** Odak modunda komşu eserleri sessizce önden indir. */
+export function prefetch(photo: Photo) {
+  if (typeof Image === 'undefined') return
+  const { src } = photoSrc(photo)
+  const img = new Image()
+  img.decoding = 'async'
+  img.src = src
 }
-
-export const hasRealPhotos = byName.size > 0
