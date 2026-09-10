@@ -70,7 +70,14 @@ function edgesFor(long) {
   return edges
 }
 
-const EXTS = new Set(['.jpg', '.jpeg', '.png', '.tif', '.tiff', '.webp'])
+/*
+ * HEIC/HEIF de listede: iPhone'dan "orijinali indir" dendiginde gelen kap budur.
+ * Ama sharp'in hazir ikili paketi HEIC'in icindeki HEVC akisini COZEMEZ (patent
+ * lisansi yuzunden HEVC cozucusu pakete konmuyor; ayni ikili AVIF'i sorunsuz
+ * yazar, cunku o AV1 kullanir). Yine de listeye aliyoruz: boylece boyle bir dosya
+ * sessizce yok sayilmak yerine, calisma sonunda adiyla ve sebebiyle raporlanir.
+ */
+const EXTS = new Set(['.jpg', '.jpeg', '.png', '.tif', '.tiff', '.webp', '.heic', '.heif'])
 
 /** Fotograf makinesi / telefon / uygulama ciktisi adlari. */
 const MACHINE_NAME = [
@@ -193,6 +200,8 @@ async function main() {
 
   const used = new Set()
   const records = []
+  /** Acilamayan dosyalar; sonunda topluca bildirilir, calisma yarida kesilmez. */
+  const unreadable = []
 
   for (const [i, fileName] of entries.entries()) {
     const abs = path.join(SRC_DIR, fileName)
@@ -219,8 +228,20 @@ async function main() {
       .digest('hex')
       .slice(0, 8)
 
-    const img = sharp(abs, { failOn: 'none' }).rotate() // EXIF donusunu piksellere isle
-    const meta = await img.metadata()
+    let img
+    let meta
+    try {
+      img = sharp(abs, { failOn: 'none' }).rotate() // EXIF donusunu piksellere isle
+      meta = await img.metadata()
+      // Basligi acabilmek yetmez: kabin ICINDEKI goruntuye gercekten erisebiliyor
+      // muyuz? Cozucusu olmayan bir HEIC tam burada patlar, ilerideki resize'da
+      // degil - hata boylece dosya adiyla birlikte anlasilir kalir.
+      await img.clone().resize(8, 8, { fit: 'fill' }).raw().toBuffer()
+    } catch (e) {
+      unreadable.push({ file: fileName, reason: String(e?.message ?? e).split(/\r?\n/)[0].trim() })
+      process.stdout.write(`  ${i + 1}/${entries.length}  ${slug} (OKUNAMADI)          `)
+      continue
+    }
     // .rotate() sonrasi gercek olculer: 5-8 arasi orientation'da en/boy yer degistirir.
     const swap = meta.orientation != null && meta.orientation >= 5
     const width = swap ? meta.height : meta.width
@@ -405,6 +426,28 @@ DIKKAT  ${soft.length} eserin cozunurlugu dusuk (uzun kenar < 900px):`)
     console.log('  Bunlarin orijinallerini disa aktarip uzerine yazmak duvarda fark eder.')
   }
   if (missing.length) console.log(`photoMeta.ts  ${missing.length} yeni kunye satiri acildi`)
+
+  /**
+   * Acilamayan dosyalar. En sik sebep: iPhone HEIC. Sergiye hic girmedikleri
+   * icin sessiz kalmalari en kotusu olurdu - duvarda eksik bir kare olur ve
+   * kimse nedenini bilmez.
+   */
+  if (unreadable.length) {
+    console.log(`
+OKUNAMADI  ${unreadable.length} dosya sergiye GIRMEDI:`)
+    for (const u of unreadable) console.log(`  ${u.file}
+    ${u.reason}`)
+    if (unreadable.some((u) => /\.hei[cf]$/i.test(u.file))) {
+      console.log(`
+  HEIC dosyalari bu kurulumda acilamiyor: sharp'in hazir ikili paketinde HEVC
+  cozucusu yok. Cozum, disa aktarirken JPEG secmek:
+    iPhone   Ayarlar > Kamera > Formatlar > "En Uyumlu"  (bundan sonraki cekimler)
+    Mevcut   Fotograflar > Disa Aktar > "Duzenlenmemis orijinali disa aktar"
+             yerine JPEG olarak disa aktar
+    Windows  Fotograflar uygulamasinda ac > Farkli kaydet > JPG
+  JPEG'e cevirmek kalite kaybettirir ama HEIC hic acilamadigi icin secenek degil.`)
+    }
+  }
 }
 
 main().catch((e) => {
