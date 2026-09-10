@@ -35,9 +35,40 @@ const FORCE = process.argv.includes('--force')
  */
 const TIERS = [
   { edge: 480, webp: 74, avif: 46 },
-  { edge: 800, webp: 75, avif: 48 },
-  { edge: 1280, webp: 76, avif: 50 },
+  { edge: 800, webp: 75, avif: 50 },
+  { edge: 1280, webp: 78, avif: 55 },
+  { edge: 1920, webp: 80, avif: 58 },
 ]
+
+/**
+ * Ara boylarin ustune HER ZAMAN bir kopya daha: kaynagin tam cozunurlugu.
+ *
+ * Eskiden kaynaktan buyuk basamaklar tumuyle atlaniyordu, yani 989 px'lik bir
+ * kare en fazla 800 px olarak servis ediliyordu - aradaki 189 piksel hic
+ * kullanilmiyordu. Koleksiyonun 80 karesi bu yuzden olmasi gerekenden bulanikti.
+ * Artik her eserin elindeki en buyuk piksel sayisi da bir aday olarak listeye
+ * giriyor; tarayici gerekmedikce indirmiyor, gerektiginde bulabiliyor.
+ *
+ * Yukaridaki 700 px gibi olculer CSS pikseliydi; retina ekranda tarayici bunun
+ * IKI KATINI ister - eski 1280'lik tavan tam orada yetmiyordu.
+ */
+const MAX_EDGE = 2560
+/** Bu kopya odak modunda burun dibinde izlenen kopya: sikistirmada cimrilik yok. */
+const NATIVE_Q = { webp: 82, avif: 60 }
+
+/** Bir boy icin kalite: onu kapsayan ilk ara basamak, yoksa en ustu. */
+const tierFor = (edge) => TIERS.find((t) => t.edge >= edge) ?? TIERS[TIERS.length - 1]
+
+/**
+ * Bir eser icin uretilecek uzun kenarlar: kaynaktan kucuk ara basamaklar +
+ * kaynagin kendisi (MAX_EDGE ile sinirli). Buyutme asla yapilmaz.
+ */
+function edgesFor(long) {
+  const top = Math.min(long, MAX_EDGE)
+  const edges = TIERS.map((t) => t.edge).filter((e) => e < top)
+  edges.push(top)
+  return edges
+}
 
 const EXTS = new Set(['.jpg', '.jpeg', '.png', '.tif', '.tiff', '.webp'])
 
@@ -184,7 +215,7 @@ async function main() {
      */
     const stamp = createHash('sha1')
       .update(await fs.readFile(abs))
-      .update(JSON.stringify(TIERS))
+      .update(JSON.stringify({ TIERS, MAX_EDGE, NATIVE_Q }))
       .digest('hex')
       .slice(0, 8)
 
@@ -205,26 +236,28 @@ async function main() {
     const fresh = !FORCE && cached?.stamp === stamp
     const variants = []
 
-    for (const tier of TIERS) {
-      // Orijinalden buyuk uretme; ama en kucuk boy her zaman olsun.
-      if (tier.edge > long && tier.edge !== TIERS[0].edge) continue
-      const edge = Math.min(tier.edge, long)
+    const edges = edgesFor(long)
+    for (const edge of edges) {
+      // Son boy kaynagin kendisi; ona en iyi kaliteyi veriyoruz.
+      const q = edge === edges[edges.length - 1] ? NATIVE_Q : tierFor(edge)
       const vw = width >= height ? edge : Math.max(1, Math.round(edge * ratio))
       const vh = width >= height ? Math.max(1, Math.round(edge / ratio)) : edge
-      const v = { w: vw, h: vh, webp: `${slug}-${tier.edge}.${stamp}.webp` }
-      if (tier.avif != null) v.avif = `${slug}-${tier.edge}.${stamp}.avif`
+      const v = {
+        w: vw,
+        h: vh,
+        webp: `${slug}-${edge}.${stamp}.webp`,
+        avif: `${slug}-${edge}.${stamp}.avif`,
+      }
 
       if (!fresh) {
         const resized = img
           .clone()
           .resize({ width: vw, height: vh, fit: 'inside', withoutEnlargement: true })
-        await resized.clone().webp({ quality: tier.webp, effort: 5 }).toFile(path.join(OUT_DIR, v.webp))
-        if (v.avif) {
-          await resized
-            .clone()
-            .avif({ quality: tier.avif, effort: 4, chromaSubsampling: '4:2:0' })
-            .toFile(path.join(OUT_DIR, v.avif))
-        }
+        await resized.clone().webp({ quality: q.webp, effort: 5 }).toFile(path.join(OUT_DIR, v.webp))
+        await resized
+          .clone()
+          .avif({ quality: q.avif, effort: 4, chromaSubsampling: '4:2:0' })
+          .toFile(path.join(OUT_DIR, v.avif))
       }
       variants.push(v)
     }
