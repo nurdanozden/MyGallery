@@ -1837,12 +1837,29 @@ button {
   backdrop-filter: blur(14px);
   animation: gate-in 380ms ease both;
 }
+/*
+ * Baski, kunyeden artan alana TAM oturmali. Izgara hucresi icinde yuzde
+ * cinsinden max-height cozulmuyor (hucrenin yuksekligi icerige bagli oldugu
+ * icin dongu olusuyor); mutlak konumlu bir cocuk ise kapsayicinin kesin
+ * yuksekligine yaslanir. inset:0 + margin:auto da onu ortalar.
+ */
 .sheet-photo {
-  display: grid;
-  place-items: center;
+  position: relative;
   min-height: 0;
 }
+/*
+ * width/height AUTO olmak zorunda. <img> uzerinde HTML width/height nitelikleri
+ * duruyor (556x989 gibi); yalnizca max-width verilirse tarayici genisligi
+ * kisitlar ama YUKSEKLIGI nitelikten alir - kare 989px'e gerilir, ekrandan
+ * tasar, kunyeyi ezer ve arkasindaki kapatma alanina dokunulamadigi icin
+ * tam ekrandan cikmak zorlasirdi.
+ */
 .sheet-photo img {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: auto;
+  height: auto;
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
