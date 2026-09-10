@@ -188,6 +188,13 @@ export function Gallery({
   const pan = useRef(start)
   /** İmlecin kenara ne kadar yaklaştığı (-1..1) — panoramanın yürüme hızı. */
   const walk = useRef(0)
+  /**
+   * Dokunmatikte imleç diye bir şey yok, kenara yaklaşmak da yok: salon
+   * parmakla sürüklenir. Fare kullananlarda kenar yürüyüşü aynen sürer.
+   */
+  const drag = useRef<{ id: number; x: number; pan: number; moved: boolean } | null>(null)
+  /** Sürükleme bitince gelen tıklamayı yut: sürüklemek eser seçmek değildir. */
+  const swallowClick = useRef(false)
   const tween = useRef<{ from: Camera; to: Camera; t0: number } | null>(null)
   const focusRef = useRef(focusIndex)
   const framesRef = useRef(frames)
@@ -376,7 +383,29 @@ export function Gallery({
       walk.current = 0
       return
     }
+    const clampPan = (v: number) => Math.max(-limit, Math.min(limit, v))
+
+    const onDown = (e: PointerEvent) => {
+      // Yeni bir dokunus basliyor: onceki suruklemeden kalan yutma bayragi
+      // burada temizlenir, yoksa suruklemenin ARDINDAN gelen ilk gercek
+      // dokunus da yutulur ve esere basmak calismazdi.
+      swallowClick.current = false
+      if (e.pointerType === 'mouse' || focusRef.current !== null) return
+      walk.current = 0
+      drag.current = { id: e.pointerId, x: e.clientX, pan: pan.current, moved: false }
+    }
+
     const onMove = (e: PointerEvent) => {
+      const d = drag.current
+      if (d && e.pointerId === d.id) {
+        const dx = e.clientX - d.x
+        if (Math.abs(dx) > 8) d.moved = true
+        const v = viewRef.current
+        // Parmak sağa giderse duvar sağa kayar, yani kamera SOLA yürür.
+        pan.current = clampPan(d.pan - dx / (v.scale * WALL_SCALE))
+        return
+      }
+      if (e.pointerType !== 'mouse') return
       if (focusRef.current !== null) {
         walk.current = 0
         return
@@ -385,6 +414,22 @@ export function Gallery({
       const dead = 0.24
       walk.current = Math.abs(n) < dead ? 0 : (Math.sign(n) * (Math.abs(n) - dead)) / (1 - dead)
     }
+
+    const onUp = (e: PointerEvent) => {
+      const d = drag.current
+      if (!d || e.pointerId !== d.id) return
+      if (d.moved) swallowClick.current = true
+      drag.current = null
+    }
+
+    // Yakalama evresinde: sürükleme sonrası tıklama React'e hiç ulaşmasın.
+    const onClickCapture = (e: MouseEvent) => {
+      if (!swallowClick.current) return
+      swallowClick.current = false
+      e.stopPropagation()
+      e.preventDefault()
+    }
+
     const onLeave = () => {
       walk.current = 0
     }
@@ -405,14 +450,23 @@ export function Gallery({
       if (!d) return
       nudgeTo(Math.sign(d) * Math.min(1, Math.abs(d) / 100) * stride * WHEEL_STEP)
     }
+    window.addEventListener('pointerdown', onDown)
     window.addEventListener('pointermove', onMove)
+    window.addEventListener('pointerup', onUp)
+    window.addEventListener('pointercancel', onUp)
+    window.addEventListener('click', onClickCapture, true)
     window.addEventListener('pointerleave', onLeave)
     window.addEventListener('blur', onLeave)
     window.addEventListener('keydown', onKey)
     window.addEventListener('wheel', onWheel, { passive: true })
     return () => {
       walk.current = 0
+      drag.current = null
+      window.removeEventListener('pointerdown', onDown)
       window.removeEventListener('pointermove', onMove)
+      window.removeEventListener('pointerup', onUp)
+      window.removeEventListener('pointercancel', onUp)
+      window.removeEventListener('click', onClickCapture, true)
       window.removeEventListener('pointerleave', onLeave)
       window.removeEventListener('blur', onLeave)
       window.removeEventListener('keydown', onKey)

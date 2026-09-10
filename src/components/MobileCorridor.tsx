@@ -108,6 +108,16 @@ export function MobileCorridor({
     <div className="corridor">
       <div className="corridor-ceiling" aria-hidden="true" />
 
+      {/*
+        Dik tutulan telefonda salonun genel plani bir eserden fazlasini almiyor;
+        muze hissi yan cevirince olusuyor. Giriste bir kez cakan ipucunu
+        kaciran ziyaretci bunu baska turlu kesfedemezdi.
+      */}
+      <p className="corridor-rotate">
+        <span aria-hidden="true">⟳</span>
+        Yan çevirin · salonu gezin
+      </p>
+
       <div className="corridor-rail" ref={rail}>
         <div className="corridor-pad" aria-hidden="true" />
         {frames.map((f, i) => (

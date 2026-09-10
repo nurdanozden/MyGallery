@@ -524,6 +524,9 @@ button {
   position: fixed;
   inset: 0;
   overflow: hidden;
+  /* Salon parmakla suruklenir; tarayicinin kendi yatay jesti (geri gitme,
+     asiri kaydirma) araya girmesin. Sayfanin kaydirilacak bir yeri zaten yok. */
+  touch-action: none;
   background: radial-gradient(ellipse 80% 70% at 50% 46%, #1a1c20 0%, #0c0d10 62%, #050506 100%);
   animation: hall-lights 1800ms ease-out both;
 }
@@ -1612,6 +1615,40 @@ button {
   pointer-events: none;
 }
 
+/*
+ * Yan cevirme ipucu. Ustte degil ALTTA: tepede zaten iki dugme var ve dar bir
+ * telefonda aralarinda bu satira yer kalmiyor. Alt bant, halinin hemen ustunde,
+ * kimsenin yolunu kesmiyor.
+ */
+.corridor-rotate {
+  position: absolute;
+  bottom: calc(58px + env(safe-area-inset-bottom));
+  left: 50%;
+  translate: -50% 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin: 0;
+  padding: 6px 13px;
+  border: 1px solid rgba(232, 224, 206, 0.14);
+  border-radius: 999px;
+  background: rgba(12, 13, 16, 0.62);
+  backdrop-filter: blur(8px);
+  font-family: var(--mono);
+  font-size: 9.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(232, 224, 206, 0.62);
+  white-space: nowrap;
+  pointer-events: none;
+}
+.corridor-rotate span {
+  font-size: 13px;
+  line-height: 1;
+  color: rgba(var(--light), 0.8);
+}
+
 .corridor-rail {
   position: absolute;
   inset: 0 0 148px;
@@ -1849,10 +1886,9 @@ button {
 }
 /*
  * width/height AUTO olmak zorunda. <img> uzerinde HTML width/height nitelikleri
- * duruyor (556x989 gibi); yalnizca max-width verilirse tarayici genisligi
+ * duruyor (1758x989 gibi); yalnizca max-width verilirse tarayici genisligi
  * kisitlar ama YUKSEKLIGI nitelikten alir - kare 989px'e gerilir, ekrandan
- * tasar, kunyeyi ezer ve arkasindaki kapatma alanina dokunulamadigi icin
- * tam ekrandan cikmak zorlasirdi.
+ * tasar, kunyeyi ezer ve arka plana dokunulamadigi icin kapatmak zorlasirdi.
  */
 .sheet-photo img {
   position: absolute;
@@ -1867,6 +1903,48 @@ button {
   box-shadow: 0 24px 50px -14px rgba(0, 0, 0, 0.9);
 }
 
+/*
+ * Yan cevrilmis telefon: koridor degil, gercek salon aciliyor.
+ *
+ * Kunye burada masaustundeki gibi SAGDA durmali. Yukaridaki dar-pencere kurali
+ * (max-width: 1180px) onu alt ortaya tasiyor; 342px'lik bir kadrajda o yerlesim
+ * ekranin yarisini yerdi. Bu blok dosyada ondan SONRA geldigi icin geri aliyor.
+ */
+@media (max-height: 560px) and (orientation: landscape) {
+  .plaque-wall {
+    top: 50%;
+    bottom: auto;
+    right: 12px;
+    translate: 0 -50%;
+    width: min(300px, 40vw);
+    max-height: calc(100dvh - 20px);
+    padding: 14px 16px 10px;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+  /* Odaktaki eser kunyenin altinda kalmasin: sahne sola kayar. */
+  .stage.is-focused .viewport {
+    translate: -12% 0;
+  }
+  .plaque-title {
+    font-size: 19px;
+  }
+  .plaque-story {
+    font-size: 13.5px;
+    line-height: 1.45;
+  }
+  .plaque-hair {
+    margin: 10px 0;
+  }
+  .plaque-exif {
+    margin-top: 10px;
+  }
+  /* Oklar dar kadrajda daha az yer kaplasin. */
+  .nav-arrow {
+    width: 42px;
+    height: 76px;
+  }
+}
 .plaque-sheet {
   position: static;
   translate: none;

@@ -26,14 +26,24 @@ export default function App() {
 
   const viewport = useViewport()
   const isMobile = useMediaQuery('(max-width: 860px)')
+  const isPortrait = useMediaQuery('(orientation: portrait)')
+  const isTouch = useMediaQuery('(pointer: coarse)')
   const reducedMotion = useMediaQuery('(prefers-reduced-motion: reduce)')
+
+  /**
+   * Koridor yalnizca telefonu DIK tutana gosterilir. Dar ve yuksek bir kadrajda
+   * salonun genel plani bir eserden fazlasini almiyor, muze hissi de olusmuyor.
+   * Telefon YAN cevrildiginde masaustundeki gercek salon aciliyor: ayni duvar,
+   * ayni spotlar, ayni hali - yalnizca gezinme parmakla.
+   */
+  const useCorridor = isMobile && isPortrait
   const ambience = useRef<Ambience | null>(null)
-  const isMobileRef = useRef(false)
+  const modeRef = useRef({ corridor: false, touch: false })
   const audioOnRef = useRef(false)
 
   useEffect(() => {
-    isMobileRef.current = isMobile
-  }, [isMobile])
+    modeRef.current = { corridor: useCorridor, touch: isTouch }
+  }, [useCorridor, isTouch])
 
   useEffect(() => {
     audioOnRef.current = audioOn
@@ -44,9 +54,14 @@ export default function App() {
     if (audioOnRef.current) ambience.current?.footstep(s)
   }, [])
 
-  // Olcek yalnizca yukseklikten: duvar hatti her ekranda ayni dikey oranda durur.
+  /*
+   * Olcek yalnizca yukseklikten: duvar hatti her ekranda ayni dikey oranda durur.
+   * Alt sinir artik 1 degil: yan cevrilmis bir telefonda kadraj ~390px yuksek
+   * oluyor ve olcek 1'de kalsaydi 490px'lik tasarim tuvalinin tavani ile zemini
+   * kirpilirdi - salon tavansiz gorunurdu. 0.6'ya kadar kucultebiliyoruz.
+   */
   const scale = useMemo(
-    () => Math.min(3.4, Math.max(1, viewport.h / DESIGN.h)),
+    () => Math.min(3.4, Math.max(0.6, viewport.h / DESIGN.h)),
     [viewport.h],
   )
 
@@ -58,14 +73,14 @@ export default function App() {
    */
   const preloadItems = useMemo(() => {
     if (phase !== 'gate') return []
-    const wall = frames.slice(0, isMobile ? 3 : 5)
+    const wall = frames.slice(0, useCorridor ? 3 : 5)
     return wall.map((f) => ({
       photo: f.photo,
-      sizes: isMobile
+      sizes: useCorridor
         ? '66vw'
         : `${Math.round(frameSize(f.photo).inner.w * scale * WALL_SCALE)}px`,
     }))
-  }, [phase, frames, isMobile, scale])
+  }, [phase, frames, useCorridor, scale])
 
   const flash = useCallback((text: string, ms = 5200) => {
     setHint(text)
@@ -82,10 +97,13 @@ export default function App() {
   const enter = useCallback(() => {
     setPhase('hall')
     setAudio(true)
+    const m = modeRef.current
     flash(
-      isMobileRef.current
+      m.corridor
         ? 'Kaydırın · esere dokunun'
-        : 'Salonda gezinmek için kenarlara yaklaşın · esere tıklayın',
+        : m.touch
+          ? 'Salonu parmağınızla sürükleyin · esere dokunun'
+          : 'Salonda gezinmek için kenarlara yaklaşın · esere tıklayın',
       7500,
     )
     window.setTimeout(() => setGateShown(false), 1500)
@@ -121,7 +139,7 @@ export default function App() {
     <main className={`app${phase === 'hall' ? ' is-open' : ''}`}>
       {phase === 'hall' && (
         <>
-          {isMobile ? (
+          {useCorridor ? (
             <MobileCorridor
               frames={frames}
               focusIndex={focusIndex}
@@ -147,7 +165,7 @@ export default function App() {
             />
           )}
 
-          {!isMobile && focused && (
+          {!useCorridor && focused && (
             <Plaque
               key={focused.index}
               frame={focused}
@@ -158,13 +176,13 @@ export default function App() {
             />
           )}
 
-          {/* Mobilde kunye tam ekran acilinca arayuz cekilir */}
-          {!(isMobile && focused) && (
+          {/* Dik telefonda kunye tam ekran acilinca arayuz cekilir */}
+          {!(useCorridor && focused) && (
             <Hud
               audioOn={audioOn}
               onToggleAudio={() => setAudio(!audioOn)}
               onOpenTicket={() => setGateShown(true)}
-              visitorCount={isMobile ? Math.max(2, visitorCount) : visitorCount}
+              visitorCount={useCorridor ? Math.max(2, visitorCount) : visitorCount}
               hint={hint}
             />
           )}
