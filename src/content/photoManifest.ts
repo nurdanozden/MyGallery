@@ -15,9 +15,10 @@ export const photoManifest: PhotoAsset[] = [
     tint: ['#6f6f6f', '#7d7a77', '#7d8186'],
     lqip: 'data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAADQAwCdASoYAAoAPwlurk+rpiQiMAgBcCEJZwAAYZmZbQXV4B5DDgAA99HHbzKFN1P0Ynmt36I4A109rTUdMA3P7mRWWgAA',
     variants: [
-      { w: 480, h: 205, webp: 'img-1082-480.912e979d.webp', avif: 'img-1082-480.912e979d.avif' },
-      { w: 800, h: 342, webp: 'img-1082-800.912e979d.webp', avif: 'img-1082-800.912e979d.avif' },
-      { w: 1280, h: 547, webp: 'img-1082-1280.912e979d.webp', avif: 'img-1082-1280.912e979d.avif' },
+      { w: 480, h: 205, webp: 'img-1082-480.4d87c467.webp', avif: 'img-1082-480.4d87c467.avif' },
+      { w: 800, h: 342, webp: 'img-1082-800.4d87c467.webp', avif: 'img-1082-800.4d87c467.avif' },
+      { w: 1280, h: 547, webp: 'img-1082-1280.4d87c467.webp', avif: 'img-1082-1280.4d87c467.avif' },
+      { w: 1920, h: 821, webp: 'img-1082-1920.4d87c467.webp', avif: 'img-1082-1920.4d87c467.avif' },
     ],
   },
   {
@@ -32,9 +33,10 @@ export const photoManifest: PhotoAsset[] = [
     tint: ['#1e2a32', '#1e2a34', '#27333c'],
     lqip: 'data:image/webp;base64,UklGRk4AAABXRUJQVlA4IEIAAADQAwCdASoYAA0APwlurk+rpiQiMAgBcCEJYwCdACHfx8evQ498L+AA/tkDUeb/T4CsKij7KUDsnrjDoBqnDaGgAAA=',
     variants: [
-      { w: 480, h: 270, webp: 'img-2820-480.425c9641.webp', avif: 'img-2820-480.425c9641.avif' },
-      { w: 800, h: 450, webp: 'img-2820-800.425c9641.webp', avif: 'img-2820-800.425c9641.avif' },
-      { w: 1280, h: 720, webp: 'img-2820-1280.425c9641.webp', avif: 'img-2820-1280.425c9641.avif' },
+      { w: 480, h: 270, webp: 'img-2820-480.ba1f1370.webp', avif: 'img-2820-480.ba1f1370.avif' },
+      { w: 800, h: 450, webp: 'img-2820-800.ba1f1370.webp', avif: 'img-2820-800.ba1f1370.avif' },
+      { w: 1280, h: 720, webp: 'img-2820-1280.ba1f1370.webp', avif: 'img-2820-1280.ba1f1370.avif' },
+      { w: 1758, h: 989, webp: 'img-2820-1758.ba1f1370.webp', avif: 'img-2820-1758.ba1f1370.avif' },
     ],
   },
   {
@@ -49,9 +51,10 @@ export const photoManifest: PhotoAsset[] = [
     tint: ['#3d3838', '#4b4e50', '#5b4e4d'],
     lqip: 'data:image/webp;base64,UklGRlYAAABXRUJQVlA4IEoAAACQAwCdASoYAA0APwlyr0+rpyQiMAgBcCEJYgCdACHWrJbLPNugAP7pNCBdMMxxkwr8Z82GiiTML8jqwk2lncrTCLTkE5MECgAAAA==',
     variants: [
-      { w: 480, h: 270, webp: 'img-3452-480.2e873faf.webp', avif: 'img-3452-480.2e873faf.avif' },
-      { w: 800, h: 450, webp: 'img-3452-800.2e873faf.webp', avif: 'img-3452-800.2e873faf.avif' },
-      { w: 1280, h: 720, webp: 'img-3452-1280.2e873faf.webp', avif: 'img-3452-1280.2e873faf.avif' },
+      { w: 480, h: 270, webp: 'img-3452-480.1e2715fa.webp', avif: 'img-3452-480.1e2715fa.avif' },
+      { w: 800, h: 450, webp: 'img-3452-800.1e2715fa.webp', avif: 'img-3452-800.1e2715fa.avif' },
+      { w: 1280, h: 720, webp: 'img-3452-1280.1e2715fa.webp', avif: 'img-3452-1280.1e2715fa.avif' },
+      { w: 1758, h: 989, webp: 'img-3452-1758.1e2715fa.webp', avif: 'img-3452-1758.1e2715fa.avif' },
     ],
   },
   {
@@ -66,9 +69,10 @@ export const photoManifest: PhotoAsset[] = [
     tint: ['#703e18', '#7d5035', '#93623f'],
     lqip: 'data:image/webp;base64,UklGRnwAAABXRUJQVlA4IHAAAAAQBACdASoYAA0APwlur0+rpiQiMAgBcCEJbACdMoR3ABcMIfReHJeVgADhWmBdfVjuzwVdMEk6iOGn2xPMBsBJ3a+GPxbgaePvm6hNnsgN2oieCBKGsIgo9q47ij/Hg0dHFGmGBLF9ARRoW2CagAAA',
     variants: [
-      { w: 480, h: 270, webp: 'img-4538-480.9a98a82b.webp', avif: 'img-4538-480.9a98a82b.avif' },
-      { w: 800, h: 450, webp: 'img-4538-800.9a98a82b.webp', avif: 'img-4538-800.9a98a82b.avif' },
-      { w: 1280, h: 720, webp: 'img-4538-1280.9a98a82b.webp', avif: 'img-4538-1280.9a98a82b.avif' },
+      { w: 480, h: 270, webp: 'img-4538-480.0d7a308b.webp', avif: 'img-4538-480.0d7a308b.avif' },
+      { w: 800, h: 450, webp: 'img-4538-800.0d7a308b.webp', avif: 'img-4538-800.0d7a308b.avif' },
+      { w: 1280, h: 720, webp: 'img-4538-1280.0d7a308b.webp', avif: 'img-4538-1280.0d7a308b.avif' },
+      { w: 1758, h: 989, webp: 'img-4538-1758.0d7a308b.webp', avif: 'img-4538-1758.0d7a308b.avif' },
     ],
   },
   {
@@ -83,9 +87,10 @@ export const photoManifest: PhotoAsset[] = [
     tint: ['#705f52', '#70625d', '#895f46'],
     lqip: 'data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAADwAwCdASoYAA0APwlwr0+rpqQiMAgBcCEJZgCdMoAC+ypa39IQcjSAAMvl7Z2QHeYuPJXk15oKb8uac10+cHMwemqN1NJHJ6N3hQ6YVjcDTNUYAAA=',
     variants: [
-      { w: 480, h: 270, webp: 'img-4893-480.edcd14e9.webp', avif: 'img-4893-480.edcd14e9.avif' },
-      { w: 800, h: 450, webp: 'img-4893-800.edcd14e9.webp', avif: 'img-4893-800.edcd14e9.avif' },
-      { w: 1280, h: 720, webp: 'img-4893-1280.edcd14e9.webp', avif: 'img-4893-1280.edcd14e9.avif' },
+      { w: 480, h: 270, webp: 'img-4893-480.88c790b1.webp', avif: 'img-4893-480.88c790b1.avif' },
+      { w: 800, h: 450, webp: 'img-4893-800.88c790b1.webp', avif: 'img-4893-800.88c790b1.avif' },
+      { w: 1280, h: 720, webp: 'img-4893-1280.88c790b1.webp', avif: 'img-4893-1280.88c790b1.avif' },
+      { w: 1758, h: 989, webp: 'img-4893-1758.88c790b1.webp', avif: 'img-4893-1758.88c790b1.avif' },
     ],
   },
   {
@@ -100,9 +105,10 @@ export const photoManifest: PhotoAsset[] = [
     tint: ['#6e8599', '#7b8ea2', '#8593a2'],
     lqip: 'data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAADQAwCdASoYAA0APwlusE+rpiSiMAgBcCEJQBdgAszbJ0q09+bY1lwA/q/XY2z0VvR053ohEu9KVHaeSSH4dLH5kj7mEe3zXtI7bP4hvmhkKAAA',
     variants: [
-      { w: 480, h: 270, webp: 'img-5346-480.90cbf8df.webp', avif: 'img-5346-480.90cbf8df.avif' },
-      { w: 800, h: 450, webp: 'img-5346-800.90cbf8df.webp', avif: 'img-5346-800.90cbf8df.avif' },
-      { w: 1280, h: 720, webp: 'img-5346-1280.90cbf8df.webp', avif: 'img-5346-1280.90cbf8df.avif' },
+      { w: 480, h: 270, webp: 'img-5346-480.b1f4a94e.webp', avif: 'img-5346-480.b1f4a94e.avif' },
+      { w: 800, h: 450, webp: 'img-5346-800.b1f4a94e.webp', avif: 'img-5346-800.b1f4a94e.avif' },
+      { w: 1280, h: 720, webp: 'img-5346-1280.b1f4a94e.webp', avif: 'img-5346-1280.b1f4a94e.avif' },
+      { w: 1758, h: 989, webp: 'img-5346-1758.b1f4a94e.webp', avif: 'img-5346-1758.b1f4a94e.avif' },
     ],
   },
   {
@@ -117,8 +123,9 @@ export const photoManifest: PhotoAsset[] = [
     tint: ['#8f4a51', '#886360', '#a89898'],
     lqip: 'data:image/webp;base64,UklGRngAAABXRUJQVlA4IGwAAADwAwCdASoNABgAPwlurk+rpiQiMAgBcCEJbACdAB49OuEDUYHNMFFgAP6RYvvKLbg3DbW9v9xoKZeyQ5NERnSO3DMncMYqDxC3ww908XhzjIbiqH3zQtBUcqzmytoru7z0OvXl4fkUviigAAA=',
     variants: [
-      { w: 270, h: 480, webp: 'img-6177-480.6b832ded.webp', avif: 'img-6177-480.6b832ded.avif' },
-      { w: 450, h: 800, webp: 'img-6177-800.6b832ded.webp', avif: 'img-6177-800.6b832ded.avif' },
+      { w: 270, h: 480, webp: 'img-6177-480.4ab3aa3c.webp', avif: 'img-6177-480.4ab3aa3c.avif' },
+      { w: 450, h: 800, webp: 'img-6177-800.4ab3aa3c.webp', avif: 'img-6177-800.4ab3aa3c.avif' },
+      { w: 556, h: 989, webp: 'img-6177-989.4ab3aa3c.webp', avif: 'img-6177-989.4ab3aa3c.avif' },
     ],
   },
   {
@@ -133,8 +140,9 @@ export const photoManifest: PhotoAsset[] = [
     tint: ['#8d949c', '#999e9d', '#99a0a2'],
     lqip: 'data:image/webp;base64,UklGRlYAAABXRUJQVlA4IEoAAACwAwCdASoNABgALs2EwmEjq6uri4DMSygF2AIddfJQVn3jdjhYAAD+6oSkC7bEoBhGSg3nggbomEyukkLY4kTLazoxFhSrPFAAAA==',
     variants: [
-      { w: 270, h: 480, webp: 'img-7544-480.7cef757d.webp', avif: 'img-7544-480.7cef757d.avif' },
-      { w: 450, h: 800, webp: 'img-7544-800.7cef757d.webp', avif: 'img-7544-800.7cef757d.avif' },
+      { w: 270, h: 480, webp: 'img-7544-480.72a11a93.webp', avif: 'img-7544-480.72a11a93.avif' },
+      { w: 450, h: 800, webp: 'img-7544-800.72a11a93.webp', avif: 'img-7544-800.72a11a93.avif' },
+      { w: 556, h: 989, webp: 'img-7544-989.72a11a93.webp', avif: 'img-7544-989.72a11a93.avif' },
     ],
   },
   {
@@ -149,8 +157,9 @@ export const photoManifest: PhotoAsset[] = [
     tint: ['#141319', '#272628', '#3d332a'],
     lqip: 'data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAACwAwCdASoNABgAPwl0sFCrpySisAgBcCEJQBfnDSvpdM62LgeWAAD+/VKicIwbqsQN7tn0koo6G4ubK76Z5aPFc+ZEc/mDq6uC3H0AAAA=',
     variants: [
-      { w: 270, h: 480, webp: 'img-8146-480.34064ee5.webp', avif: 'img-8146-480.34064ee5.avif' },
-      { w: 450, h: 800, webp: 'img-8146-800.34064ee5.webp', avif: 'img-8146-800.34064ee5.avif' },
+      { w: 270, h: 480, webp: 'img-8146-480.01a809d1.webp', avif: 'img-8146-480.01a809d1.avif' },
+      { w: 450, h: 800, webp: 'img-8146-800.01a809d1.webp', avif: 'img-8146-800.01a809d1.avif' },
+      { w: 556, h: 989, webp: 'img-8146-989.01a809d1.webp', avif: 'img-8146-989.01a809d1.avif' },
     ],
   },
   {
@@ -159,13 +168,15 @@ export const photoManifest: PhotoAsset[] = [
     autoTitle: "Kare 010",
     year: 2024,
     orientation: 'portrait',
-    width: 135,
-    height: 240,
+    width: 556,
+    height: 989,
     exif: { lens: '', aperture: '', shutter: '', iso: '' },
-    tint: ['#6b6e4d', '#747555', '#737558'],
-    lqip: 'data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAACQAwCdASoNABgAPwlurk+rpiQiMAgBcCEJYgAAW+f3OTVvJq0QAP7oxElGQsqMSkAhd0QfTuw2t4oQ229msoVFkWZ56IpZqjGOAAAA',
+    tint: ['#666a49', '#737353', '#737457'],
+    lqip: 'data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAACwAwCdASoNABgAPwlwr1ArpqQisAgBcCEJYgAAUpyCLw0GcIZ8IAD+5CMnNlBBk1ozr+VS2uH3w1whUiz2+kbrxh9DcaZ42vhbV93oAAA=',
     variants: [
-      { w: 135, h: 240, webp: 'img-8169-480.de3f79e5.webp', avif: 'img-8169-480.de3f79e5.avif' },
+      { w: 270, h: 480, webp: 'img-8169-480.db4a4bd7.webp', avif: 'img-8169-480.db4a4bd7.avif' },
+      { w: 450, h: 800, webp: 'img-8169-800.db4a4bd7.webp', avif: 'img-8169-800.db4a4bd7.avif' },
+      { w: 556, h: 989, webp: 'img-8169-989.db4a4bd7.webp', avif: 'img-8169-989.db4a4bd7.avif' },
     ],
   },
   {
@@ -180,8 +191,9 @@ export const photoManifest: PhotoAsset[] = [
     tint: ['#56595a', '#62625d', '#69635b'],
     lqip: 'data:image/webp;base64,UklGRlQAAABXRUJQVlA4IEgAAACwAwCdASoNABgAPwl0sFCrpySisAgBcCEJYwC7ABqpt+crvpXQAAD9HCtcEn0Q5v6HvmRfqq4qH0ibK5APCS5E8mU4PyBgAAA=',
     variants: [
-      { w: 270, h: 480, webp: 'img-8628-480.aeff3008.webp', avif: 'img-8628-480.aeff3008.avif' },
-      { w: 450, h: 800, webp: 'img-8628-800.aeff3008.webp', avif: 'img-8628-800.aeff3008.avif' },
+      { w: 270, h: 480, webp: 'img-8628-480.a37e7da2.webp', avif: 'img-8628-480.a37e7da2.avif' },
+      { w: 450, h: 800, webp: 'img-8628-800.a37e7da2.webp', avif: 'img-8628-800.a37e7da2.avif' },
+      { w: 556, h: 989, webp: 'img-8628-989.a37e7da2.webp', avif: 'img-8628-989.a37e7da2.avif' },
     ],
   },
   {
@@ -190,13 +202,15 @@ export const photoManifest: PhotoAsset[] = [
     autoTitle: "Kare 012",
     year: 2025,
     orientation: 'square',
-    width: 229,
-    height: 220,
+    width: 1031,
+    height: 989,
     exif: { lens: '', aperture: '', shutter: '', iso: '' },
-    tint: ['#827279', '#918c82', '#a59993'],
-    lqip: 'data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAAAwBACdASoYABcAPwmEuFarqKUjqAgBcCEJYwDA3AaWtdy7r7bj+TTR9AAA/Fpb9SdvDKrFzSnJ3Qmb5XikTBgbDHQDHDYCBRKyPVcUIb+VFXsvu1YAAAAA',
+    tint: ['#827279', '#908b81', '#a59892'],
+    lqip: 'data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAABwBACdASoYABcAPwl6r1Mrp6OiqAqpcCEJYwCzgAlqcSFC+3fq8c75OQS2KAD8Wlv1J6rZKf8SnuSAr1Q8CJgD3gn05Iy5P790jkBeN0tkF96uXDr3ctBEAAA=',
     variants: [
-      { w: 229, h: 220, webp: 'img-1947-480.fc25505e.webp', avif: 'img-1947-480.fc25505e.avif' },
+      { w: 480, h: 460, webp: 'img-1947-480.db153c8d.webp', avif: 'img-1947-480.db153c8d.avif' },
+      { w: 800, h: 767, webp: 'img-1947-800.db153c8d.webp', avif: 'img-1947-800.db153c8d.avif' },
+      { w: 1031, h: 989, webp: 'img-1947-1031.db153c8d.webp', avif: 'img-1947-1031.db153c8d.avif' },
     ],
   },
   {
@@ -211,9 +225,10 @@ export const photoManifest: PhotoAsset[] = [
     tint: ['#919a9d', '#a9b2ac', '#a8b3b5'],
     lqip: 'data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAACwAwCdASoYAA0APwl4s1Erp6SisAgBcCEJYwAAW7ge8RN/OVU/rAD+yIv2HxsYj+7vLfPndIbVCPGjBWasJ4ciWxDc1ny365wK5nsQAAA=',
     variants: [
-      { w: 480, h: 270, webp: 'img-2400-480.6adba8e7.webp', avif: 'img-2400-480.6adba8e7.avif' },
-      { w: 800, h: 450, webp: 'img-2400-800.6adba8e7.webp', avif: 'img-2400-800.6adba8e7.avif' },
-      { w: 1280, h: 720, webp: 'img-2400-1280.6adba8e7.webp', avif: 'img-2400-1280.6adba8e7.avif' },
+      { w: 480, h: 270, webp: 'img-2400-480.d091e901.webp', avif: 'img-2400-480.d091e901.avif' },
+      { w: 800, h: 450, webp: 'img-2400-800.d091e901.webp', avif: 'img-2400-800.d091e901.avif' },
+      { w: 1280, h: 720, webp: 'img-2400-1280.d091e901.webp', avif: 'img-2400-1280.d091e901.avif' },
+      { w: 1758, h: 989, webp: 'img-2400-1758.d091e901.webp', avif: 'img-2400-1758.d091e901.avif' },
     ],
   },
   {
@@ -228,8 +243,9 @@ export const photoManifest: PhotoAsset[] = [
     tint: ['#526b8b', '#6e7d86', '#697f96'],
     lqip: 'data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAAAQBACdASoNABgAPwlur0+rpiQiMAgBcCEJagC06CHPScQ4T5gLKHixAADKdl9ksYTCMuBrE4wYzoIxbz661x3APvg2Ae2XsEccSS3wBde9/8OCpTnUogkUw488MFQA',
     variants: [
-      { w: 270, h: 480, webp: 'img-2752-480.9342015b.webp', avif: 'img-2752-480.9342015b.avif' },
-      { w: 450, h: 800, webp: 'img-2752-800.9342015b.webp', avif: 'img-2752-800.9342015b.avif' },
+      { w: 270, h: 480, webp: 'img-2752-480.c7a9951a.webp', avif: 'img-2752-480.c7a9951a.avif' },
+      { w: 450, h: 800, webp: 'img-2752-800.c7a9951a.webp', avif: 'img-2752-800.c7a9951a.avif' },
+      { w: 556, h: 989, webp: 'img-2752-989.c7a9951a.webp', avif: 'img-2752-989.c7a9951a.avif' },
     ],
   },
   {
@@ -244,8 +260,9 @@ export const photoManifest: PhotoAsset[] = [
     tint: ['#7d786d', '#8e8675', '#a09586'],
     lqip: 'data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAACwAwCdASoNABgAPwlyr0+rpyQiMAgBcCEJQAAIzHp+mcBmovLMqAD86djFo01Vdubvz+kIA3vk8+Nv774afW2850+8MMZkq5VhrxOEGEr4UIU2jCp1vlgDJBEgAA==',
     variants: [
-      { w: 270, h: 480, webp: 'img-2795-480.8c889f0b.webp', avif: 'img-2795-480.8c889f0b.avif' },
-      { w: 450, h: 800, webp: 'img-2795-800.8c889f0b.webp', avif: 'img-2795-800.8c889f0b.avif' },
+      { w: 270, h: 480, webp: 'img-2795-480.54a42401.webp', avif: 'img-2795-480.54a42401.avif' },
+      { w: 450, h: 800, webp: 'img-2795-800.54a42401.webp', avif: 'img-2795-800.54a42401.avif' },
+      { w: 556, h: 989, webp: 'img-2795-989.54a42401.webp', avif: 'img-2795-989.54a42401.avif' },
     ],
   },
   {
@@ -260,8 +277,9 @@ export const photoManifest: PhotoAsset[] = [
     tint: ['#706255', '#736b58', '#8a7567'],
     lqip: 'data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAAAwBACdASoNABgAPwlur0+rpiQiMAgBcCEJYwCdABuTUGkufD0Yj2+5c4AA9xw8NchU7my8CGy+0eMj/xJmC3CJru2jZn+HrmNG7y04YVuzkTbFnMUlt+f081gAAA==',
     variants: [
-      { w: 270, h: 480, webp: 'img-2798-480.6b2a8d30.webp', avif: 'img-2798-480.6b2a8d30.avif' },
-      { w: 450, h: 800, webp: 'img-2798-800.6b2a8d30.webp', avif: 'img-2798-800.6b2a8d30.avif' },
+      { w: 270, h: 480, webp: 'img-2798-480.911b6967.webp', avif: 'img-2798-480.911b6967.avif' },
+      { w: 450, h: 800, webp: 'img-2798-800.911b6967.webp', avif: 'img-2798-800.911b6967.avif' },
+      { w: 556, h: 989, webp: 'img-2798-989.911b6967.webp', avif: 'img-2798-989.911b6967.avif' },
     ],
   },
   {
@@ -276,8 +294,9 @@ export const photoManifest: PhotoAsset[] = [
     tint: ['#755543', '#8e5b3c', '#846452'],
     lqip: 'data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAABQBACdASoNABgAPwlur0+rpiQiMAgBcCEJagCdMoADf5P0ZfxgFnYPCXDAAP1t3TwH/0RGWekhrcRExN8glEKRAVkvSjXnrXrX+vr9yHwCkSuk/YSLQrUQg8Dpkif49u0IAA==',
     variants: [
-      { w: 270, h: 480, webp: 'img-2824-480.76d56103.webp', avif: 'img-2824-480.76d56103.avif' },
-      { w: 450, h: 800, webp: 'img-2824-800.76d56103.webp', avif: 'img-2824-800.76d56103.avif' },
+      { w: 270, h: 480, webp: 'img-2824-480.1aaa89ae.webp', avif: 'img-2824-480.1aaa89ae.avif' },
+      { w: 450, h: 800, webp: 'img-2824-800.1aaa89ae.webp', avif: 'img-2824-800.1aaa89ae.avif' },
+      { w: 556, h: 989, webp: 'img-2824-989.1aaa89ae.webp', avif: 'img-2824-989.1aaa89ae.avif' },
     ],
   },
   {
@@ -292,8 +311,9 @@ export const photoManifest: PhotoAsset[] = [
     tint: ['#5078a4', '#577eab', '#5f8ab8'],
     lqip: 'data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAADQAwCdASoNABgAPwl4s1Erp6SisAgBcCEJaACdABsquPz0kqfHHGAA/RxmMgH6m0MvUrfrT9si8GyRV/kYXm9pINompp1bupBIxMB6ncsEWxNNg+CQAA==',
     variants: [
-      { w: 270, h: 480, webp: 'img-3060-480.bd2730fa.webp', avif: 'img-3060-480.bd2730fa.avif' },
-      { w: 450, h: 800, webp: 'img-3060-800.bd2730fa.webp', avif: 'img-3060-800.bd2730fa.avif' },
+      { w: 270, h: 480, webp: 'img-3060-480.0cf7faf1.webp', avif: 'img-3060-480.0cf7faf1.avif' },
+      { w: 450, h: 800, webp: 'img-3060-800.0cf7faf1.webp', avif: 'img-3060-800.0cf7faf1.avif' },
+      { w: 556, h: 989, webp: 'img-3060-989.0cf7faf1.webp', avif: 'img-3060-989.0cf7faf1.avif' },
     ],
   },
   {
@@ -308,9 +328,10 @@ export const photoManifest: PhotoAsset[] = [
     tint: ['#8c3864', '#9e5158', '#925c7b'],
     lqip: 'data:image/webp;base64,UklGRoIAAABXRUJQVlA4IHYAAADQAwCdASoYAA0APwlurk+rpiQiMAgBcCEJbACdMoRwABSzc/aq7oAA/nasWWvLmocmhtnz+P9q9VO/RYzAHmvFVRQYzLGvJbi14RnBO4Kkwavkj2bkDWbB/XFcFsO7wjYEAmgAOSjkJC3nl0IoIkL5d5kxEuAA',
     variants: [
-      { w: 480, h: 270, webp: 'img-3061-480.97b3b1a9.webp', avif: 'img-3061-480.97b3b1a9.avif' },
-      { w: 800, h: 450, webp: 'img-3061-800.97b3b1a9.webp', avif: 'img-3061-800.97b3b1a9.avif' },
-      { w: 1280, h: 720, webp: 'img-3061-1280.97b3b1a9.webp', avif: 'img-3061-1280.97b3b1a9.avif' },
+      { w: 480, h: 270, webp: 'img-3061-480.72af4ad6.webp', avif: 'img-3061-480.72af4ad6.avif' },
+      { w: 800, h: 450, webp: 'img-3061-800.72af4ad6.webp', avif: 'img-3061-800.72af4ad6.avif' },
+      { w: 1280, h: 720, webp: 'img-3061-1280.72af4ad6.webp', avif: 'img-3061-1280.72af4ad6.avif' },
+      { w: 1758, h: 989, webp: 'img-3061-1758.72af4ad6.webp', avif: 'img-3061-1758.72af4ad6.avif' },
     ],
   },
   {
@@ -325,9 +346,10 @@ export const photoManifest: PhotoAsset[] = [
     tint: ['#724b4b', '#74544c', '#7e7572'],
     lqip: 'data:image/webp;base64,UklGRnQAAABXRUJQVlA4IGgAAAAQBACdASoYAA0APwlwr1ArpqQisAgBcCEJZgCdACIdsIiF5e3t5vjAAAD+RBrf2nlkgWLEKaN0iw0TVPc9dllN/v6i7pSmnlfwEwlQvO4oLj9k/SMpvrEZk2JscU/XL46NzU3AKSAAAA==',
     variants: [
-      { w: 480, h: 270, webp: 'img-3062-480.c40d754a.webp', avif: 'img-3062-480.c40d754a.avif' },
-      { w: 800, h: 450, webp: 'img-3062-800.c40d754a.webp', avif: 'img-3062-800.c40d754a.avif' },
-      { w: 1280, h: 720, webp: 'img-3062-1280.c40d754a.webp', avif: 'img-3062-1280.c40d754a.avif' },
+      { w: 480, h: 270, webp: 'img-3062-480.dddccf76.webp', avif: 'img-3062-480.dddccf76.avif' },
+      { w: 800, h: 450, webp: 'img-3062-800.dddccf76.webp', avif: 'img-3062-800.dddccf76.avif' },
+      { w: 1280, h: 720, webp: 'img-3062-1280.dddccf76.webp', avif: 'img-3062-1280.dddccf76.avif' },
+      { w: 1758, h: 989, webp: 'img-3062-1758.dddccf76.webp', avif: 'img-3062-1758.dddccf76.avif' },
     ],
   },
   {
@@ -342,9 +364,10 @@ export const photoManifest: PhotoAsset[] = [
     tint: ['#98836a', '#a58f74', '#a8957d'],
     lqip: 'data:image/webp;base64,UklGRlYAAABXRUJQVlA4IEoAAAAQAwCdASoYAAkAPwlusE+rpiSiMAgBcCEJQBOgAkFfAYAA9wRhA879Xid0YXJln6XMm1xv4mNwTfNVFbhXC+MgwW6n9whSILgAAA==',
     variants: [
-      { w: 480, h: 181, webp: 'img-3355-480.e318d91b.webp', avif: 'img-3355-480.e318d91b.avif' },
-      { w: 800, h: 302, webp: 'img-3355-800.e318d91b.webp', avif: 'img-3355-800.e318d91b.avif' },
-      { w: 1280, h: 483, webp: 'img-3355-1280.e318d91b.webp', avif: 'img-3355-1280.e318d91b.avif' },
+      { w: 480, h: 181, webp: 'img-3355-480.2a21d672.webp', avif: 'img-3355-480.2a21d672.avif' },
+      { w: 800, h: 302, webp: 'img-3355-800.2a21d672.webp', avif: 'img-3355-800.2a21d672.avif' },
+      { w: 1280, h: 483, webp: 'img-3355-1280.2a21d672.webp', avif: 'img-3355-1280.2a21d672.avif' },
+      { w: 1920, h: 725, webp: 'img-3355-1920.2a21d672.webp', avif: 'img-3355-1920.2a21d672.avif' },
     ],
   },
   {
@@ -359,9 +382,10 @@ export const photoManifest: PhotoAsset[] = [
     tint: ['#6f4545', '#884154', '#7b5751'],
     lqip: 'data:image/webp;base64,UklGRnIAAABXRUJQVlA4IGYAAACQAwCdASoYAA0APwlwsFArpiSisAgBcCEJbACdHYAAui1HPXMIAP4QLm/ud0g4yW1XCcqZAzWKRYtXWhd0jghBkLTMzS2mRIs3jB0PqRDsTrI3p5DFaifoSbvlG2ZlZ3JnOhQgQAA=',
     variants: [
-      { w: 480, h: 270, webp: 'img-3912-480.39ba0fcf.webp', avif: 'img-3912-480.39ba0fcf.avif' },
-      { w: 800, h: 450, webp: 'img-3912-800.39ba0fcf.webp', avif: 'img-3912-800.39ba0fcf.avif' },
-      { w: 1280, h: 720, webp: 'img-3912-1280.39ba0fcf.webp', avif: 'img-3912-1280.39ba0fcf.avif' },
+      { w: 480, h: 270, webp: 'img-3912-480.c3e5e355.webp', avif: 'img-3912-480.c3e5e355.avif' },
+      { w: 800, h: 450, webp: 'img-3912-800.c3e5e355.webp', avif: 'img-3912-800.c3e5e355.avif' },
+      { w: 1280, h: 720, webp: 'img-3912-1280.c3e5e355.webp', avif: 'img-3912-1280.c3e5e355.avif' },
+      { w: 1758, h: 989, webp: 'img-3912-1758.c3e5e355.webp', avif: 'img-3912-1758.c3e5e355.avif' },
     ],
   },
   {
@@ -376,8 +400,9 @@ export const photoManifest: PhotoAsset[] = [
     tint: ['#807471', '#8d787d', '#8d7a76'],
     lqip: 'data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAABwAwCdASoNABgALs2EwmEjq6uri4DMS0AFYcoACpCtidHRUAAA/smTwSu4JT1emlbz7sC96NQadFyjrnqXAbAUa5KV96Jefl1z0TuLvzKkvexTgAA=',
     variants: [
-      { w: 270, h: 480, webp: 'img-4234-480.a84130b7.webp', avif: 'img-4234-480.a84130b7.avif' },
-      { w: 450, h: 800, webp: 'img-4234-800.a84130b7.webp', avif: 'img-4234-800.a84130b7.avif' },
+      { w: 270, h: 480, webp: 'img-4234-480.bcd7815f.webp', avif: 'img-4234-480.bcd7815f.avif' },
+      { w: 450, h: 800, webp: 'img-4234-800.bcd7815f.webp', avif: 'img-4234-800.bcd7815f.avif' },
+      { w: 556, h: 989, webp: 'img-4234-989.bcd7815f.webp', avif: 'img-4234-989.bcd7815f.avif' },
     ],
   },
   {
@@ -392,8 +417,9 @@ export const photoManifest: PhotoAsset[] = [
     tint: ['#888683', '#898a89', '#8b8e8b'],
     lqip: 'data:image/webp;base64,UklGRlYAAABXRUJQVlA4IEoAAABQAwCdASoPABgAPwlurk+rpiQiMAgBcCEJZwDKBagAH82bsADMEgbfS+EIKbQuLG0n11OW6aL/NpuM+8CGrE50mOkd9e4CG4pgAA==',
     variants: [
-      { w: 293, h: 480, webp: 'img-4245-480.a115ec5e.webp', avif: 'img-4245-480.a115ec5e.avif' },
-      { w: 489, h: 800, webp: 'img-4245-800.a115ec5e.webp', avif: 'img-4245-800.a115ec5e.avif' },
+      { w: 293, h: 480, webp: 'img-4245-480.9a1f2d45.webp', avif: 'img-4245-480.9a1f2d45.avif' },
+      { w: 489, h: 800, webp: 'img-4245-800.9a1f2d45.webp', avif: 'img-4245-800.9a1f2d45.avif' },
+      { w: 604, h: 989, webp: 'img-4245-989.9a1f2d45.webp', avif: 'img-4245-989.9a1f2d45.avif' },
     ],
   },
   {
@@ -402,13 +428,16 @@ export const photoManifest: PhotoAsset[] = [
     autoTitle: "Kare 025",
     year: 2025,
     orientation: 'landscape',
-    width: 420,
-    height: 236,
+    width: 1758,
+    height: 989,
     exif: { lens: '', aperture: '', shutter: '', iso: '' },
-    tint: ['#676143', '#736e54', '#8c8369'],
-    lqip: 'data:image/webp;base64,UklGRnQAAABXRUJQVlA4IGgAAACwAwCdASoYAA0APwlwr0+rpqQiMAgBcCEJZACsABKrvlQlUtolcAD+ql+akex4dJi3d9ROaRxTiTX+3rt5F8xV38y43PW3OutWaseM5nZBKrAJHAmirBeQoZDK20Ih7SY2ckeX6KFYAA==',
+    tint: ['#656040', '#6f6c4f', '#8a8065'],
+    lqip: 'data:image/webp;base64,UklGRnQAAABXRUJQVlA4IGgAAACQAwCdASoYAA0APwlwsFArpiSisAgBcCEJZACsAAfWTjC7MZcAAP6qX5qR7Hh0mLd4U3FTBd0YwG6BnsGI3Bk1uxzsAm+p8bqp0MQu3Z951xaeiksiif3SeijCs10bHIh0wzLJU4iMAA==',
     variants: [
-      { w: 420, h: 236, webp: 'img-4253-480.6067b7bc.webp', avif: 'img-4253-480.6067b7bc.avif' },
+      { w: 480, h: 270, webp: 'img-4253-480.010843eb.webp', avif: 'img-4253-480.010843eb.avif' },
+      { w: 800, h: 450, webp: 'img-4253-800.010843eb.webp', avif: 'img-4253-800.010843eb.avif' },
+      { w: 1280, h: 720, webp: 'img-4253-1280.010843eb.webp', avif: 'img-4253-1280.010843eb.avif' },
+      { w: 1758, h: 989, webp: 'img-4253-1758.010843eb.webp', avif: 'img-4253-1758.010843eb.avif' },
     ],
   },
   {
@@ -423,8 +452,9 @@ export const photoManifest: PhotoAsset[] = [
     tint: ['#627b5e', '#6c8760', '#768c6c'],
     lqip: 'data:image/webp;base64,UklGRnAAAABXRUJQVlA4IGQAAADQAwCdASoNABgAPwlwr0+rpqQiMAgBcCEJZACdACHcMdYGAS8o6gAA/lm4cXoGAYJL/3hi3pOxMUnAAVwV7bVPOsOte6MIRHIsphCSLt3ku1y5/kc/fwJF9et8HLu9W0V65kAA',
     variants: [
-      { w: 270, h: 480, webp: 'img-4457-480.bc45f723.webp', avif: 'img-4457-480.bc45f723.avif' },
-      { w: 450, h: 800, webp: 'img-4457-800.bc45f723.webp', avif: 'img-4457-800.bc45f723.avif' },
+      { w: 270, h: 480, webp: 'img-4457-480.c99dbc0e.webp', avif: 'img-4457-480.c99dbc0e.avif' },
+      { w: 450, h: 800, webp: 'img-4457-800.c99dbc0e.webp', avif: 'img-4457-800.c99dbc0e.avif' },
+      { w: 556, h: 989, webp: 'img-4457-989.c99dbc0e.webp', avif: 'img-4457-989.c99dbc0e.avif' },
     ],
   },
   {
@@ -433,13 +463,16 @@ export const photoManifest: PhotoAsset[] = [
     autoTitle: "Kare 027",
     year: 2025,
     orientation: 'landscape',
-    width: 363,
-    height: 204,
+    width: 1758,
+    height: 989,
     exif: { lens: '', aperture: '', shutter: '', iso: '' },
-    tint: ['#525a36', '#61615b', '#726c57'],
-    lqip: 'data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAAAQBACdASoYAA0APwlwsFArpiSisAgBcCEJQBibAzqPQ4pbbs/sjkzewAD+fFprFD4scM5aPhaXyF1cPFL1dEYR5i0EDtJ3n+KYvlmEVgKxGQsWXoAAAA==',
+    tint: ['#535b36', '#64635d', '#726c58'],
+    lqip: 'data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAACwAwCdASoYAA0APwlwr1ArpqQisAgBcCEJQBibAzZmLF2+N8ZkEAD+fFprFD4scOHL8e0NIEBjMsa9ocYSOT6mFTdXdg9VwZF/N5iR5d0v8lxCLP7AAA==',
     variants: [
-      { w: 363, h: 204, webp: 'img-4655-480.4615f885.webp', avif: 'img-4655-480.4615f885.avif' },
+      { w: 480, h: 270, webp: 'img-4655-480.bf52c12d.webp', avif: 'img-4655-480.bf52c12d.avif' },
+      { w: 800, h: 450, webp: 'img-4655-800.bf52c12d.webp', avif: 'img-4655-800.bf52c12d.avif' },
+      { w: 1280, h: 720, webp: 'img-4655-1280.bf52c12d.webp', avif: 'img-4655-1280.bf52c12d.avif' },
+      { w: 1758, h: 989, webp: 'img-4655-1758.bf52c12d.webp', avif: 'img-4655-1758.bf52c12d.avif' },
     ],
   },
   {
@@ -454,8 +487,9 @@ export const photoManifest: PhotoAsset[] = [
     tint: ['#383b3b', '#585c54', '#636454'],
     lqip: 'data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAADQAwCdASoNABgAPwlwsVArpiSisAgBcCEJQBYdhDvQ8GiN3b7R7NAA/vDEK/Fq8t7t0IC7cRcbbUDDaCmlcfIiSlpdahtPWpaKF9sy4eFnCOAA',
     variants: [
-      { w: 270, h: 480, webp: 'img-4961-480.faeba56f.webp', avif: 'img-4961-480.faeba56f.avif' },
-      { w: 450, h: 800, webp: 'img-4961-800.faeba56f.webp', avif: 'img-4961-800.faeba56f.avif' },
+      { w: 270, h: 480, webp: 'img-4961-480.ddefdadc.webp', avif: 'img-4961-480.ddefdadc.avif' },
+      { w: 450, h: 800, webp: 'img-4961-800.ddefdadc.webp', avif: 'img-4961-800.ddefdadc.avif' },
+      { w: 556, h: 989, webp: 'img-4961-989.ddefdadc.webp', avif: 'img-4961-989.ddefdadc.avif' },
     ],
   },
   {
@@ -470,8 +504,9 @@ export const photoManifest: PhotoAsset[] = [
     tint: ['#525f6b', '#6e7982', '#707d88'],
     lqip: 'data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAADQAwCdASoNABgAPwlwsFArpiSisAgBcCEJQBbZA2WS0oUZ47FQ9AAA/fYFwj7JVWsozxhxC3ncT6K0BLT5DI0Tfe01OJJbsmhtjnER8FQOasRFaUwAAA==',
     variants: [
-      { w: 270, h: 480, webp: 'img-5148-480.dc2b9db2.webp', avif: 'img-5148-480.dc2b9db2.avif' },
-      { w: 450, h: 800, webp: 'img-5148-800.dc2b9db2.webp', avif: 'img-5148-800.dc2b9db2.avif' },
+      { w: 270, h: 480, webp: 'img-5148-480.93644b7b.webp', avif: 'img-5148-480.93644b7b.avif' },
+      { w: 450, h: 800, webp: 'img-5148-800.93644b7b.webp', avif: 'img-5148-800.93644b7b.avif' },
+      { w: 556, h: 989, webp: 'img-5148-989.93644b7b.webp', avif: 'img-5148-989.93644b7b.avif' },
     ],
   },
   {
@@ -486,9 +521,10 @@ export const photoManifest: PhotoAsset[] = [
     tint: ['#686356', '#7c6449', '#867260'],
     lqip: 'data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAAAwBACdASoYAA0APwlwrk+rpqQiMAgBcCEJZgCdMoR7KA7BC7GPZFvjxUgA96xgQRKt7/lPv/SIPB2F0EhgYfkgDpO8PbyLel+utIDqSnzE+oydy83njrdHp4ICv4AA',
     variants: [
-      { w: 480, h: 270, webp: 'img-5175-480.22896a87.webp', avif: 'img-5175-480.22896a87.avif' },
-      { w: 800, h: 450, webp: 'img-5175-800.22896a87.webp', avif: 'img-5175-800.22896a87.avif' },
-      { w: 1280, h: 720, webp: 'img-5175-1280.22896a87.webp', avif: 'img-5175-1280.22896a87.avif' },
+      { w: 480, h: 270, webp: 'img-5175-480.521494af.webp', avif: 'img-5175-480.521494af.avif' },
+      { w: 800, h: 450, webp: 'img-5175-800.521494af.webp', avif: 'img-5175-800.521494af.avif' },
+      { w: 1280, h: 720, webp: 'img-5175-1280.521494af.webp', avif: 'img-5175-1280.521494af.avif' },
+      { w: 1758, h: 989, webp: 'img-5175-1758.521494af.webp', avif: 'img-5175-1758.521494af.avif' },
     ],
   },
   {
@@ -503,8 +539,9 @@ export const photoManifest: PhotoAsset[] = [
     tint: ['#71563d', '#745f48', '#7a6350'],
     lqip: 'data:image/webp;base64,UklGRnAAAABXRUJQVlA4IGQAAADwAwCdASoNABgAPwlwsFArpiSisAgBcCEJQBOmUABP8vVoYAbjhHYAAP7PJgw0PuE5ueYzC0ALBEXF3t+4Z5TDACAcEZaLvHxg8rl+H1th1MiLrkigbigyQSgQoWjT2s5z8AAA',
     variants: [
-      { w: 270, h: 480, webp: 'img-5180-480.2c6def54.webp', avif: 'img-5180-480.2c6def54.avif' },
-      { w: 450, h: 800, webp: 'img-5180-800.2c6def54.webp', avif: 'img-5180-800.2c6def54.avif' },
+      { w: 270, h: 480, webp: 'img-5180-480.c3e23818.webp', avif: 'img-5180-480.c3e23818.avif' },
+      { w: 450, h: 800, webp: 'img-5180-800.c3e23818.webp', avif: 'img-5180-800.c3e23818.avif' },
+      { w: 556, h: 989, webp: 'img-5180-989.c3e23818.webp', avif: 'img-5180-989.c3e23818.avif' },
     ],
   },
   {
@@ -513,13 +550,15 @@ export const photoManifest: PhotoAsset[] = [
     autoTitle: "Kare 032",
     year: 2025,
     orientation: 'portrait',
-    width: 146,
-    height: 260,
+    width: 556,
+    height: 989,
     exif: { lens: '', aperture: '', shutter: '', iso: '' },
-    tint: ['#5c645d', '#666f67', '#748a98'],
-    lqip: 'data:image/webp;base64,UklGRnIAAABXRUJQVlA4IGYAAACQAwCdASoOABgAPwlur0+rpiQiMAgBcCEJaACsAA43Us1FIz8QAP69iW0JhC38/wII+Ko3dWnTCW4y/j6lQ1Wk72IH0RlbHu/2JhJz3S73TJvU/08VIVOxxlg2VAG7clRmGs8YAAA=',
+    tint: ['#555d56', '#61695f', '#6e8493'],
+    lqip: 'data:image/webp;base64,UklGRnAAAABXRUJQVlA4IGQAAACwAwCdASoNABgAPwlur1ArpiQisAgBcCEJaACsACDnI9xD1HjTxAD+znsaXEgOtR20trIAYRBKxZcdS1c3tZgqNXsFMhJz0nd19PT/rMytOUf1hzgciZ0W6paCiCrEsWqtrgAA',
     variants: [
-      { w: 146, h: 260, webp: 'img-5356-480.c558bae7.webp', avif: 'img-5356-480.c558bae7.avif' },
+      { w: 270, h: 480, webp: 'img-5356-480.f36e23e5.webp', avif: 'img-5356-480.f36e23e5.avif' },
+      { w: 450, h: 800, webp: 'img-5356-800.f36e23e5.webp', avif: 'img-5356-800.f36e23e5.avif' },
+      { w: 556, h: 989, webp: 'img-5356-989.f36e23e5.webp', avif: 'img-5356-989.f36e23e5.avif' },
     ],
   },
   {
@@ -534,8 +573,9 @@ export const photoManifest: PhotoAsset[] = [
     tint: ['#7e726c', '#897973', '#878077'],
     lqip: 'data:image/webp;base64,UklGRngAAABXRUJQVlA4IGwAAADQAwCdASoNABgAPwlwsFArpiSisAgBcCEJQBdgAoJzGrvH7EiEOWAA+F3nkShm8Owcq7pR4VK+oypUGYp0qyCRZPk6hQ59jvmyASkrK3W221nvdafA8IkRg6wVYwGvD4Oc1FjT78i3xRUAAAA=',
     variants: [
-      { w: 270, h: 480, webp: 'img-5498-480.4d7c65c4.webp', avif: 'img-5498-480.4d7c65c4.avif' },
-      { w: 450, h: 800, webp: 'img-5498-800.4d7c65c4.webp', avif: 'img-5498-800.4d7c65c4.avif' },
+      { w: 270, h: 480, webp: 'img-5498-480.94f7e48d.webp', avif: 'img-5498-480.94f7e48d.avif' },
+      { w: 450, h: 800, webp: 'img-5498-800.94f7e48d.webp', avif: 'img-5498-800.94f7e48d.avif' },
+      { w: 556, h: 989, webp: 'img-5498-989.94f7e48d.webp', avif: 'img-5498-989.94f7e48d.avif' },
     ],
   },
   {
@@ -550,8 +590,9 @@ export const photoManifest: PhotoAsset[] = [
     tint: ['#724f33', '#735f48', '#848682'],
     lqip: 'data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAAAQBACdASoNABgAPwlwr0+rpiQiMAgBcCEJZACdMoACNg+dh/8C7eBiAAD+mJDsfDyE8mrQ1MColRl3NfuHDyVI2I9fjobqFbuMXI3GDuCm7pVzgEWMFgAA',
     variants: [
-      { w: 270, h: 480, webp: 'img-5520-480.1981229b.webp', avif: 'img-5520-480.1981229b.avif' },
-      { w: 450, h: 800, webp: 'img-5520-800.1981229b.webp', avif: 'img-5520-800.1981229b.avif' },
+      { w: 270, h: 480, webp: 'img-5520-480.8ca09d08.webp', avif: 'img-5520-480.8ca09d08.avif' },
+      { w: 450, h: 800, webp: 'img-5520-800.8ca09d08.webp', avif: 'img-5520-800.8ca09d08.avif' },
+      { w: 556, h: 989, webp: 'img-5520-989.8ca09d08.webp', avif: 'img-5520-989.8ca09d08.avif' },
     ],
   },
   {
@@ -566,8 +607,9 @@ export const photoManifest: PhotoAsset[] = [
     tint: ['#6e5b51', '#915935', '#9d8271'],
     lqip: 'data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAADQAwCdASoNABgAPwlwr0+rpiQiMAgBcCEJagCdABXiDd3yp9pdo2gA9paV1MOd3euSoNWp/Z5dnTzFUWRSZtWUN+j3+Mj/2OxqnOlFeYJI/PcwgAA=',
     variants: [
-      { w: 270, h: 480, webp: 'img-5521-480.c08db8af.webp', avif: 'img-5521-480.c08db8af.avif' },
-      { w: 450, h: 800, webp: 'img-5521-800.c08db8af.webp', avif: 'img-5521-800.c08db8af.avif' },
+      { w: 270, h: 480, webp: 'img-5521-480.7e69905d.webp', avif: 'img-5521-480.7e69905d.avif' },
+      { w: 450, h: 800, webp: 'img-5521-800.7e69905d.webp', avif: 'img-5521-800.7e69905d.avif' },
+      { w: 556, h: 989, webp: 'img-5521-989.7e69905d.webp', avif: 'img-5521-989.7e69905d.avif' },
     ],
   },
   {
@@ -582,8 +624,9 @@ export const photoManifest: PhotoAsset[] = [
     tint: ['#4f473b', '#595347', '#5d574b'],
     lqip: 'data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAAAwBACdASoNABgAPwl4s1Erp6SisAgBcCEJYwCdAB6WPw8dsM5t0kJV6MAA/s98T7WLpyLdgDXnCAI3aMhXkA0G1fYiblYtbqxCaTgh/AnAogukeY2wXkGLDOSUqFeQgAA=',
     variants: [
-      { w: 270, h: 480, webp: 'img-5851-480.03beaf65.webp', avif: 'img-5851-480.03beaf65.avif' },
-      { w: 450, h: 800, webp: 'img-5851-800.03beaf65.webp', avif: 'img-5851-800.03beaf65.avif' },
+      { w: 270, h: 480, webp: 'img-5851-480.999d9f18.webp', avif: 'img-5851-480.999d9f18.avif' },
+      { w: 450, h: 800, webp: 'img-5851-800.999d9f18.webp', avif: 'img-5851-800.999d9f18.avif' },
+      { w: 556, h: 989, webp: 'img-5851-989.999d9f18.webp', avif: 'img-5851-989.999d9f18.avif' },
     ],
   },
   {
@@ -598,9 +641,10 @@ export const photoManifest: PhotoAsset[] = [
     tint: ['#496a83', '#547289', '#63798b'],
     lqip: 'data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAAAQBACdASoYABIAPwl2sVGrpySisBgIAXAhCUAWo2yAFvZvU3y+wW1+0ADVldGMuv3zVstYlQ7vj9+cq8SVB+oR9PojYxd7B7k2QwCBrzYTSN7JZSiL9K+AAAA=',
     variants: [
-      { w: 480, h: 360, webp: 'img-5964-480.cc04b228.webp', avif: 'img-5964-480.cc04b228.avif' },
-      { w: 800, h: 600, webp: 'img-5964-800.cc04b228.webp', avif: 'img-5964-800.cc04b228.avif' },
-      { w: 1280, h: 960, webp: 'img-5964-1280.cc04b228.webp', avif: 'img-5964-1280.cc04b228.avif' },
+      { w: 480, h: 360, webp: 'img-5964-480.9f6a6767.webp', avif: 'img-5964-480.9f6a6767.avif' },
+      { w: 800, h: 600, webp: 'img-5964-800.9f6a6767.webp', avif: 'img-5964-800.9f6a6767.avif' },
+      { w: 1280, h: 960, webp: 'img-5964-1280.9f6a6767.webp', avif: 'img-5964-1280.9f6a6767.avif' },
+      { w: 1319, h: 989, webp: 'img-5964-1319.9f6a6767.webp', avif: 'img-5964-1319.9f6a6767.avif' },
     ],
   },
   {
@@ -615,8 +659,9 @@ export const photoManifest: PhotoAsset[] = [
     tint: ['#516e80', '#607a88', '#6f7f7b'],
     lqip: 'data:image/webp;base64,UklGRnwAAABXRUJQVlA4IHAAAABwBACdASoNABgAPwlusE+rpiSiMAgBcCEJbACdMoR3N6SBJJtIw2z9H3sIIAD+vHNc5VrEvgZmEHMYx74gusgBLKIvKHiC//jd/2sxDe+af7jmDFu/qrfLJUFeAhousB0b/qxzNcQZ9koi7QTwAAAA',
     variants: [
-      { w: 270, h: 480, webp: 'img-5972-480.9343aeb7.webp', avif: 'img-5972-480.9343aeb7.avif' },
-      { w: 450, h: 800, webp: 'img-5972-800.9343aeb7.webp', avif: 'img-5972-800.9343aeb7.avif' },
+      { w: 270, h: 480, webp: 'img-5972-480.9e71f8bb.webp', avif: 'img-5972-480.9e71f8bb.avif' },
+      { w: 450, h: 800, webp: 'img-5972-800.9e71f8bb.webp', avif: 'img-5972-800.9e71f8bb.avif' },
+      { w: 556, h: 989, webp: 'img-5972-989.9e71f8bb.webp', avif: 'img-5972-989.9e71f8bb.avif' },
     ],
   },
   {
@@ -631,8 +676,9 @@ export const photoManifest: PhotoAsset[] = [
     tint: ['#816146', '#746d50', '#7c714c'],
     lqip: 'data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAAAwAwCdASoNABgALs2EwmEjq6uri4DMS2AE6ACTQaVtJ1IoAMwI2v5brtFkmlFgpzAJdsBqIB+iKNvPzz8Gbg0oqDpl8IPJX2HwljTGMAKUtkvSHa4QAA==',
     variants: [
-      { w: 270, h: 480, webp: 'img-5975-480.c4848870.webp', avif: 'img-5975-480.c4848870.avif' },
-      { w: 450, h: 800, webp: 'img-5975-800.c4848870.webp', avif: 'img-5975-800.c4848870.avif' },
+      { w: 270, h: 480, webp: 'img-5975-480.7cdc9985.webp', avif: 'img-5975-480.7cdc9985.avif' },
+      { w: 450, h: 800, webp: 'img-5975-800.7cdc9985.webp', avif: 'img-5975-800.7cdc9985.avif' },
+      { w: 556, h: 989, webp: 'img-5975-989.7cdc9985.webp', avif: 'img-5975-989.7cdc9985.avif' },
     ],
   },
   {
@@ -647,23 +693,27 @@ export const photoManifest: PhotoAsset[] = [
     tint: ['#585457', '#6b5f72', '#7a6686'],
     lqip: 'data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAACwAwCdASoNABgAPwlws0+rpqUiMAgBcCEJYgCdABdBJpH20tvlgAC/29w378io3AIG5caDDrTfmDh9LYwehv041FbM+Sv6lrY+arL5rnxz+wl8kIwBEuNXcjbGQAAA',
     variants: [
-      { w: 270, h: 480, webp: 'img-5976-480.5189deff.webp', avif: 'img-5976-480.5189deff.avif' },
-      { w: 450, h: 800, webp: 'img-5976-800.5189deff.webp', avif: 'img-5976-800.5189deff.avif' },
+      { w: 270, h: 480, webp: 'img-5976-480.b9a680b5.webp', avif: 'img-5976-480.b9a680b5.avif' },
+      { w: 450, h: 800, webp: 'img-5976-800.b9a680b5.webp', avif: 'img-5976-800.b9a680b5.avif' },
+      { w: 556, h: 989, webp: 'img-5976-989.b9a680b5.webp', avif: 'img-5976-989.b9a680b5.avif' },
     ],
   },
   {
-    slug: 'img-6032',
-    file: "IMG_6032.jpg",
+    slug: 'img-6033',
+    file: "IMG_6033.jpg",
     autoTitle: "Kare 041",
     year: 2025,
     orientation: 'landscape',
-    width: 406,
-    height: 228,
+    width: 1758,
+    height: 989,
     exif: { lens: '', aperture: '', shutter: '', iso: '' },
-    tint: ['#1d2127', '#4c4a4a', '#5d5043'],
-    lqip: 'data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAADQAwCdASoYAA0APwlusFArpiSisAgBcCEJQBfJBDuMaWBmuUFXugAA/s4AhOUy+xWCXwlFsRZiaW7gjrhvSpDa0Tw7NEcKKz6tFMogAAA=',
+    tint: ['#2e2218', '#43413e', '#4d473e'],
+    lqip: 'data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAADwAwCdASoYAA0APwlwsFArpqSisAgBcCEJQBYheABfDFpb77DnYLiAAP7kPts8NwPxCLATvHUBQrAYIwEEBaOOmUziGqRr4APyDUS0aifrln5wPQgUJwOGMoPQAAAA',
     variants: [
-      { w: 406, h: 228, webp: 'img-6032-480.31cc1161.webp', avif: 'img-6032-480.31cc1161.avif' },
+      { w: 480, h: 270, webp: 'img-6033-480.43d8318c.webp', avif: 'img-6033-480.43d8318c.avif' },
+      { w: 800, h: 450, webp: 'img-6033-800.43d8318c.webp', avif: 'img-6033-800.43d8318c.avif' },
+      { w: 1280, h: 720, webp: 'img-6033-1280.43d8318c.webp', avif: 'img-6033-1280.43d8318c.avif' },
+      { w: 1758, h: 989, webp: 'img-6033-1758.43d8318c.webp', avif: 'img-6033-1758.43d8318c.avif' },
     ],
   },
   {
@@ -678,8 +728,9 @@ export const photoManifest: PhotoAsset[] = [
     tint: ['#5a7089', '#5f7994', '#75899f'],
     lqip: 'data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAADwAwCdASoNABgAPwlur0+rpiQiMAgBcCEJYgCdMoAB9F0jg2oAdzAAALrSe3dO6qJQFW/4VZ9BqyIEcXXttXepEfvv4NoGb8z/5PBcmPtzAxbXjYeAAA==',
     variants: [
-      { w: 270, h: 480, webp: 'img-6383-480.88d31ca2.webp', avif: 'img-6383-480.88d31ca2.avif' },
-      { w: 450, h: 800, webp: 'img-6383-800.88d31ca2.webp', avif: 'img-6383-800.88d31ca2.avif' },
+      { w: 270, h: 480, webp: 'img-6383-480.936e2d20.webp', avif: 'img-6383-480.936e2d20.avif' },
+      { w: 450, h: 800, webp: 'img-6383-800.936e2d20.webp', avif: 'img-6383-800.936e2d20.avif' },
+      { w: 556, h: 989, webp: 'img-6383-989.936e2d20.webp', avif: 'img-6383-989.936e2d20.avif' },
     ],
   },
   {
@@ -694,8 +745,9 @@ export const photoManifest: PhotoAsset[] = [
     tint: ['#406b88', '#486f89', '#4e748c'],
     lqip: 'data:image/webp;base64,UklGRkwAAABXRUJQVlA4IEAAAABwAwCdASoNABgAPwlurk+rpiQiMAgBcCEJYgCdAApNbVMsvUAA7B7cO2lxWgvgSRZnqqnUvdE5OHbHZ0h7ggAA',
     variants: [
-      { w: 270, h: 480, webp: 'img-6605-480.46685956.webp', avif: 'img-6605-480.46685956.avif' },
-      { w: 450, h: 800, webp: 'img-6605-800.46685956.webp', avif: 'img-6605-800.46685956.avif' },
+      { w: 270, h: 480, webp: 'img-6605-480.c650565c.webp', avif: 'img-6605-480.c650565c.avif' },
+      { w: 450, h: 800, webp: 'img-6605-800.c650565c.webp', avif: 'img-6605-800.c650565c.avif' },
+      { w: 556, h: 989, webp: 'img-6605-989.c650565c.webp', avif: 'img-6605-989.c650565c.avif' },
     ],
   },
   {
@@ -704,13 +756,16 @@ export const photoManifest: PhotoAsset[] = [
     autoTitle: "Kare 044",
     year: 2026,
     orientation: 'landscape',
-    width: 399,
-    height: 224,
+    width: 1758,
+    height: 989,
     exif: { lens: '', aperture: '', shutter: '', iso: '' },
-    tint: ['#a15166', '#985662', '#a56a7d'],
-    lqip: 'data:image/webp;base64,UklGRnAAAABXRUJQVlA4IGQAAADwAwCdASoYAA4APwlur0+rpiQiMAgBcCEJbAC7ABZ23GfVFHf4rXmwAP62bUGTCPj43wnAig6UAqBFLUEV53BSzmwQhT4+4yEfS0dkpkdbFPvPaMLL+LYL4lsKOIF4zls7QAAA',
+    tint: ['#9f5267', '#945662', '#9d6778'],
+    lqip: 'data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAADQAwCdASoYAA0APwlwr1ArpiQisAgBcCEJbACsABXzM2WenVz3vwAA/rZtNar3ZpA6Orhg7vIeSY9dTm5ZvvmY9cx3ihV818Yxe1aIpbPPxi1W1+lpOZfQ4kcEeauAAAA=',
     variants: [
-      { w: 399, h: 224, webp: 'img-8656-480.69b05f14.webp', avif: 'img-8656-480.69b05f14.avif' },
+      { w: 480, h: 270, webp: 'img-8656-480.6e5dcdd9.webp', avif: 'img-8656-480.6e5dcdd9.avif' },
+      { w: 800, h: 450, webp: 'img-8656-800.6e5dcdd9.webp', avif: 'img-8656-800.6e5dcdd9.avif' },
+      { w: 1280, h: 720, webp: 'img-8656-1280.6e5dcdd9.webp', avif: 'img-8656-1280.6e5dcdd9.avif' },
+      { w: 1758, h: 989, webp: 'img-8656-1758.6e5dcdd9.webp', avif: 'img-8656-1758.6e5dcdd9.avif' },
     ],
   },
   {
@@ -725,9 +780,10 @@ export const photoManifest: PhotoAsset[] = [
     tint: ['#344553', '#636c71', '#7b8186'],
     lqip: 'data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAABwAwCdASoYAA0APwlysVArpqSisAgBcCEJZQAAL2E4Mo6pUgAA/dWqfCYJwhZ0RNpO3pl5pSaCC/hvvQ/oUp8ZOyGIAUb4RPVdEADgL1TP1iw7CoepDAAA',
     variants: [
-      { w: 480, h: 270, webp: 'img-1070-480.5489db79.webp', avif: 'img-1070-480.5489db79.avif' },
-      { w: 800, h: 450, webp: 'img-1070-800.5489db79.webp', avif: 'img-1070-800.5489db79.avif' },
-      { w: 1280, h: 720, webp: 'img-1070-1280.5489db79.webp', avif: 'img-1070-1280.5489db79.avif' },
+      { w: 480, h: 270, webp: 'img-1070-480.c4bb2c6a.webp', avif: 'img-1070-480.c4bb2c6a.avif' },
+      { w: 800, h: 450, webp: 'img-1070-800.c4bb2c6a.webp', avif: 'img-1070-800.c4bb2c6a.avif' },
+      { w: 1280, h: 720, webp: 'img-1070-1280.c4bb2c6a.webp', avif: 'img-1070-1280.c4bb2c6a.avif' },
+      { w: 1758, h: 989, webp: 'img-1070-1758.c4bb2c6a.webp', avif: 'img-1070-1758.c4bb2c6a.avif' },
     ],
   },
   {
@@ -736,13 +792,16 @@ export const photoManifest: PhotoAsset[] = [
     autoTitle: "Kare 046",
     year: 2026,
     orientation: 'landscape',
-    width: 403,
-    height: 227,
+    width: 1758,
+    height: 989,
     exif: { lens: '', aperture: '', shutter: '', iso: '' },
-    tint: ['#635452', '#746d6a', '#b2b6b2'],
-    lqip: 'data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAAAwBACdASoYAA0APwlws0+rpqUiMAgBcCEJZQC+SCE5haRI1/pWygaDTEAA/ud71BXC9nS3/DOX4N4yfPjw8KfuGEfNQYE8ubCHZ/x3Ay4GS7Fc6M2Q1utX4WYauAAA',
+    tint: ['#685a56', '#736b68', '#b1b3af'],
+    lqip: 'data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAAAQBACdASoYAA0APwl+s1GrqSSisAgBcCEJZQC+SCE5haNLcVWBYp2MAAD+53vUFcL2dLf8M5fg3kJEtEp252l7RCZOaUCTXEDb6tiXEqk6xwEG9KqBffhYT8AAAA==',
     variants: [
-      { w: 403, h: 227, webp: 'img-1077-480.ebeab1fe.webp', avif: 'img-1077-480.ebeab1fe.avif' },
+      { w: 480, h: 270, webp: 'img-1077-480.2a8db886.webp', avif: 'img-1077-480.2a8db886.avif' },
+      { w: 800, h: 450, webp: 'img-1077-800.2a8db886.webp', avif: 'img-1077-800.2a8db886.avif' },
+      { w: 1280, h: 720, webp: 'img-1077-1280.2a8db886.webp', avif: 'img-1077-1280.2a8db886.avif' },
+      { w: 1758, h: 989, webp: 'img-1077-1758.2a8db886.webp', avif: 'img-1077-1758.2a8db886.avif' },
     ],
   },
   {
@@ -757,8 +816,9 @@ export const photoManifest: PhotoAsset[] = [
     tint: ['#755e5b', '#947471', '#8c807c'],
     lqip: 'data:image/webp;base64,UklGRnoAAABXRUJQVlA4IG4AAACQAwCdASoNABgALs2EwmEjq6uri4DMS2AE6AIdD+F9qNXk/zGAAP7tSuQtp8Tc2NuQ5QLmKT7cz3Qc4lYBNRWlf1PEvPuL/BnTRsiawRrPOiYZEU03UbnCQjSssPq0yJLQygUmTsMK0SEFwEAAAA==',
     variants: [
-      { w: 270, h: 480, webp: 'img-2790-480.7c2bea65.webp', avif: 'img-2790-480.7c2bea65.avif' },
-      { w: 450, h: 800, webp: 'img-2790-800.7c2bea65.webp', avif: 'img-2790-800.7c2bea65.avif' },
+      { w: 270, h: 480, webp: 'img-2790-480.6b2502ab.webp', avif: 'img-2790-480.6b2502ab.avif' },
+      { w: 450, h: 800, webp: 'img-2790-800.6b2502ab.webp', avif: 'img-2790-800.6b2502ab.avif' },
+      { w: 556, h: 989, webp: 'img-2790-989.6b2502ab.webp', avif: 'img-2790-989.6b2502ab.avif' },
     ],
   },
   {
@@ -773,8 +833,9 @@ export const photoManifest: PhotoAsset[] = [
     tint: ['#805e6f', '#89697c', '#927283'],
     lqip: 'data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAABQAwCdASoNABgAPwlwsFArpiSisAgBcCEJYgCdABTLIeQSoAD94pbs5REP9gAxCSFsQdkrfHnRaWaUP3Adn13xTze6GG75j+CUcQmKgAA=',
     variants: [
-      { w: 270, h: 480, webp: 'img-2863-480.3b49057b.webp', avif: 'img-2863-480.3b49057b.avif' },
-      { w: 450, h: 800, webp: 'img-2863-800.3b49057b.webp', avif: 'img-2863-800.3b49057b.avif' },
+      { w: 270, h: 480, webp: 'img-2863-480.cbe5fdfa.webp', avif: 'img-2863-480.cbe5fdfa.avif' },
+      { w: 450, h: 800, webp: 'img-2863-800.cbe5fdfa.webp', avif: 'img-2863-800.cbe5fdfa.avif' },
+      { w: 556, h: 989, webp: 'img-2863-989.cbe5fdfa.webp', avif: 'img-2863-989.cbe5fdfa.avif' },
     ],
   },
   {
@@ -789,8 +850,9 @@ export const photoManifest: PhotoAsset[] = [
     tint: ['#847d73', '#a17d70', '#97867e'],
     lqip: 'data:image/webp;base64,UklGRnAAAABXRUJQVlA4IGQAAAAwBACdASoNABgAPwlMvVmroqekmAFwIQlAE6ZQAF5WGRfn8GY7mptAcgAA/d7sHbcE7izvDRrLcLEo6qQbSly6EKR5UzqwHXjCtKJwS4SgHT5iaSJYrHFDByGTbpGXh0+ywAAA',
     variants: [
-      { w: 270, h: 480, webp: 'img-3011-480.8eb5fb78.webp', avif: 'img-3011-480.8eb5fb78.avif' },
-      { w: 450, h: 800, webp: 'img-3011-800.8eb5fb78.webp', avif: 'img-3011-800.8eb5fb78.avif' },
+      { w: 270, h: 480, webp: 'img-3011-480.abab58b5.webp', avif: 'img-3011-480.abab58b5.avif' },
+      { w: 450, h: 800, webp: 'img-3011-800.abab58b5.webp', avif: 'img-3011-800.abab58b5.avif' },
+      { w: 556, h: 989, webp: 'img-3011-989.abab58b5.webp', avif: 'img-3011-989.abab58b5.avif' },
     ],
   },
   {
@@ -805,8 +867,9 @@ export const photoManifest: PhotoAsset[] = [
     tint: ['#73665f', '#87786b', '#978474'],
     lqip: 'data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAACQAwCdASoNABgAPwlurk+rpiQiMAgBcCEJQBOgASusdOn8+nZAAPfXWSjby5Wp/hhXXQ8p2ZQUFuJYC/dUkdIsNshva8Az46l3HVDqpDP7rFJXFRSZJdYsJvNewHStcAA=',
     variants: [
-      { w: 270, h: 480, webp: 'img-3014-480.58c05560.webp', avif: 'img-3014-480.58c05560.avif' },
-      { w: 450, h: 800, webp: 'img-3014-800.58c05560.webp', avif: 'img-3014-800.58c05560.avif' },
+      { w: 270, h: 480, webp: 'img-3014-480.40725e31.webp', avif: 'img-3014-480.40725e31.avif' },
+      { w: 450, h: 800, webp: 'img-3014-800.40725e31.webp', avif: 'img-3014-800.40725e31.avif' },
+      { w: 556, h: 989, webp: 'img-3014-989.40725e31.webp', avif: 'img-3014-989.40725e31.avif' },
     ],
   },
   {
@@ -821,8 +884,9 @@ export const photoManifest: PhotoAsset[] = [
     tint: ['#6f7643', '#85714c', '#78794a'],
     lqip: 'data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAADQAwCdASoNABgAPwlws0+rpqUiMAgBcCEJbACdMoACssk7h09f+qAA/R92Sr9KrB8KGhGLcEmG6aNHYNQXHOwBzpkKroFofccMDVqrPwnCqamiagLWvA5NGf8RcAAA',
     variants: [
-      { w: 270, h: 480, webp: 'img-3015-480.4592e590.webp', avif: 'img-3015-480.4592e590.avif' },
-      { w: 450, h: 800, webp: 'img-3015-800.4592e590.webp', avif: 'img-3015-800.4592e590.avif' },
+      { w: 270, h: 480, webp: 'img-3015-480.a644c93f.webp', avif: 'img-3015-480.a644c93f.avif' },
+      { w: 450, h: 800, webp: 'img-3015-800.a644c93f.webp', avif: 'img-3015-800.a644c93f.avif' },
+      { w: 556, h: 989, webp: 'img-3015-989.a644c93f.webp', avif: 'img-3015-989.a644c93f.avif' },
     ],
   },
   {
@@ -837,8 +901,9 @@ export const photoManifest: PhotoAsset[] = [
     tint: ['#815f4e', '#937e77', '#9c7d6f'],
     lqip: 'data:image/webp;base64,UklGRnIAAABXRUJQVlA4IGYAAAAQBACdASoNABgAPwlysVArpqSisAgBcCEJQBOmUABpXht2JE78UJE1AAD2C2Q7BD536n7lRe/QDBQFfEbUOMBrgZNGm989hbPsTDi6JWNm1n8IXz+8GraS9QcWDjbYvjXPXyqgAAA=',
     variants: [
-      { w: 270, h: 480, webp: '19c3f410-e800-41c2-a610-8b8f829c6bf5-480.55430288.webp', avif: '19c3f410-e800-41c2-a610-8b8f829c6bf5-480.55430288.avif' },
-      { w: 450, h: 800, webp: '19c3f410-e800-41c2-a610-8b8f829c6bf5-800.55430288.webp', avif: '19c3f410-e800-41c2-a610-8b8f829c6bf5-800.55430288.avif' },
+      { w: 270, h: 480, webp: '19c3f410-e800-41c2-a610-8b8f829c6bf5-480.f6595102.webp', avif: '19c3f410-e800-41c2-a610-8b8f829c6bf5-480.f6595102.avif' },
+      { w: 450, h: 800, webp: '19c3f410-e800-41c2-a610-8b8f829c6bf5-800.f6595102.webp', avif: '19c3f410-e800-41c2-a610-8b8f829c6bf5-800.f6595102.avif' },
+      { w: 556, h: 989, webp: '19c3f410-e800-41c2-a610-8b8f829c6bf5-989.f6595102.webp', avif: '19c3f410-e800-41c2-a610-8b8f829c6bf5-989.f6595102.avif' },
     ],
   },
   {
@@ -853,8 +918,9 @@ export const photoManifest: PhotoAsset[] = [
     tint: ['#807168', '#8e8167', '#8d8477'],
     lqip: 'data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAAAQBACdASoNABgAPwlurk+rpiQiMAgBcCEJQBOmUAA1oVdaGTzeCwIaAADz+5i4TXhLxvHHKsJZEET4ENslqXIs6hBSaZUJlMlTC3I3dyzizEhyAvHpEWJaPNbyJtpMPNcgAA==',
     variants: [
-      { w: 270, h: 480, webp: 'img-3059-480.781183e8.webp', avif: 'img-3059-480.781183e8.avif' },
-      { w: 450, h: 800, webp: 'img-3059-800.781183e8.webp', avif: 'img-3059-800.781183e8.avif' },
+      { w: 270, h: 480, webp: 'img-3059-480.b5dd08b2.webp', avif: 'img-3059-480.b5dd08b2.avif' },
+      { w: 450, h: 800, webp: 'img-3059-800.b5dd08b2.webp', avif: 'img-3059-800.b5dd08b2.avif' },
+      { w: 556, h: 989, webp: 'img-3059-989.b5dd08b2.webp', avif: 'img-3059-989.b5dd08b2.avif' },
     ],
   },
   {
@@ -869,8 +935,9 @@ export const photoManifest: PhotoAsset[] = [
     tint: ['#7d6f67', '#898c85', '#838f88'],
     lqip: 'data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAACQAwCdASoNABgAPwlwsVArpiSisAgBcCEJaAC+SBAn4JDQFO24AM3AM8xAm7/t2VexOOEwvRRcqk97yeNjfye+adQK/WlhlFfqWXgWBAwYd/bTdpxDDxECSkl2ozmn4AA=',
     variants: [
-      { w: 270, h: 480, webp: 'img-3062-1-480.50480b52.webp', avif: 'img-3062-1-480.50480b52.avif' },
-      { w: 450, h: 800, webp: 'img-3062-1-800.50480b52.webp', avif: 'img-3062-1-800.50480b52.avif' },
+      { w: 270, h: 480, webp: 'img-3062-1-480.9034f945.webp', avif: 'img-3062-1-480.9034f945.avif' },
+      { w: 450, h: 800, webp: 'img-3062-1-800.9034f945.webp', avif: 'img-3062-1-800.9034f945.avif' },
+      { w: 556, h: 989, webp: 'img-3062-1-989.9034f945.webp', avif: 'img-3062-1-989.9034f945.avif' },
     ],
   },
   {
@@ -885,8 +952,9 @@ export const photoManifest: PhotoAsset[] = [
     tint: ['#4c4c44', '#788184', '#909ca4'],
     lqip: 'data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAAAwBACdASoNABgAPwl0sFCrpySisAgBcCEJYgCdMoACseu9XderXsFqFeAA/tBYQj7dQnqblfmbBj0ayDTiB43SgCpvZP9lTh/YV2/g+glX8aFsSh/IzSAoF9T6ukrWZcAAAA==',
     variants: [
-      { w: 270, h: 480, webp: '306cf0d0-6575-4258-9206-0bbeddfad7fa-480.65a1af29.webp', avif: '306cf0d0-6575-4258-9206-0bbeddfad7fa-480.65a1af29.avif' },
-      { w: 450, h: 800, webp: '306cf0d0-6575-4258-9206-0bbeddfad7fa-800.65a1af29.webp', avif: '306cf0d0-6575-4258-9206-0bbeddfad7fa-800.65a1af29.avif' },
+      { w: 270, h: 480, webp: '306cf0d0-6575-4258-9206-0bbeddfad7fa-480.94fb965b.webp', avif: '306cf0d0-6575-4258-9206-0bbeddfad7fa-480.94fb965b.avif' },
+      { w: 450, h: 800, webp: '306cf0d0-6575-4258-9206-0bbeddfad7fa-800.94fb965b.webp', avif: '306cf0d0-6575-4258-9206-0bbeddfad7fa-800.94fb965b.avif' },
+      { w: 556, h: 989, webp: '306cf0d0-6575-4258-9206-0bbeddfad7fa-989.94fb965b.webp', avif: '306cf0d0-6575-4258-9206-0bbeddfad7fa-989.94fb965b.avif' },
     ],
   },
   {
@@ -901,8 +969,9 @@ export const photoManifest: PhotoAsset[] = [
     tint: ['#88655c', '#8d655d', '#8b6d70'],
     lqip: 'data:image/webp;base64,UklGRnIAAABXRUJQVlA4IGYAAABQBACdASoNABgAPwlys1CrpqSisAgBcCEJaACdMoR2WIJDN5NFU6zgCRagAM2UBYWhYhlMx/vNuVuNgJVJp2Yf1gTF5pQQ8SU87R5i/jN/UximQ+3OSBBNhTDhMKQUDlOQg4wAAAA=',
     variants: [
-      { w: 270, h: 480, webp: 'img-3094-480.906e75d3.webp', avif: 'img-3094-480.906e75d3.avif' },
-      { w: 450, h: 800, webp: 'img-3094-800.906e75d3.webp', avif: 'img-3094-800.906e75d3.avif' },
+      { w: 270, h: 480, webp: 'img-3094-480.90662e09.webp', avif: 'img-3094-480.90662e09.avif' },
+      { w: 450, h: 800, webp: 'img-3094-800.90662e09.webp', avif: 'img-3094-800.90662e09.avif' },
+      { w: 556, h: 989, webp: 'img-3094-989.90662e09.webp', avif: 'img-3094-989.90662e09.avif' },
     ],
   },
   {
@@ -911,13 +980,15 @@ export const photoManifest: PhotoAsset[] = [
     autoTitle: "Kare 057",
     year: 2026,
     orientation: 'portrait',
-    width: 130,
-    height: 231,
+    width: 556,
+    height: 989,
     exif: { lens: '', aperture: '', shutter: '', iso: '' },
-    tint: ['#8c8577', '#8d887d', '#958b7a'],
-    lqip: 'data:image/webp;base64,UklGRlAAAABXRUJQVlA4IEQAAAAwAwCdASoOABgAPwl2s0+rp6UiMAgBcCEJZQC7ABp3jIAAAPcGybX8YWU300Zg+iLCRT7i2fUqKPR637tRpUMD7wAAAA==',
+    tint: ['#898172', '#898377', '#918776'],
+    lqip: 'data:image/webp;base64,UklGRkwAAABXRUJQVlA4IEAAAABQAwCdASoNABgAPwlurk+rpiQiMAgBcCEJZQC90BqgsroEAAD3HwxcHvMppDL2cJ2w2XXbNTFSJGvLtaeiPoAA',
     variants: [
-      { w: 130, h: 231, webp: 'img-3157-480.892384a7.webp', avif: 'img-3157-480.892384a7.avif' },
+      { w: 270, h: 480, webp: 'img-3157-480.166d60da.webp', avif: 'img-3157-480.166d60da.avif' },
+      { w: 450, h: 800, webp: 'img-3157-800.166d60da.webp', avif: 'img-3157-800.166d60da.avif' },
+      { w: 556, h: 989, webp: 'img-3157-989.166d60da.webp', avif: 'img-3157-989.166d60da.avif' },
     ],
   },
   {
@@ -926,13 +997,16 @@ export const photoManifest: PhotoAsset[] = [
     autoTitle: "Kare 058",
     year: 2026,
     orientation: 'landscape',
-    width: 391,
-    height: 220,
+    width: 1758,
+    height: 989,
     exif: { lens: '', aperture: '', shutter: '', iso: '' },
-    tint: ['#12130e', '#25241b', '#26241c'],
-    lqip: 'data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAABwAwCdASoYAA4APwlwsVArpiSisAgBcCEJZQDDNC0HzP7bDaAA/u8P169/sj0rasDLryK/3OqW3l69RWdNYJDPkstw8AAA',
+    tint: ['#12130d', '#242218', '#27241c'],
+    lqip: 'data:image/webp;base64,UklGRlQAAABXRUJQVlA4IEgAAADQAwCdASoYAA0APwlwsE+rpqSiMAgBcCEJZQDImCHf5h8mv4SBeAAA/vDIOtgQF/IZryxY+2GsjWUHyhmxlNHJIptr0EmAAAA=',
     variants: [
-      { w: 391, h: 220, webp: 'img-3372-480.4655cd56.webp', avif: 'img-3372-480.4655cd56.avif' },
+      { w: 480, h: 270, webp: 'img-3372-480.a65aba5e.webp', avif: 'img-3372-480.a65aba5e.avif' },
+      { w: 800, h: 450, webp: 'img-3372-800.a65aba5e.webp', avif: 'img-3372-800.a65aba5e.avif' },
+      { w: 1280, h: 720, webp: 'img-3372-1280.a65aba5e.webp', avif: 'img-3372-1280.a65aba5e.avif' },
+      { w: 1758, h: 989, webp: 'img-3372-1758.a65aba5e.webp', avif: 'img-3372-1758.a65aba5e.avif' },
     ],
   },
   {
@@ -947,9 +1021,10 @@ export const photoManifest: PhotoAsset[] = [
     tint: ['#5b6571', '#666c77', '#6b737e'],
     lqip: 'data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAADwAwCdASoYAA0APwl+s1GrqSSisAgBcCEJQBOkCYhgUqxwk6ozddEAAPpdCaZksxG3Ndo8ljZ1ab92pDco+4thFwjt0+wwIrMOztK29WAAAA==',
     variants: [
-      { w: 480, h: 270, webp: 'img-4147-480.483e518e.webp', avif: 'img-4147-480.483e518e.avif' },
-      { w: 800, h: 450, webp: 'img-4147-800.483e518e.webp', avif: 'img-4147-800.483e518e.avif' },
-      { w: 1280, h: 720, webp: 'img-4147-1280.483e518e.webp', avif: 'img-4147-1280.483e518e.avif' },
+      { w: 480, h: 270, webp: 'img-4147-480.650a3f32.webp', avif: 'img-4147-480.650a3f32.avif' },
+      { w: 800, h: 450, webp: 'img-4147-800.650a3f32.webp', avif: 'img-4147-800.650a3f32.avif' },
+      { w: 1280, h: 720, webp: 'img-4147-1280.650a3f32.webp', avif: 'img-4147-1280.650a3f32.avif' },
+      { w: 1758, h: 989, webp: 'img-4147-1758.650a3f32.webp', avif: 'img-4147-1758.650a3f32.avif' },
     ],
   },
   {
@@ -964,8 +1039,9 @@ export const photoManifest: PhotoAsset[] = [
     tint: ['#576f83', '#677885', '#668090'],
     lqip: 'data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAAAwAwCdASoNABgAPwlurk+rpiQiMAgBcCEJZgCsABPkfT3AAOyPXn6CdktPLQvVveet6hYN3kdfeafXCx9/8mHpeG+6F3FPpNknyri6wRrxkAAA',
     variants: [
-      { w: 270, h: 480, webp: '84e7ab8c-ad07-4f8d-b37f-71d0f814784e-480.5de6c607.webp', avif: '84e7ab8c-ad07-4f8d-b37f-71d0f814784e-480.5de6c607.avif' },
-      { w: 450, h: 800, webp: '84e7ab8c-ad07-4f8d-b37f-71d0f814784e-800.5de6c607.webp', avif: '84e7ab8c-ad07-4f8d-b37f-71d0f814784e-800.5de6c607.avif' },
+      { w: 270, h: 480, webp: '84e7ab8c-ad07-4f8d-b37f-71d0f814784e-480.2bb5af28.webp', avif: '84e7ab8c-ad07-4f8d-b37f-71d0f814784e-480.2bb5af28.avif' },
+      { w: 450, h: 800, webp: '84e7ab8c-ad07-4f8d-b37f-71d0f814784e-800.2bb5af28.webp', avif: '84e7ab8c-ad07-4f8d-b37f-71d0f814784e-800.2bb5af28.avif' },
+      { w: 556, h: 989, webp: '84e7ab8c-ad07-4f8d-b37f-71d0f814784e-989.2bb5af28.webp', avif: '84e7ab8c-ad07-4f8d-b37f-71d0f814784e-989.2bb5af28.avif' },
     ],
   },
   {
@@ -980,8 +1056,9 @@ export const photoManifest: PhotoAsset[] = [
     tint: ['#454339', '#504e37', '#595948'],
     lqip: 'data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAADQAwCdASoNABgAPwl+s1GrqSSisAgBcCEJQAALeMzvRJzVX+7RYMAA/r1gQOqausFDsqa9j3uywDChxnwcq3mGSZIQjVmVwbqOU/r4UAA=',
     variants: [
-      { w: 270, h: 480, webp: 'img-4375-480.d62bf4c3.webp', avif: 'img-4375-480.d62bf4c3.avif' },
-      { w: 450, h: 800, webp: 'img-4375-800.d62bf4c3.webp', avif: 'img-4375-800.d62bf4c3.avif' },
+      { w: 270, h: 480, webp: 'img-4375-480.b3d4cc03.webp', avif: 'img-4375-480.b3d4cc03.avif' },
+      { w: 450, h: 800, webp: 'img-4375-800.b3d4cc03.webp', avif: 'img-4375-800.b3d4cc03.avif' },
+      { w: 556, h: 989, webp: 'img-4375-989.b3d4cc03.webp', avif: 'img-4375-989.b3d4cc03.avif' },
     ],
   },
   {
@@ -990,13 +1067,15 @@ export const photoManifest: PhotoAsset[] = [
     autoTitle: "Kare 062",
     year: 2026,
     orientation: 'portrait',
-    width: 128,
-    height: 227,
+    width: 556,
+    height: 989,
     exif: { lens: '', aperture: '', shutter: '', iso: '' },
-    tint: ['#6b7459', '#6f7e5a', '#8e987d'],
-    lqip: 'data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAAAQBACdASoOABgAPwlur0+rpiQiMAgBcCEJQBOmUABqq7ZJJ54CfctaAAD+dD+2y3w7SrZG2KQgPT8qgy+KF8AkZMhua8855GtQrFRbyPOI+TEawAA=',
+    tint: ['#6a745a', '#6f7c59', '#8a9479'],
+    lqip: 'data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAADQAwCdASoNABgAPwlwsFArpiSisAgBcCEJQBOmUABqr+yPqk0EUggA/qCEJM6fVcvd2L0usRaAq96NM6Up0iqJJA/Yho63vrx8QCAb0LlVsAAA',
     variants: [
-      { w: 128, h: 227, webp: 'img-4663-480.07436c3e.webp', avif: 'img-4663-480.07436c3e.avif' },
+      { w: 270, h: 480, webp: 'img-4663-480.5f8c4243.webp', avif: 'img-4663-480.5f8c4243.avif' },
+      { w: 450, h: 800, webp: 'img-4663-800.5f8c4243.webp', avif: 'img-4663-800.5f8c4243.avif' },
+      { w: 556, h: 989, webp: 'img-4663-989.5f8c4243.webp', avif: 'img-4663-989.5f8c4243.avif' },
     ],
   },
   {
@@ -1011,8 +1090,9 @@ export const photoManifest: PhotoAsset[] = [
     tint: ['#647c8a', '#647e8a', '#658099'],
     lqip: 'data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAACwAwCdASoNABgALs2EwmEjq6uri4DMS2AE6XgAD1QWAv2IoEIbgAD9GnsloSmnVht2xjOBp0f9vDPSsXW/IMSfBqYaVsHG4RfFO47wk/4p0bdoAAA=',
     variants: [
-      { w: 270, h: 480, webp: 'img-4684-480.d9b1140b.webp', avif: 'img-4684-480.d9b1140b.avif' },
-      { w: 450, h: 800, webp: 'img-4684-800.d9b1140b.webp', avif: 'img-4684-800.d9b1140b.avif' },
+      { w: 270, h: 480, webp: 'img-4684-480.533899f0.webp', avif: 'img-4684-480.533899f0.avif' },
+      { w: 450, h: 800, webp: 'img-4684-800.533899f0.webp', avif: 'img-4684-800.533899f0.avif' },
+      { w: 556, h: 989, webp: 'img-4684-989.533899f0.webp', avif: 'img-4684-989.533899f0.avif' },
     ],
   },
   {
@@ -1027,8 +1107,9 @@ export const photoManifest: PhotoAsset[] = [
     tint: ['#7e6c62', '#866b61', '#816d5e'],
     lqip: 'data:image/webp;base64,UklGRlYAAABXRUJQVlA4IEoAAACQAwCdASoNABgAPwlwr1ArpiQisAgBcCEJQBdgAKjiAciZAA4AAN2TPJZHS73A+TmDY6A/BuVbuTye3LXRMxUv1V33ZDQOfI2AAA==',
     variants: [
-      { w: 270, h: 480, webp: 'img-4692-480.fe0a5599.webp', avif: 'img-4692-480.fe0a5599.avif' },
-      { w: 450, h: 800, webp: 'img-4692-800.fe0a5599.webp', avif: 'img-4692-800.fe0a5599.avif' },
+      { w: 270, h: 480, webp: 'img-4692-480.7081e617.webp', avif: 'img-4692-480.7081e617.avif' },
+      { w: 450, h: 800, webp: 'img-4692-800.7081e617.webp', avif: 'img-4692-800.7081e617.avif' },
+      { w: 556, h: 989, webp: 'img-4692-989.7081e617.webp', avif: 'img-4692-989.7081e617.avif' },
     ],
   },
   {
@@ -1043,8 +1124,9 @@ export const photoManifest: PhotoAsset[] = [
     tint: ['#8b7a6d', '#8c7e6f', '#947f72'],
     lqip: 'data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAACwAwCdASoNABgAPwl+s1GrqSSisAgBcCEJQBOgCsXG38EvwIf3wAD8jSipCLFFykfkB9UMJjI3a9TMY6P7hq5gbJEizLlXPBJK494VwHGR86ZZpAm2jSeyyYAAAA==',
     variants: [
-      { w: 270, h: 480, webp: 'img-4697-480.a8e9a784.webp', avif: 'img-4697-480.a8e9a784.avif' },
-      { w: 450, h: 800, webp: 'img-4697-800.a8e9a784.webp', avif: 'img-4697-800.a8e9a784.avif' },
+      { w: 270, h: 480, webp: 'img-4697-480.fb86619e.webp', avif: 'img-4697-480.fb86619e.avif' },
+      { w: 450, h: 800, webp: 'img-4697-800.fb86619e.webp', avif: 'img-4697-800.fb86619e.avif' },
+      { w: 556, h: 989, webp: 'img-4697-989.fb86619e.webp', avif: 'img-4697-989.fb86619e.avif' },
     ],
   },
   {
@@ -1059,8 +1141,9 @@ export const photoManifest: PhotoAsset[] = [
     tint: ['#666c47', '#666d4b', '#6d7454'],
     lqip: 'data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAABwAwCdASoNABgALs2EwmEjq6uri4DMSxAF2AI9QtLOsWHxSFAAzfaqf+5d/zyLg4L4y5O/E8hYPYga5j30PfMktxJhLt1BykFqTesJL9HVz2xQAAA=',
     variants: [
-      { w: 270, h: 480, webp: '7c05f0f9-584a-4306-b597-92ff66591815-480.d60303d2.webp', avif: '7c05f0f9-584a-4306-b597-92ff66591815-480.d60303d2.avif' },
-      { w: 450, h: 800, webp: '7c05f0f9-584a-4306-b597-92ff66591815-800.d60303d2.webp', avif: '7c05f0f9-584a-4306-b597-92ff66591815-800.d60303d2.avif' },
+      { w: 270, h: 480, webp: '7c05f0f9-584a-4306-b597-92ff66591815-480.6269e400.webp', avif: '7c05f0f9-584a-4306-b597-92ff66591815-480.6269e400.avif' },
+      { w: 450, h: 800, webp: '7c05f0f9-584a-4306-b597-92ff66591815-800.6269e400.webp', avif: '7c05f0f9-584a-4306-b597-92ff66591815-800.6269e400.avif' },
+      { w: 556, h: 989, webp: '7c05f0f9-584a-4306-b597-92ff66591815-989.6269e400.webp', avif: '7c05f0f9-584a-4306-b597-92ff66591815-989.6269e400.avif' },
     ],
   },
   {
@@ -1075,8 +1158,9 @@ export const photoManifest: PhotoAsset[] = [
     tint: ['#64705a', '#848776', '#8c8e86'],
     lqip: 'data:image/webp;base64,UklGRnAAAABXRUJQVlA4IGQAAAAQBACdASoNABgAPwlwsFArpiSisAgBcCEJYgCdACFqyj3WAIjH7//YAAD992VXLB6k8qVLCQg91xhg1IfW3qwhPveNKzRN8kHbTlHv0XNrzMO4CpPIKf+HjRiyufkOysiQMAAA',
     variants: [
-      { w: 270, h: 480, webp: 'img-4700-480.7242250e.webp', avif: 'img-4700-480.7242250e.avif' },
-      { w: 450, h: 800, webp: 'img-4700-800.7242250e.webp', avif: 'img-4700-800.7242250e.avif' },
+      { w: 270, h: 480, webp: 'img-4700-480.e9e9dd1a.webp', avif: 'img-4700-480.e9e9dd1a.avif' },
+      { w: 450, h: 800, webp: 'img-4700-800.e9e9dd1a.webp', avif: 'img-4700-800.e9e9dd1a.avif' },
+      { w: 556, h: 989, webp: 'img-4700-989.e9e9dd1a.webp', avif: 'img-4700-989.e9e9dd1a.avif' },
     ],
   },
   {
@@ -1091,8 +1175,9 @@ export const photoManifest: PhotoAsset[] = [
     tint: ['#5f5f5b', '#938875', '#938a79'],
     lqip: 'data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAAAwBACdASoNABgAPwlwr1ArpqQisAgBcCEJYwC7ABZenZHLQ8bRMKefQAAA6de/u/IxhDunKwzMZjGU6uWKJlTQYnU0jwB6l+ncu7B17IkJrj4mZq29GEZR26unJAAA',
     variants: [
-      { w: 270, h: 480, webp: 'img-4702-480.642d96f5.webp', avif: 'img-4702-480.642d96f5.avif' },
-      { w: 450, h: 800, webp: 'img-4702-800.642d96f5.webp', avif: 'img-4702-800.642d96f5.avif' },
+      { w: 270, h: 480, webp: 'img-4702-480.f29f06df.webp', avif: 'img-4702-480.f29f06df.avif' },
+      { w: 450, h: 800, webp: 'img-4702-800.f29f06df.webp', avif: 'img-4702-800.f29f06df.avif' },
+      { w: 556, h: 989, webp: 'img-4702-989.f29f06df.webp', avif: 'img-4702-989.f29f06df.avif' },
     ],
   },
   {
@@ -1107,8 +1192,9 @@ export const photoManifest: PhotoAsset[] = [
     tint: ['#706356', '#746658', '#b4a089'],
     lqip: 'data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAAAQBACdASoNABgAPwlysVArpqSisAgBcCEJZQCdABtjhlxiX8x5j6G3QACrd5HOmO/IJ3KJRnmNnBPzXlXAfW2tO8Jo5eXuTtgtZ+OBAfN//YgyBYtdJ6AA',
     variants: [
-      { w: 270, h: 480, webp: 'img-4705-480.ff7c992f.webp', avif: 'img-4705-480.ff7c992f.avif' },
-      { w: 450, h: 800, webp: 'img-4705-800.ff7c992f.webp', avif: 'img-4705-800.ff7c992f.avif' },
+      { w: 270, h: 480, webp: 'img-4705-480.aa572288.webp', avif: 'img-4705-480.aa572288.avif' },
+      { w: 450, h: 800, webp: 'img-4705-800.aa572288.webp', avif: 'img-4705-800.aa572288.avif' },
+      { w: 556, h: 989, webp: 'img-4705-989.aa572288.webp', avif: 'img-4705-989.aa572288.avif' },
     ],
   },
   {
@@ -1123,8 +1209,9 @@ export const photoManifest: PhotoAsset[] = [
     tint: ['#846141', '#896949', '#9b7f61'],
     lqip: 'data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAAAQBACdASoNABgAPwlusFArpiSisAgBcCEJQBOmUI4ABGufiCTS2H9lgAD5608vEXkrHzXMbPoM8UasS9hUMeC3PkACXnRdu0+22JyQAAA=',
     variants: [
-      { w: 270, h: 480, webp: 'img-4706-480.df0af8a0.webp', avif: 'img-4706-480.df0af8a0.avif' },
-      { w: 450, h: 800, webp: 'img-4706-800.df0af8a0.webp', avif: 'img-4706-800.df0af8a0.avif' },
+      { w: 270, h: 480, webp: 'img-4706-480.1ee01e3b.webp', avif: 'img-4706-480.1ee01e3b.avif' },
+      { w: 450, h: 800, webp: 'img-4706-800.1ee01e3b.webp', avif: 'img-4706-800.1ee01e3b.avif' },
+      { w: 556, h: 989, webp: 'img-4706-989.1ee01e3b.webp', avif: 'img-4706-989.1ee01e3b.avif' },
     ],
   },
   {
@@ -1133,14 +1220,16 @@ export const photoManifest: PhotoAsset[] = [
     autoTitle: "Kare 071",
     year: 2026,
     orientation: 'landscape',
-    width: 989,
-    height: 556,
+    width: 1758,
+    height: 989,
     exif: { lens: '', aperture: '', shutter: '', iso: '' },
-    tint: ['#80572a', '#8c683e', '#916938'],
-    lqip: 'data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAAAQBACdASoYAA0APwlurk+rpiQiMAgBcCEJZACdAB6tcMdda1uVTq2oAAD+qjnhYnyy8M8MuDrrZtimdN3L5KvV4GpQeoExwDgpAsAU2Y9QSI3cBqKgAA==',
+    tint: ['#835d2f', '#8f6a3e', '#946c38'],
+    lqip: 'data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAABQBACdASoYAA0APwlwr1ArpiQisAgBcCEJZACdAB6vjUzH0brrvWgi4vOAAP6qOxtRhC7+7KAFRpsUzpu5exaiTfrfboqF39GqoHX/5iqdv6Ixr9Y0AAAA',
     variants: [
-      { w: 480, h: 270, webp: 'img-4707-480.a1395bfa.webp', avif: 'img-4707-480.a1395bfa.avif' },
-      { w: 800, h: 450, webp: 'img-4707-800.a1395bfa.webp', avif: 'img-4707-800.a1395bfa.avif' },
+      { w: 480, h: 270, webp: 'img-4707-480.c0ef2b2b.webp', avif: 'img-4707-480.c0ef2b2b.avif' },
+      { w: 800, h: 450, webp: 'img-4707-800.c0ef2b2b.webp', avif: 'img-4707-800.c0ef2b2b.avif' },
+      { w: 1280, h: 720, webp: 'img-4707-1280.c0ef2b2b.webp', avif: 'img-4707-1280.c0ef2b2b.avif' },
+      { w: 1758, h: 989, webp: 'img-4707-1758.c0ef2b2b.webp', avif: 'img-4707-1758.c0ef2b2b.avif' },
     ],
   },
   {
@@ -1155,8 +1244,9 @@ export const photoManifest: PhotoAsset[] = [
     tint: ['#806649', '#8b7961', '#8b7c67'],
     lqip: 'data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAADwAwCdASoNABgAPwlwsFArpqSisAgBcCEJYgCdMoACOumAMGsoYlVgAPpcTDjGMKHUmMENVg7qPZ/NU6ND6E/vqRaDiltjr7bWH9GRCJX0g9OKO9OKYAAA',
     variants: [
-      { w: 270, h: 480, webp: 'img-4720-480.77f5dc57.webp', avif: 'img-4720-480.77f5dc57.avif' },
-      { w: 450, h: 800, webp: 'img-4720-800.77f5dc57.webp', avif: 'img-4720-800.77f5dc57.avif' },
+      { w: 270, h: 480, webp: 'img-4720-480.8a8c3ad7.webp', avif: 'img-4720-480.8a8c3ad7.avif' },
+      { w: 450, h: 800, webp: 'img-4720-800.8a8c3ad7.webp', avif: 'img-4720-800.8a8c3ad7.avif' },
+      { w: 556, h: 989, webp: 'img-4720-989.8a8c3ad7.webp', avif: 'img-4720-989.8a8c3ad7.avif' },
     ],
   },
   {
@@ -1171,8 +1261,9 @@ export const photoManifest: PhotoAsset[] = [
     tint: ['#816e68', '#8e786e', '#87827d'],
     lqip: 'data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAACwAwCdASoNABgAPwl4s1Erp6SisAgBcCEJQBXDgkF9aXKqT0l2AAD+1dxCSkULdW2+iXOhID0ieUK+bxxx4OXverFe6k5ToH7qW3rAJn2Pihzuw73hFnjH3j2sg3xsGIAAAA==',
     variants: [
-      { w: 270, h: 480, webp: 'img-4722-480.ffca9254.webp', avif: 'img-4722-480.ffca9254.avif' },
-      { w: 450, h: 800, webp: 'img-4722-800.ffca9254.webp', avif: 'img-4722-800.ffca9254.avif' },
+      { w: 270, h: 480, webp: 'img-4722-480.5ff325fd.webp', avif: 'img-4722-480.5ff325fd.avif' },
+      { w: 450, h: 800, webp: 'img-4722-800.5ff325fd.webp', avif: 'img-4722-800.5ff325fd.avif' },
+      { w: 556, h: 989, webp: 'img-4722-989.5ff325fd.webp', avif: 'img-4722-989.5ff325fd.avif' },
     ],
   },
   {
@@ -1187,8 +1278,9 @@ export const photoManifest: PhotoAsset[] = [
     tint: ['#69624c', '#6b6759', '#7f898d'],
     lqip: 'data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAADwAwCdASoNABgAPwlwr0+rpqQiMAgBcCEJZgC06Btn2SE7aQ97eAzgAPpBF6ity3yxr05Mo6oF9WujyPA/teDhKGqisn7scbRvsrWJ+vE+pENiDnereQ0w6t4cAAAA',
     variants: [
-      { w: 270, h: 480, webp: 'img-4743-480.dae21d0b.webp', avif: 'img-4743-480.dae21d0b.avif' },
-      { w: 450, h: 800, webp: 'img-4743-800.dae21d0b.webp', avif: 'img-4743-800.dae21d0b.avif' },
+      { w: 270, h: 480, webp: 'img-4743-480.5992ca3d.webp', avif: 'img-4743-480.5992ca3d.avif' },
+      { w: 450, h: 800, webp: 'img-4743-800.5992ca3d.webp', avif: 'img-4743-800.5992ca3d.avif' },
+      { w: 556, h: 989, webp: 'img-4743-989.5992ca3d.webp', avif: 'img-4743-989.5992ca3d.avif' },
     ],
   },
   {
@@ -1203,8 +1295,9 @@ export const photoManifest: PhotoAsset[] = [
     tint: ['#3e5e7d', '#3f6387', '#476f92'],
     lqip: 'data:image/webp;base64,UklGRlYAAABXRUJQVlA4IEoAAACwAwCdASoNABgAPwlwr1ArpiQisAgBcCEJZgCdMoACKv4R6n0iwAD+FGxxFG616DKiruRx40vwaksuuzLE9j+cWzYt1tPHJIAAAA==',
     variants: [
-      { w: 270, h: 480, webp: 'img-2760-480.3ef4cd38.webp', avif: 'img-2760-480.3ef4cd38.avif' },
-      { w: 450, h: 800, webp: 'img-2760-800.3ef4cd38.webp', avif: 'img-2760-800.3ef4cd38.avif' },
+      { w: 270, h: 480, webp: 'img-2760-480.0e7e34d9.webp', avif: 'img-2760-480.0e7e34d9.avif' },
+      { w: 450, h: 800, webp: 'img-2760-800.0e7e34d9.webp', avif: 'img-2760-800.0e7e34d9.avif' },
+      { w: 556, h: 989, webp: 'img-2760-989.0e7e34d9.webp', avif: 'img-2760-989.0e7e34d9.avif' },
     ],
   },
   {
@@ -1219,8 +1312,9 @@ export const photoManifest: PhotoAsset[] = [
     tint: ['#1c1c1a', '#2f2d2a', '#302e29'],
     lqip: 'data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAACwAwCdASoNABgAPwl+s1GrqSSisAgBcCEJZwAAW+rjPN6V4OLyaAD+8LwZS8q3vq8NQIhD8+dLsDzVjSSLvihDpRxg5vzQGYKKAAAA',
     variants: [
-      { w: 270, h: 480, webp: 'img-2834-480.b62044a9.webp', avif: 'img-2834-480.b62044a9.avif' },
-      { w: 450, h: 800, webp: 'img-2834-800.b62044a9.webp', avif: 'img-2834-800.b62044a9.avif' },
+      { w: 270, h: 480, webp: 'img-2834-480.de814c62.webp', avif: 'img-2834-480.de814c62.avif' },
+      { w: 450, h: 800, webp: 'img-2834-800.de814c62.webp', avif: 'img-2834-800.de814c62.avif' },
+      { w: 556, h: 989, webp: 'img-2834-989.de814c62.webp', avif: 'img-2834-989.de814c62.avif' },
     ],
   },
   {
@@ -1235,8 +1329,9 @@ export const photoManifest: PhotoAsset[] = [
     tint: ['#546577', '#626f7d', '#85919f'],
     lqip: 'data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAACwAwCdASoNABgAPwlwsFArpqSisAgBcCEJQBOgAr/ZwCHUaZrpAAD9ZWxrMFDFZNxlmviopjKJmiZwu30b1lc+fKURWRnzfFUMaRiOmAA=',
     variants: [
-      { w: 270, h: 480, webp: 'img-3845-480.12c29815.webp', avif: 'img-3845-480.12c29815.avif' },
-      { w: 450, h: 800, webp: 'img-3845-800.12c29815.webp', avif: 'img-3845-800.12c29815.avif' },
+      { w: 270, h: 480, webp: 'img-3845-480.9b75f24e.webp', avif: 'img-3845-480.9b75f24e.avif' },
+      { w: 450, h: 800, webp: 'img-3845-800.9b75f24e.webp', avif: 'img-3845-800.9b75f24e.avif' },
+      { w: 556, h: 989, webp: 'img-3845-989.9b75f24e.webp', avif: 'img-3845-989.9b75f24e.avif' },
     ],
   },
   {
@@ -1251,8 +1346,9 @@ export const photoManifest: PhotoAsset[] = [
     tint: ['#6d6963', '#756d65', '#867462'],
     lqip: 'data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAACwAwCdASoNABgAPwlusE+rpiSiMAgBcCEJaACsACHWqMqaVnrpMAD6XlKC5CsN5Q+O1uekqun5xc28d3IXJ9HYuZhCmJrW6t4T00AA',
     variants: [
-      { w: 270, h: 480, webp: 'img-4329-480.b11d4813.webp', avif: 'img-4329-480.b11d4813.avif' },
-      { w: 450, h: 800, webp: 'img-4329-800.b11d4813.webp', avif: 'img-4329-800.b11d4813.avif' },
+      { w: 270, h: 480, webp: 'img-4329-480.a577325f.webp', avif: 'img-4329-480.a577325f.avif' },
+      { w: 450, h: 800, webp: 'img-4329-800.a577325f.webp', avif: 'img-4329-800.a577325f.avif' },
+      { w: 556, h: 989, webp: 'img-4329-989.a577325f.webp', avif: 'img-4329-989.a577325f.avif' },
     ],
   },
   {
@@ -1267,8 +1363,9 @@ export const photoManifest: PhotoAsset[] = [
     tint: ['#687c97', '#777c7c', '#7e8e9f'],
     lqip: 'data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAABQAwCdASoNABgALs2EwmEjq6uri4DMS1AFh2GsWHs+Pf4QQADZBr58ofGRs4o4w26p0Nuddt+yl2HnWJAK7xIlORMWNBcvWE1niqQqswOARIP1YgA=',
     variants: [
-      { w: 270, h: 480, webp: 'img-4480-480.e6f63986.webp', avif: 'img-4480-480.e6f63986.avif' },
-      { w: 450, h: 800, webp: 'img-4480-800.e6f63986.webp', avif: 'img-4480-800.e6f63986.avif' },
+      { w: 270, h: 480, webp: 'img-4480-480.5bd6e6e2.webp', avif: 'img-4480-480.5bd6e6e2.avif' },
+      { w: 450, h: 800, webp: 'img-4480-800.5bd6e6e2.webp', avif: 'img-4480-800.5bd6e6e2.avif' },
+      { w: 556, h: 989, webp: 'img-4480-989.5bd6e6e2.webp', avif: 'img-4480-989.5bd6e6e2.avif' },
     ],
   },
   {
@@ -1283,8 +1380,9 @@ export const photoManifest: PhotoAsset[] = [
     tint: ['#5d5450', '#645465', '#60747a'],
     lqip: 'data:image/webp;base64,UklGRnYAAABXRUJQVlA4IGoAAACwAwCdASoNABgALs2EwmEjq6uri4DMS2AE6coAC3IMRuaXMuL29ADoL8P3kH8iqu718Y5CfZ2jV2qTijSmGmx2IFzdAa5yKFBlPATDrt2itDO4kbDLvwFtkVR5h0qZO/+8fWoSG4hOAAAA',
     variants: [
-      { w: 270, h: 480, webp: 'img-4619-480.3d0bd955.webp', avif: 'img-4619-480.3d0bd955.avif' },
-      { w: 450, h: 800, webp: 'img-4619-800.3d0bd955.webp', avif: 'img-4619-800.3d0bd955.avif' },
+      { w: 270, h: 480, webp: 'img-4619-480.67db2014.webp', avif: 'img-4619-480.67db2014.avif' },
+      { w: 450, h: 800, webp: 'img-4619-800.67db2014.webp', avif: 'img-4619-800.67db2014.avif' },
+      { w: 556, h: 989, webp: 'img-4619-989.67db2014.webp', avif: 'img-4619-989.67db2014.avif' },
     ],
   },
   {
@@ -1299,8 +1397,9 @@ export const photoManifest: PhotoAsset[] = [
     tint: ['#69647a', '#7e707e', '#83708a'],
     lqip: 'data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAABwAwCdASoNABgAPwlys1CrpqSisAgBcCEJQBdgAGCfRStywQAA8JZTB/VW/upng2txQjpZ+1oBTTdwSTunyowDUNpxT0UukXiFYd8Aks04AAAA',
     variants: [
-      { w: 270, h: 480, webp: 'img-4847-480.dacf5ee6.webp', avif: 'img-4847-480.dacf5ee6.avif' },
-      { w: 450, h: 800, webp: 'img-4847-800.dacf5ee6.webp', avif: 'img-4847-800.dacf5ee6.avif' },
+      { w: 270, h: 480, webp: 'img-4847-480.4bfc95d0.webp', avif: 'img-4847-480.4bfc95d0.avif' },
+      { w: 450, h: 800, webp: 'img-4847-800.4bfc95d0.webp', avif: 'img-4847-800.4bfc95d0.avif' },
+      { w: 556, h: 989, webp: 'img-4847-989.4bfc95d0.webp', avif: 'img-4847-989.4bfc95d0.avif' },
     ],
   },
   {
@@ -1315,8 +1414,9 @@ export const photoManifest: PhotoAsset[] = [
     tint: ['#a1778d', '#7d8a95', '#a57f95'],
     lqip: 'data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAADwAwCdASoNABgAPwlwr1ArpqQisAgBcCEJaACdAGlfEN6L3AFhG0aAAP73DLlf2eFHA9rLsH8ajNJerg7mHkc5cHF17lSdZpAboi+sr3LeKI+9B4/oawAA',
     variants: [
-      { w: 270, h: 480, webp: 'img-5168-480.2dc451c1.webp', avif: 'img-5168-480.2dc451c1.avif' },
-      { w: 450, h: 800, webp: 'img-5168-800.2dc451c1.webp', avif: 'img-5168-800.2dc451c1.avif' },
+      { w: 270, h: 480, webp: 'img-5168-480.c3de4d77.webp', avif: 'img-5168-480.c3de4d77.avif' },
+      { w: 450, h: 800, webp: 'img-5168-800.c3de4d77.webp', avif: 'img-5168-800.c3de4d77.avif' },
+      { w: 556, h: 989, webp: 'img-5168-989.c3de4d77.webp', avif: 'img-5168-989.c3de4d77.avif' },
     ],
   },
   {
@@ -1331,8 +1431,9 @@ export const photoManifest: PhotoAsset[] = [
     tint: ['#4c6376', '#627892', '#6982a2'],
     lqip: 'data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAADQAwCdASoNABgAPwlwr0+rpiQiMAgBcCEJZgCdABZ40u9Exg5IkQAA5/itrRz+nM6SgYstugXyN0C464SDagyqOkc2RNR07KPAQsp/gAA=',
     variants: [
-      { w: 270, h: 480, webp: 'img-5561-480.80127070.webp', avif: 'img-5561-480.80127070.avif' },
-      { w: 450, h: 800, webp: 'img-5561-800.80127070.webp', avif: 'img-5561-800.80127070.avif' },
+      { w: 270, h: 480, webp: 'img-5561-480.665c7550.webp', avif: 'img-5561-480.665c7550.avif' },
+      { w: 450, h: 800, webp: 'img-5561-800.665c7550.webp', avif: 'img-5561-800.665c7550.avif' },
+      { w: 556, h: 989, webp: 'img-5561-989.665c7550.webp', avif: 'img-5561-989.665c7550.avif' },
     ],
   },
   {
@@ -1347,8 +1448,9 @@ export const photoManifest: PhotoAsset[] = [
     tint: ['#58677c', '#606d7e', '#6e7379'],
     lqip: 'data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAACwAwCdASoNABgAPwlur0+rpiQiMAgBcCEJQBOnKAAOwVbf1YuAgADNh0OgD0pxXGuJf+ESypUF2zVGIhw/XMIhRZD8FP4whIG3taP3LjJL2dMhl+rDBeMT2x3GS5c0mAA=',
     variants: [
-      { w: 270, h: 480, webp: 'img-5649-480.5cc923c8.webp', avif: 'img-5649-480.5cc923c8.avif' },
-      { w: 450, h: 800, webp: 'img-5649-800.5cc923c8.webp', avif: 'img-5649-800.5cc923c8.avif' },
+      { w: 270, h: 480, webp: 'img-5649-480.eaea925f.webp', avif: 'img-5649-480.eaea925f.avif' },
+      { w: 450, h: 800, webp: 'img-5649-800.eaea925f.webp', avif: 'img-5649-800.eaea925f.avif' },
+      { w: 556, h: 989, webp: 'img-5649-989.eaea925f.webp', avif: 'img-5649-989.eaea925f.avif' },
     ],
   },
   {
@@ -1363,8 +1465,9 @@ export const photoManifest: PhotoAsset[] = [
     tint: ['#6f7365', '#6f7568', '#74786b'],
     lqip: 'data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAABQBACdASoQABgAPwlur0+rpiQiMAgBcCEJaACdMoR3AIBk5K2KW1tWdX2AAP0YshC4pTvl4xAIC9DKDu4e8m5fkSS2unyp/SYYbZF8dySxpxAuyL5alSnOgYAAAA==',
     variants: [
-      { w: 314, h: 480, webp: 'a684645c-3c5a-40c6-9c97-697f183036c3-480.2f7066be.webp', avif: 'a684645c-3c5a-40c6-9c97-697f183036c3-480.2f7066be.avif' },
-      { w: 523, h: 800, webp: 'a684645c-3c5a-40c6-9c97-697f183036c3-800.2f7066be.webp', avif: 'a684645c-3c5a-40c6-9c97-697f183036c3-800.2f7066be.avif' },
+      { w: 314, h: 480, webp: 'a684645c-3c5a-40c6-9c97-697f183036c3-480.ebab4fbc.webp', avif: 'a684645c-3c5a-40c6-9c97-697f183036c3-480.ebab4fbc.avif' },
+      { w: 523, h: 800, webp: 'a684645c-3c5a-40c6-9c97-697f183036c3-800.ebab4fbc.webp', avif: 'a684645c-3c5a-40c6-9c97-697f183036c3-800.ebab4fbc.avif' },
+      { w: 646, h: 989, webp: 'a684645c-3c5a-40c6-9c97-697f183036c3-989.ebab4fbc.webp', avif: 'a684645c-3c5a-40c6-9c97-697f183036c3-989.ebab4fbc.avif' },
     ],
   },
   {
@@ -1379,8 +1482,9 @@ export const photoManifest: PhotoAsset[] = [
     tint: ['#41453b', '#77868b', '#7f8c98'],
     lqip: 'data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAADwAwCdASoNABgAPwlur0+rpiQiMAgBcCEJZACdABukNGTio83tz+wgAP6/faNEMV8rY5WOq4d+Lx3PIf6qp2COW5QE91jcq+VVDSDs2xF0n1cXJ1gOi9VJ70gAAA==',
     variants: [
-      { w: 270, h: 480, webp: 'img-4770-480.9a04da81.webp', avif: 'img-4770-480.9a04da81.avif' },
-      { w: 450, h: 800, webp: 'img-4770-800.9a04da81.webp', avif: 'img-4770-800.9a04da81.avif' },
+      { w: 270, h: 480, webp: 'img-4770-480.d11fe365.webp', avif: 'img-4770-480.d11fe365.avif' },
+      { w: 450, h: 800, webp: 'img-4770-800.d11fe365.webp', avif: 'img-4770-800.d11fe365.avif' },
+      { w: 556, h: 989, webp: 'img-4770-989.d11fe365.webp', avif: 'img-4770-989.d11fe365.avif' },
     ],
   },
   {
@@ -1395,8 +1499,9 @@ export const photoManifest: PhotoAsset[] = [
     tint: ['#462b16', '#573a24', '#5b3d22'],
     lqip: 'data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAADQAwCdASoNABgAPwlwr1ArpqQisAgBcCEJYgCdABnRhd9iMhjG2TAA/hHY7Km5GaxXkLTLBbwKwwiSbdHFJCz6UdIOUgNVrLzEu/MO8QAAAA==',
     variants: [
-      { w: 270, h: 480, webp: '7952a751-b35b-46b9-a78c-65c56b8c8b64-480.a8c2b275.webp', avif: '7952a751-b35b-46b9-a78c-65c56b8c8b64-480.a8c2b275.avif' },
-      { w: 450, h: 800, webp: '7952a751-b35b-46b9-a78c-65c56b8c8b64-800.a8c2b275.webp', avif: '7952a751-b35b-46b9-a78c-65c56b8c8b64-800.a8c2b275.avif' },
+      { w: 270, h: 480, webp: '7952a751-b35b-46b9-a78c-65c56b8c8b64-480.3bc196c3.webp', avif: '7952a751-b35b-46b9-a78c-65c56b8c8b64-480.3bc196c3.avif' },
+      { w: 450, h: 800, webp: '7952a751-b35b-46b9-a78c-65c56b8c8b64-800.3bc196c3.webp', avif: '7952a751-b35b-46b9-a78c-65c56b8c8b64-800.3bc196c3.avif' },
+      { w: 556, h: 989, webp: '7952a751-b35b-46b9-a78c-65c56b8c8b64-989.3bc196c3.webp', avif: '7952a751-b35b-46b9-a78c-65c56b8c8b64-989.3bc196c3.avif' },
     ],
   },
   {
@@ -1411,8 +1516,9 @@ export const photoManifest: PhotoAsset[] = [
     tint: ['#775f4e', '#7f6853', '#846f60'],
     lqip: 'data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAADQAwCdASoNABgAPwlur0+rpiQiMAgBcCEJYwCsABs1BZD9dRIh5uAA/K9GmhJ5iUR8D16oQUWSnGLj9nzSlz1F6NMnSWMtu5fP+/xItPKcs6gvqPBqAAAA',
     variants: [
-      { w: 270, h: 480, webp: 'img-4782-480.895f4379.webp', avif: 'img-4782-480.895f4379.avif' },
-      { w: 450, h: 800, webp: 'img-4782-800.895f4379.webp', avif: 'img-4782-800.895f4379.avif' },
+      { w: 270, h: 480, webp: 'img-4782-480.d4b61d8d.webp', avif: 'img-4782-480.d4b61d8d.avif' },
+      { w: 450, h: 800, webp: 'img-4782-800.d4b61d8d.webp', avif: 'img-4782-800.d4b61d8d.avif' },
+      { w: 556, h: 989, webp: 'img-4782-989.d4b61d8d.webp', avif: 'img-4782-989.d4b61d8d.avif' },
     ],
   },
   {
@@ -1427,9 +1533,10 @@ export const photoManifest: PhotoAsset[] = [
     tint: ['#420507', '#59080a', '#791913'],
     lqip: 'data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAADwAwCdASoNABgALs2EwmEjq6uri4DMS2AFYXgAHRrogTJFeSWKIcgAAP73eHx4np0FzgQs4A5ZuYWlVznd7t3zebew9jY84TwI5IJCyax8TAGqf16cZojhY6UAAA==',
     variants: [
-      { w: 270, h: 480, webp: 'whatsapp-image-2026-08-30-at-18-39-54-480.b74b8700.webp', avif: 'whatsapp-image-2026-08-30-at-18-39-54-480.b74b8700.avif' },
-      { w: 451, h: 800, webp: 'whatsapp-image-2026-08-30-at-18-39-54-800.b74b8700.webp', avif: 'whatsapp-image-2026-08-30-at-18-39-54-800.b74b8700.avif' },
-      { w: 721, h: 1280, webp: 'whatsapp-image-2026-08-30-at-18-39-54-1280.b74b8700.webp', avif: 'whatsapp-image-2026-08-30-at-18-39-54-1280.b74b8700.avif' },
+      { w: 270, h: 480, webp: 'whatsapp-image-2026-08-30-at-18-39-54-480.748fc5a1.webp', avif: 'whatsapp-image-2026-08-30-at-18-39-54-480.748fc5a1.avif' },
+      { w: 451, h: 800, webp: 'whatsapp-image-2026-08-30-at-18-39-54-800.748fc5a1.webp', avif: 'whatsapp-image-2026-08-30-at-18-39-54-800.748fc5a1.avif' },
+      { w: 721, h: 1280, webp: 'whatsapp-image-2026-08-30-at-18-39-54-1280.748fc5a1.webp', avif: 'whatsapp-image-2026-08-30-at-18-39-54-1280.748fc5a1.avif' },
+      { w: 901, h: 1600, webp: 'whatsapp-image-2026-08-30-at-18-39-54-1600.748fc5a1.webp', avif: 'whatsapp-image-2026-08-30-at-18-39-54-1600.748fc5a1.avif' },
     ],
   },
   {
@@ -1444,9 +1551,10 @@ export const photoManifest: PhotoAsset[] = [
     tint: ['#a93f06', '#9f501b', '#aa531e'],
     lqip: 'data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAADwAwCdASoNABgAPwlurk+rpiQiMAgBcCEJbACdMoACnD9owrl5aG4AAP4WWZHaXDueuWn9i6v7D7pjXLRvc/lgQvw58wwxwvKshOrnREpcXmK87eYDhu6AAAA=',
     variants: [
-      { w: 270, h: 480, webp: 'whatsapp-image-2026-08-30-at-18-39-54-1-480.1348c8df.webp', avif: 'whatsapp-image-2026-08-30-at-18-39-54-1-480.1348c8df.avif' },
-      { w: 451, h: 800, webp: 'whatsapp-image-2026-08-30-at-18-39-54-1-800.1348c8df.webp', avif: 'whatsapp-image-2026-08-30-at-18-39-54-1-800.1348c8df.avif' },
-      { w: 721, h: 1280, webp: 'whatsapp-image-2026-08-30-at-18-39-54-1-1280.1348c8df.webp', avif: 'whatsapp-image-2026-08-30-at-18-39-54-1-1280.1348c8df.avif' },
+      { w: 270, h: 480, webp: 'whatsapp-image-2026-08-30-at-18-39-54-1-480.f2fb5ed7.webp', avif: 'whatsapp-image-2026-08-30-at-18-39-54-1-480.f2fb5ed7.avif' },
+      { w: 451, h: 800, webp: 'whatsapp-image-2026-08-30-at-18-39-54-1-800.f2fb5ed7.webp', avif: 'whatsapp-image-2026-08-30-at-18-39-54-1-800.f2fb5ed7.avif' },
+      { w: 721, h: 1280, webp: 'whatsapp-image-2026-08-30-at-18-39-54-1-1280.f2fb5ed7.webp', avif: 'whatsapp-image-2026-08-30-at-18-39-54-1-1280.f2fb5ed7.avif' },
+      { w: 901, h: 1600, webp: 'whatsapp-image-2026-08-30-at-18-39-54-1-1600.f2fb5ed7.webp', avif: 'whatsapp-image-2026-08-30-at-18-39-54-1-1600.f2fb5ed7.avif' },
     ],
   },
   {
@@ -1461,9 +1569,10 @@ export const photoManifest: PhotoAsset[] = [
     tint: ['#5473a0', '#6179a4', '#6789b5'],
     lqip: 'data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAABwAwCdASoNABgAPwlwr0+rpqQiMAgBcCEJbACdAA6C5JsSIaAA/jwk1j1+Cw97Y2xBnbpYQ3Wvi2YGM2XZ3ZGBPsOaLW5WseYTIaCFDD9BjPQzbHwAAA==',
     variants: [
-      { w: 271, h: 480, webp: 'whatsapp-image-2026-08-30-at-18-39-54-2-480.5d7e6922.webp', avif: 'whatsapp-image-2026-08-30-at-18-39-54-2-480.5d7e6922.avif' },
-      { w: 451, h: 800, webp: 'whatsapp-image-2026-08-30-at-18-39-54-2-800.5d7e6922.webp', avif: 'whatsapp-image-2026-08-30-at-18-39-54-2-800.5d7e6922.avif' },
-      { w: 722, h: 1280, webp: 'whatsapp-image-2026-08-30-at-18-39-54-2-1280.5d7e6922.webp', avif: 'whatsapp-image-2026-08-30-at-18-39-54-2-1280.5d7e6922.avif' },
+      { w: 271, h: 480, webp: 'whatsapp-image-2026-08-30-at-18-39-54-2-480.dd4bd6a4.webp', avif: 'whatsapp-image-2026-08-30-at-18-39-54-2-480.dd4bd6a4.avif' },
+      { w: 451, h: 800, webp: 'whatsapp-image-2026-08-30-at-18-39-54-2-800.dd4bd6a4.webp', avif: 'whatsapp-image-2026-08-30-at-18-39-54-2-800.dd4bd6a4.avif' },
+      { w: 722, h: 1280, webp: 'whatsapp-image-2026-08-30-at-18-39-54-2-1280.dd4bd6a4.webp', avif: 'whatsapp-image-2026-08-30-at-18-39-54-2-1280.dd4bd6a4.avif' },
+      { w: 902, h: 1600, webp: 'whatsapp-image-2026-08-30-at-18-39-54-2-1600.dd4bd6a4.webp', avif: 'whatsapp-image-2026-08-30-at-18-39-54-2-1600.dd4bd6a4.avif' },
     ],
   },
   {
@@ -1478,9 +1587,10 @@ export const photoManifest: PhotoAsset[] = [
     tint: ['#7a5a47', '#7f6f4a', '#8a7c4a'],
     lqip: 'data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAABQBACdASoNABgAPwlwsFArpiSisAgBcCEJbACdMoRwIr+AUFaiscZCBN5gANzNNSDJ/PLi0m2NJFbwKbL1H/cWgNUZU6X6j7MgvPmxDXUeuR2I6sifZ5OKMogAAA==',
     variants: [
-      { w: 271, h: 480, webp: 'whatsapp-image-2026-08-30-at-18-39-54-3-480.3c057826.webp', avif: 'whatsapp-image-2026-08-30-at-18-39-54-3-480.3c057826.avif' },
-      { w: 451, h: 800, webp: 'whatsapp-image-2026-08-30-at-18-39-54-3-800.3c057826.webp', avif: 'whatsapp-image-2026-08-30-at-18-39-54-3-800.3c057826.avif' },
-      { w: 722, h: 1280, webp: 'whatsapp-image-2026-08-30-at-18-39-54-3-1280.3c057826.webp', avif: 'whatsapp-image-2026-08-30-at-18-39-54-3-1280.3c057826.avif' },
+      { w: 271, h: 480, webp: 'whatsapp-image-2026-08-30-at-18-39-54-3-480.27e0ad46.webp', avif: 'whatsapp-image-2026-08-30-at-18-39-54-3-480.27e0ad46.avif' },
+      { w: 451, h: 800, webp: 'whatsapp-image-2026-08-30-at-18-39-54-3-800.27e0ad46.webp', avif: 'whatsapp-image-2026-08-30-at-18-39-54-3-800.27e0ad46.avif' },
+      { w: 722, h: 1280, webp: 'whatsapp-image-2026-08-30-at-18-39-54-3-1280.27e0ad46.webp', avif: 'whatsapp-image-2026-08-30-at-18-39-54-3-1280.27e0ad46.avif' },
+      { w: 902, h: 1600, webp: 'whatsapp-image-2026-08-30-at-18-39-54-3-1600.27e0ad46.webp', avif: 'whatsapp-image-2026-08-30-at-18-39-54-3-1600.27e0ad46.avif' },
     ],
   },
   {
@@ -1495,9 +1605,10 @@ export const photoManifest: PhotoAsset[] = [
     tint: ['#63624a', '#676262', '#79746d'],
     lqip: 'data:image/webp;base64,UklGRnQAAABXRUJQVlA4IGgAAADwAwCdASoNABgAPwl+s1GrqSSisAgBcCEJZgCw7Bh19uu+8+AG98IAAP6oD1oVhW6qbz3cOUiMkCK/t41rGRoQ2uIPvgA6xxXEZNoDTwVCuPei6gobaqKbyGdx2S4MismieJESkAAAAA==',
     variants: [
-      { w: 271, h: 480, webp: 'whatsapp-image-2026-08-30-at-18-39-55-480.e3ac3ad0.webp', avif: 'whatsapp-image-2026-08-30-at-18-39-55-480.e3ac3ad0.avif' },
-      { w: 451, h: 800, webp: 'whatsapp-image-2026-08-30-at-18-39-55-800.e3ac3ad0.webp', avif: 'whatsapp-image-2026-08-30-at-18-39-55-800.e3ac3ad0.avif' },
-      { w: 722, h: 1280, webp: 'whatsapp-image-2026-08-30-at-18-39-55-1280.e3ac3ad0.webp', avif: 'whatsapp-image-2026-08-30-at-18-39-55-1280.e3ac3ad0.avif' },
+      { w: 271, h: 480, webp: 'whatsapp-image-2026-08-30-at-18-39-55-480.38800885.webp', avif: 'whatsapp-image-2026-08-30-at-18-39-55-480.38800885.avif' },
+      { w: 451, h: 800, webp: 'whatsapp-image-2026-08-30-at-18-39-55-800.38800885.webp', avif: 'whatsapp-image-2026-08-30-at-18-39-55-800.38800885.avif' },
+      { w: 722, h: 1280, webp: 'whatsapp-image-2026-08-30-at-18-39-55-1280.38800885.webp', avif: 'whatsapp-image-2026-08-30-at-18-39-55-1280.38800885.avif' },
+      { w: 902, h: 1600, webp: 'whatsapp-image-2026-08-30-at-18-39-55-1600.38800885.webp', avif: 'whatsapp-image-2026-08-30-at-18-39-55-1600.38800885.avif' },
     ],
   },
   {
@@ -1512,9 +1623,10 @@ export const photoManifest: PhotoAsset[] = [
     tint: ['#716c68', '#72715a', '#80856b'],
     lqip: 'data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAACQAwCdASoNABgAPwlwr0+rpqQiMAgBcCEJQBhQApqJpt2uhErAAP1tmnC82QF7IHeA0Lus2SVNQYNMPzj/Ktt2cSEAayVJdL3r5QlP2jMduODJBHbAlZ/YN2lTqgAA',
     variants: [
-      { w: 270, h: 480, webp: 'whatsapp-image-2026-08-30-at-18-39-55-1-480.0f865128.webp', avif: 'whatsapp-image-2026-08-30-at-18-39-55-1-480.0f865128.avif' },
-      { w: 451, h: 800, webp: 'whatsapp-image-2026-08-30-at-18-39-55-1-800.0f865128.webp', avif: 'whatsapp-image-2026-08-30-at-18-39-55-1-800.0f865128.avif' },
-      { w: 721, h: 1280, webp: 'whatsapp-image-2026-08-30-at-18-39-55-1-1280.0f865128.webp', avif: 'whatsapp-image-2026-08-30-at-18-39-55-1-1280.0f865128.avif' },
+      { w: 270, h: 480, webp: 'whatsapp-image-2026-08-30-at-18-39-55-1-480.fa4c65eb.webp', avif: 'whatsapp-image-2026-08-30-at-18-39-55-1-480.fa4c65eb.avif' },
+      { w: 451, h: 800, webp: 'whatsapp-image-2026-08-30-at-18-39-55-1-800.fa4c65eb.webp', avif: 'whatsapp-image-2026-08-30-at-18-39-55-1-800.fa4c65eb.avif' },
+      { w: 721, h: 1280, webp: 'whatsapp-image-2026-08-30-at-18-39-55-1-1280.fa4c65eb.webp', avif: 'whatsapp-image-2026-08-30-at-18-39-55-1-1280.fa4c65eb.avif' },
+      { w: 901, h: 1600, webp: 'whatsapp-image-2026-08-30-at-18-39-55-1-1600.fa4c65eb.webp', avif: 'whatsapp-image-2026-08-30-at-18-39-55-1-1600.fa4c65eb.avif' },
     ],
   },
   {
@@ -1529,9 +1641,10 @@ export const photoManifest: PhotoAsset[] = [
     tint: ['#746a5f', '#726c65', '#8d7a62'],
     lqip: 'data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAADQAwCdASoNABgAPwlur0+rpiQiMAgBcCEJZgCdMoACsJUxlw7AyAAA/hTLYJDECraI/KMAtw7t+MAoRLSuNY8jSAiYrLhP/n382GWjWcdBvrppuqGT8XtvbGFcYQfYAAA=',
     variants: [
-      { w: 271, h: 480, webp: 'whatsapp-image-2026-08-30-at-18-39-55-2-480.c5b29520.webp', avif: 'whatsapp-image-2026-08-30-at-18-39-55-2-480.c5b29520.avif' },
-      { w: 451, h: 800, webp: 'whatsapp-image-2026-08-30-at-18-39-55-2-800.c5b29520.webp', avif: 'whatsapp-image-2026-08-30-at-18-39-55-2-800.c5b29520.avif' },
-      { w: 722, h: 1280, webp: 'whatsapp-image-2026-08-30-at-18-39-55-2-1280.c5b29520.webp', avif: 'whatsapp-image-2026-08-30-at-18-39-55-2-1280.c5b29520.avif' },
+      { w: 271, h: 480, webp: 'whatsapp-image-2026-08-30-at-18-39-55-2-480.04413b3b.webp', avif: 'whatsapp-image-2026-08-30-at-18-39-55-2-480.04413b3b.avif' },
+      { w: 451, h: 800, webp: 'whatsapp-image-2026-08-30-at-18-39-55-2-800.04413b3b.webp', avif: 'whatsapp-image-2026-08-30-at-18-39-55-2-800.04413b3b.avif' },
+      { w: 722, h: 1280, webp: 'whatsapp-image-2026-08-30-at-18-39-55-2-1280.04413b3b.webp', avif: 'whatsapp-image-2026-08-30-at-18-39-55-2-1280.04413b3b.avif' },
+      { w: 902, h: 1600, webp: 'whatsapp-image-2026-08-30-at-18-39-55-2-1600.04413b3b.webp', avif: 'whatsapp-image-2026-08-30-at-18-39-55-2-1600.04413b3b.avif' },
     ],
   },
 ]
