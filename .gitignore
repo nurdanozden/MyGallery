@@ -23,6 +23,10 @@ dist-ssr
 *.sln
 *.sw?
 
-# Orijinal fotograflar (optimize kopyalari public/photos altinda)
-photos-original/*
-!photos-original/README.md
+# Orijinal fotograflar ARTIK depoda.
+# Sergi bu klasorden uretiliyor (npm run photos); tek kopyasi bir diskte
+# durursa o disk gittiginde sergi bir daha uretilemez. Karelerde konum (GPS)
+# bilgisi yok, kontrol edildi.
+
+# Vercel CLI'nin yerelde acdigi klasor
+.vercel
