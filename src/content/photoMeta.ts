@@ -50,7 +50,6 @@ export const photoMeta: Record<string, PhotoMeta> = {
   'img-5972': { title: '', place: '', story: '' },
   'img-5975': { title: '', place: '', story: '' },
   'img-5976': { title: '', place: '', story: '' },
-  'img-6032': { title: '', place: '', story: '' },
   'img-6383': { title: '', place: '', story: '' },
   'img-6605': { title: '', place: '', story: '' },
   'img-8153': { title: '', place: '', story: '' },
@@ -109,4 +108,5 @@ export const photoMeta: Record<string, PhotoMeta> = {
   'whatsapp-image-2026-08-30-at-18-39-55': { title: '', place: '', story: '' },
   'whatsapp-image-2026-08-30-at-18-39-55-1': { title: '', place: '', story: '' },
   'whatsapp-image-2026-08-30-at-18-39-55-2': { title: '', place: '', story: '' },
+  'img-6033': { title: '', place: '', story: '' },
 }
