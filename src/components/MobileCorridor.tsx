@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import type { FramePlacement } from '../types'
 import { PhotoImg } from './PhotoImg'
 import { Plaque } from './Plaque'
@@ -13,11 +13,29 @@ type Props = {
   onVisible: (i: number) => void
 }
 
-const WALKERS = [
-  { variant: 0, dur: 26, delay: 0, scale: 0.56, dir: 1 },
-  { variant: 2, dur: 34, delay: -9, scale: 0.5, dir: -1 },
-  { variant: 3, dur: 30, delay: -18, scale: 0.6, dir: 1 },
-  { variant: 4, dur: 40, delay: -26, scale: 0.46, dir: -1 },
+type Lane = 'far' | 'mid' | 'near'
+
+/**
+ * Koridordaki ziyaretciler.
+ *
+ * Dizi UZAKTAN YAKINA sirali: DOM sirasi ayni zamanda ustuste binme sirasidir,
+ * yani onden gecen bir figur arkadakini orter. Boy, yukseklik ve koyuluk
+ * seritten (`lane`) gelir - hepsi CSS'te, tek yerde.
+ *
+ * `dir` hem YUZUN hem de YURUYUSUN yonu. Eskiden yalnizca yuzu cevirirdi ve
+ * gecerli tek bir yuruyus animasyonu vardi: yuzu sola donuk iki figur saga
+ * kayiyordu. Artik ters yon animasyonu `reverse` ile calisiyor.
+ */
+type Figure =
+  | { kind: 'walk'; variant: number; lane: Lane; dur: number; delay: number; dir: 1 | -1 }
+  | { kind: 'stand'; variant: number; lane: Lane; at: string; dir: 1 | -1 }
+
+const FIGURES: Figure[] = [
+  { kind: 'stand', variant: 1, lane: 'far', at: '13%', dir: 1 },
+  { kind: 'walk', variant: 2, lane: 'far', dur: 44, delay: -11, dir: -1 },
+  { kind: 'stand', variant: 3, lane: 'mid', at: '82%', dir: -1 },
+  { kind: 'walk', variant: 4, lane: 'mid', dur: 33, delay: -17, dir: -1 },
+  { kind: 'walk', variant: 3, lane: 'near', dur: 27, delay: -5, dir: 1 },
 ]
 
 /** Kartın CSS'teki en geniş hali — tarayıcı srcset'ten doğru boyu seçsin diye. */
@@ -33,6 +51,8 @@ export function MobileCorridor({
 }: Props) {
   const rail = useRef<HTMLDivElement>(null)
   const visibleRef = useRef(-1)
+  /** Cilali zeminin yansitacagi eser: her zaman kadrajin ortasindaki. */
+  const [center, setCenter] = useState(0)
 
   // Koridorda ortadaki eseri izleyip spot ışığını ona veriyoruz.
   useEffect(() => {
@@ -78,6 +98,7 @@ export function MobileCorridor({
           if (cards[prev]) cards[prev].classList.remove('is-center')
           if (cards[best]) cards[best].classList.add('is-center')
           visibleRef.current = best
+          setCenter(best)
           onVisible(best)
         }
       })
@@ -150,21 +171,38 @@ export function MobileCorridor({
       </div>
 
       <div className="corridor-floor" aria-hidden="true">
+        <div className="corridor-boards" />
+        <div
+          className="corridor-reflection"
+          style={{ backgroundImage: `url("${frames[center]?.photo.lqip ?? ''}")` }}
+        />
         <div className="corridor-carpet" />
-        {WALKERS.map((w, i) => (
-          <div
-            key={i}
-            className="corridor-walker"
-            style={{
-              animationDuration: `${w.dur}s`,
-              animationDelay: `${w.delay}s`,
-              ['--walk-scale' as string]: w.scale,
-              ['--walk-dir' as string]: w.dir,
-            }}
-          >
-            <Silhouette variant={w.variant} className="visitor-svg" />
-          </div>
-        ))}
+
+        {FIGURES.map((f, i) =>
+          f.kind === 'stand' ? (
+            <div
+              key={i}
+              className={`corridor-stander is-${f.lane}`}
+              style={{ left: f.at, ['--walk-dir' as string]: f.dir }}
+            >
+              <Silhouette variant={f.variant} className="visitor-svg" />
+            </div>
+          ) : (
+            <div
+              key={i}
+              className={`corridor-walker is-${f.lane}`}
+              style={{
+                animationDuration: `${f.dur}s`,
+                animationDelay: `${f.delay}s`,
+                // Sola yuruyenler ayni animasyonu ters yonde oynatir.
+                animationDirection: f.dir === -1 ? 'reverse' : undefined,
+                ['--walk-dir' as string]: f.dir,
+              }}
+            >
+              <Silhouette variant={f.variant} className="visitor-svg" />
+            </div>
+          ),
+        )}
       </div>
 
       {focused && (
