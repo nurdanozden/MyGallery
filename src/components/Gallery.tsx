@@ -415,7 +415,11 @@ export function Gallery({
       const d = drag.current
       if (d && e.pointerId === d.id) {
         const dx = e.clientX - d.x
-        if (Math.abs(dx) > 8) d.moved = true
+        // Parmakla yapilan "duz" bir dokunus bile 10-15px kayar; esik dar olunca
+        // esere basmak calismiyordu. Surukleme sayilmasi icin 16px gerekiyor -
+        // salon yine de ilk milimetreden itibaren kayiyor, bu esik yalnizca
+        // ardindan gelen tiklamanin yutulup yutulmayacagina karar veriyor.
+        if (Math.abs(dx) > 16) d.moved = true
         const v = viewRef.current
         // Parmak sağa giderse duvar sağa kayar, yani kamera SOLA yürür.
         pan.current = clampPan(d.pan - dx / (v.scale * WALL_SCALE))
