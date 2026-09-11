@@ -1,11 +1,14 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { exhibition } from '../content/exhibition'
+import { useMediaQuery } from '../lib/useViewport'
 
+/** Koparma payı. Yan çevrilmiş telefonda kadraj 342px; orada daha dar olmalı. */
 const STUB = 92
+const STUB_SHORT = 62
 const TEETH = 34
 
 /** Biletin koparma hattını, iki yarıya da uyan testere dişi bir sınır olarak üretir. */
-function tearClips() {
+function tearClips(STUB: number) {
   const boundary = (i: number) => `calc(100% - ${STUB - (i % 2 === 0 ? 0 : 7)}px)`
   const forward: string[] = []
   for (let i = 0; i <= TEETH; i++) {
@@ -48,7 +51,9 @@ type Props = {
 export function TicketGate({ photoCount, onEnter, dismissible, onDismiss }: Props) {
   const [torn, setTorn] = useState(false)
   const [closing, setClosing] = useState(false)
-  const clips = useMemo(() => tearClips(), [])
+  const compact = useMediaQuery('(max-height: 560px) and (orientation: landscape)')
+  const stub = compact ? STUB_SHORT : STUB
+  const clips = useMemo(() => tearClips(stub), [stub])
   const { curator, collection, dates, ticket } = exhibition
 
   useEffect(() => {
@@ -166,7 +171,7 @@ export function TicketGate({ photoCount, onEnter, dismissible, onDismiss }: Prop
           <button
             type="button"
             className="ticket-hit"
-            style={{ height: `${STUB}px` }}
+            style={{ height: `${stub}px` }}
             onClick={() => !torn && setTorn(true)}
             disabled={torn}
             autoFocus

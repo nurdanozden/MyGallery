@@ -955,17 +955,16 @@ button {
 /*
  * ODAKTA ZEMIN, TAVAN VE YAN DUVARLAR TAMAMEN SONER.
  *
- * Bu bir susleme degil, cokme duzeltmesi: odak modunda kamera esere yaklasirken
- * butun dunya ~400px one otelenir. Zemin ve tavan duvardan 820px derinlige
- * uzandigi icin yakin uclari GOZ DUZLEMINI (perspective: 1050) asar. CSS bu
- * duzlemi asan yuzeyleri kirpmaz, sonsuza projelendirir: olctugumuzde tek bir
- * zemin katmani 41 GB'lik, yan duvarlar 1 TB'lik yuzey bildiriyordu. Masaustu
- * Chrome bunu kirpip kurtariyor; iOS Safari sekmeyi olduruyor ve ziyaretci
- * "sayfada sorun olustu" ekranina dusuyor.
+ * Bu bir suslemeden fazlasi: odak modunda kamera esere yaklasirken butun dunya
+ * ~400px one otelenir. Zemin ve tavan duvardan 820px derinlige uzandigi icin
+ * yakin uclari GOZ DUZLEMINI (perspective: 1050) asar. CSS bu duzlemi asan
+ * yuzeyleri kirpmaz, sonsuza projelendirir: olctugumuzde tek bir zemin katmani
+ * 41 GB'lik, yan duvarlar 1 TB'lik yuzey bildiriyordu. Masaustu Chrome bunu
+ * kirpip kurtariyor; iOS Safari sekmeyi oldurup "sayfada sorun olustu" diyor.
  *
- * Zamanlama onemli: odaga GIRERKEN gecikme yok, 520ms'de soner - kamera
+ * Zamanlama onemli: odaga GIRERKEN gecikme yok, 520ms'de sonuyorlar - kamera
  * tehlikeli bolgeye (~870ms) varmadan cok once. GERI DONERKEN 900ms gecikmeli
- * yanar, yani kamera guvenli mesafeye cekildikten sonra.
+ * yaniyorlar, yani kamera geri cekilip guvenli mesafeye geldikten sonra.
  */
 .floor,
 .ceiling,
@@ -2029,6 +2028,134 @@ button {
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
+/*
+ * YATAY TELEFONDA BILET
+ *
+ * Bilet dogasi geregi dikey: 566px boyunda. Yan cevrilmis bir telefonda kadraj
+ * 342px ve `place-items: center` tasan icerigin USTUNU erisilemez kiliyordu
+ * (olctugumuzde biletin tepesi -277px'teydi).
+ *
+ * Yatayda genislik bol, yukseklik yok - o yuzden bilet genisliyor ve govdesi
+ * iki sutuna bolunuyor: solda kimlik ve kunye, sagda kurator notu. Egim de
+ * kalkiyor, dondurulmus bir dikdortgen dikeyde fazladan yer yiyordu.
+ */
+@media (max-height: 560px) and (orientation: landscape) {
+  .gate {
+    padding: 6px 16px;
+    align-items: safe center;
+  }
+  /* Alt satira yer yok; ayni bilgi biletin kendi uzerinde zaten yaziyor. */
+  .gate-hint {
+    display: none;
+  }
+  .gate-close {
+    top: 10px;
+    left: 12px;
+    padding: 6px 12px;
+    font-size: 10px;
+  }
+
+  .ticket {
+    width: min(660px, 92vw);
+    transform: none;
+  }
+  .ticket:has(.ticket-hit:hover) {
+    transform: translateY(-3px);
+  }
+
+  .ticket-main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 18px;
+    padding: 10px 16px 8px;
+  }
+  .ticket-head {
+    grid-area: 1 / 1 / 2 / -1;
+  }
+  .ticket-rule {
+    grid-area: 2 / 1 / 3 / -1;
+    margin: 6px 0 5px;
+  }
+  .ticket-curator {
+    grid-area: 3 / 1 / 4 / 2;
+  }
+  .ticket-meta {
+    grid-area: 4 / 1 / 5 / 2;
+    margin-top: 10px;
+  }
+  .ticket-manifesto {
+    grid-area: 3 / 2 / 5 / -1;
+    margin: 0;
+    padding: 10px 12px;
+  }
+  .ticket-foot {
+    grid-area: 5 / 1 / 6 / -1;
+    margin-top: 10px;
+  }
+
+  .ticket-brand {
+    font-size: 18px;
+  }
+  .ticket-kicker {
+    font-size: 8.5px;
+    margin-top: 3px;
+  }
+  /* 74px'lik muhur basligin tamamini belirliyordu. */
+  .ticket-stamp {
+    width: 48px;
+    height: 48px;
+  }
+  .ticket-stamp span {
+    font-size: 7px;
+  }
+  .ticket-stamp em {
+    font-size: 7.5px;
+  }
+  .ticket-name {
+    font-size: 16px;
+  }
+  .ticket-role {
+    font-size: 10px;
+  }
+  .ticket-manifesto {
+    padding: 7px 9px;
+  }
+  .ticket-manifesto p {
+    font-size: 10px;
+    line-height: 1.32;
+    margin-bottom: 3px;
+  }
+  .ticket-meta {
+    gap: 6px;
+    grid-template-columns: repeat(4, 1fr);
+  }
+  /* Dar sutunda deger alt satira kacinca kunye iki sira oluyordu. */
+  .ticket-label,
+  .ticket-value {
+    white-space: nowrap;
+  }
+  .ticket-barcode i {
+    height: 20px;
+  }
+}
+
+/* Yatayda arayuz cubuklari: dik telefon icin yazilmis 160/198px'lik alt
+   bosluklar 342px'lik kadrajda ekranin ortasina denk geliyordu. */
+@media (max-height: 560px) and (orientation: landscape) {
+  .hud-visitors {
+    bottom: 12px;
+    right: 12px;
+  }
+  .hud-hint {
+    bottom: 12px;
+  }
+  .hud-curator,
+  .hud-audio {
+    top: 10px;
+  }
+}
+
 
 /* ==========================================================================
    Hareket duyarliligi
