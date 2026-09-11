@@ -208,6 +208,14 @@ export function Gallery({
   const floorRef = useRef<HTMLDivElement>(null)
   const ceilingRef = useRef<HTMLDivElement>(null)
   const wallRef = useRef<HTMLDivElement>(null)
+  /**
+   * Yan duvarlar salonun IKI UCUNU kapatir; arada kaldigin surece ekranda
+   * gorunmezler ama katman sinirlari devasadir: 28.000px'lik salonun ucunda,
+   * perspektifle birlikte tek bir yan duvar 270 MB'lik bir yuzey bildiriyor.
+   * Bu yuzden yalnizca o uca yaklasildiginda DOM'da canli tutuluyorlar.
+   */
+  const sideLeftRef = useRef<HTMLDivElement>(null)
+  const sideRightRef = useRef<HTMLDivElement>(null)
   const poolsRef = useRef<HTMLDivElement>(null)
   const reflectionsRef = useRef<HTMLDivElement>(null)
   const artsRef = useRef<HTMLDivElement>(null)
@@ -286,6 +294,14 @@ export function Gallery({
       if (poolsRef.current) poolsRef.current.style.left = inner
       if (reflectionsRef.current) reflectionsRef.current.style.left = inner
       if (artsRef.current) artsRef.current.style.left = inner
+
+      // Salonun uclarini kapatan yan duvarlar yalnizca o ucta.
+      const v = viewRef.current
+      const halfView = v.w / 2 / (v.scale * WALL_SCALE)
+      const left = sideLeftRef.current
+      const right = sideRightRef.current
+      if (left) left.style.display = camX - halfView < -hw / 2 + 160 ? '' : 'none'
+      if (right) right.style.display = camX + halfView > hw / 2 - 160 ? '' : 'none'
     }
 
     const loop = (now: number) => {
@@ -609,10 +625,12 @@ export function Gallery({
 
             {/* Yan duvarlar salonu kapatir; eserlerin tamami ana duvardadir */}
             <div
+              ref={sideLeftRef}
               className="wall wall-side"
               style={{
                 width: px(ROOM.HALL),
                 height: px(ROOM.H),
+                display: 'none',
                 transform: `translate3d(${-half}px, ${-ROOM.H}px, ${ROOM.HALL}px) rotateY(90deg)`,
               }}
             >
@@ -620,10 +638,12 @@ export function Gallery({
               <div className="wall-dim" aria-hidden="true" />
             </div>
             <div
+              ref={sideRightRef}
               className="wall wall-side"
               style={{
                 width: px(ROOM.HALL),
                 height: px(ROOM.H),
+                display: 'none',
                 transform: `translate3d(${half}px, ${-ROOM.H}px, 0) rotateY(-90deg)`,
               }}
             >

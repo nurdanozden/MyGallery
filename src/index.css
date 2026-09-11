@@ -934,16 +934,49 @@ button {
   filter: brightness(0.12);
   box-shadow: none;
 }
+/*
+ * !important sart: spotlar `spot-in` animasyonuyla aciliyor ve o animasyonun
+ * `forwards` dolgusu normal bildirimleri ezer. Bu kural olmadan odak modunda
+ * BUTUN spotlar yanik kaliyordu - hem gorsel olarak yanlis, hem de yedi ayri
+ * bulanik katman bosu bosuna rasterleniyordu.
+ */
 .stage.is-focused .art:not(.is-active) .spot-cone,
 .stage.is-focused .art:not(.is-active) .spot-wash,
 .stage.is-focused .art:not(.is-active) .wall-plate,
 .stage.is-focused .art:not(.is-active) .spot-fixture {
-  opacity: 0;
+  opacity: 0 !important;
 }
 .stage.is-focused .light-pool,
 .stage.is-focused .floor-reflection {
   opacity: 0;
   transition: opacity 900ms;
+}
+
+/*
+ * ODAKTA ZEMIN, TAVAN VE YAN DUVARLAR TAMAMEN SONER.
+ *
+ * Bu bir susleme degil, cokme duzeltmesi: odak modunda kamera esere yaklasirken
+ * butun dunya ~400px one otelenir. Zemin ve tavan duvardan 820px derinlige
+ * uzandigi icin yakin uclari GOZ DUZLEMINI (perspective: 1050) asar. CSS bu
+ * duzlemi asan yuzeyleri kirpmaz, sonsuza projelendirir: olctugumuzde tek bir
+ * zemin katmani 41 GB'lik, yan duvarlar 1 TB'lik yuzey bildiriyordu. Masaustu
+ * Chrome bunu kirpip kurtariyor; iOS Safari sekmeyi olduruyor ve ziyaretci
+ * "sayfada sorun olustu" ekranina dusuyor.
+ *
+ * Zamanlama onemli: odaga GIRERKEN gecikme yok, 520ms'de soner - kamera
+ * tehlikeli bolgeye (~870ms) varmadan cok once. GERI DONERKEN 900ms gecikmeli
+ * yanar, yani kamera guvenli mesafeye cekildikten sonra.
+ */
+.floor,
+.ceiling,
+.wall-side {
+  transition: opacity 520ms ease 900ms;
+}
+.stage.is-focused .floor,
+.stage.is-focused .ceiling,
+.stage.is-focused .wall-side {
+  opacity: 0;
+  transition-delay: 0ms;
 }
 .stage.is-focused .art.is-active .spot-cone {
   transform: translateZ(5px);
