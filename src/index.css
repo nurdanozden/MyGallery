@@ -977,16 +977,34 @@ button {
  * tehlikeli bolgeye (~870ms) varmadan cok once. GERI DONERKEN 900ms gecikmeli
  * yaniyorlar, yani kamera geri cekilip guvenli mesafeye geldikten sonra.
  */
+/*
+ * "opacity: 0" BU IS ICIN YETMIYOR - iOS Safari'de en pahali yanilgi buydu.
+ *
+ * WebKit saydamligi sifir olan bir katmani yine de katman agacinda tutar:
+ * geometrisini hesaplar ve arkasina tampon ayirabilir. Goz duzlemini asan bir
+ * yuzeyin geometrisi ise sonlu bir sayi degil - sonsuza projelendirilen bir
+ * dikdortgen. Yani zemin ve tavan gorunmez olduklari halde hesabi yapiliyor,
+ * tampon istegi yapiliyordu; yalnizca goze gorunmuyorlardi.
+ *
+ * "visibility: hidden" farkli calisir: WebKit bu alt agaci gorunur icerik
+ * saymaz, bilesik katman hic olusturmaz. Opaklik sondukten SONRA kapanir,
+ * yoksa yumusak gecis yerine bir anda silinirlerdi.
+ */
 .floor,
 .ceiling,
 .wall-side {
-  transition: opacity 520ms ease 900ms;
+  transition:
+    opacity 520ms ease 900ms,
+    visibility 0s linear 900ms;
 }
 .stage.is-focused .floor,
 .stage.is-focused .ceiling,
 .stage.is-focused .wall-side {
   opacity: 0;
-  transition-delay: 0ms;
+  visibility: hidden;
+  transition:
+    opacity 520ms ease,
+    visibility 0s linear 520ms;
 }
 .stage.is-focused .art.is-active .spot-cone {
   transform: translateZ(5px);

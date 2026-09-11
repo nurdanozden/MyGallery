@@ -234,9 +234,17 @@ export function cameraTransform(c: Camera) {
 /** Zemin/hali/gurultu dokularinin ortak yatay periyodu. Pencere bu adimla kayar. */
 export const SURFACE_STEP = 160
 
-/** Pencerenin genisligi: bir ekran dolusu duvar + iki yanda birer adim pay. */
-export function surfaceSpan(viewportW: number, scale: number) {
-  const visible = viewportW / (scale * WALL_SCALE)
+/**
+ * Pencerenin genisligi: bir ekran dolusu duvar + iki yanda birer adim pay.
+ *
+ * `wallScale` duvarin o anki gozden uzakligi. Genel planda WALL_SCALE'dir;
+ * odakta kamera esere yaklastigi icin ayni ekran duvarin cok daha DAR bir
+ * bolumunu gorur - pencere de o kadar daralabilir. Bu bir susleme degil:
+ * odakta duvar 2,3 kata kadar buyutulerek rasterlenir, yani ayni pencere
+ * bes kat fazla piksel demektir.
+ */
+export function surfaceSpan(viewportW: number, scale: number, wallScale = WALL_SCALE) {
+  const visible = viewportW / (scale * wallScale)
   const raw = visible * 1.25 + SURFACE_STEP * 2
   return Math.ceil(raw / SURFACE_STEP) * SURFACE_STEP
 }

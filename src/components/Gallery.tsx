@@ -1,4 +1,4 @@
-import { memo, useEffect, useMemo, useRef, useState } from 'react'
+import { memo, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
 import type { FramePlacement } from '../types'
 import {
   DESIGN,
@@ -220,22 +220,69 @@ export function Gallery({
   const reflectionsRef = useRef<HTMLDivElement>(null)
   const artsRef = useRef<HTMLDivElement>(null)
 
+  /**
+   * Odak YERLESTIKTEN sonra duvar penceresi daralir.
+   *
+   * Odakta kamera esere yaklasir ve duvar 2,3 kata kadar buyutulerek rasterlenir;
+   * genel plan icin olculmus pencere orada bes kat fazla piksel demek. Ekranda
+   * ise duvarin yalnizca yarim ekranlik bir bolumu gorunuyor.
+   *
+   * Zamanlama tek yonlu: DARALMA yalnizca kamera yerine oturduktan sonra olur,
+   * GENISLEME odak her degistiginde hemen. Boylece pencere hicbir an kadrajdan
+   * dar kalmaz - tersi, duvarin kenarinda kara bir serit demek olurdu.
+   */
+  const [settledFor, setSettledFor] = useState<number | null>(null)
+  const settledFrame =
+    focusIndex !== null && settledFor === focusIndex ? frames[focusIndex] : null
+
+  useEffect(() => {
+    if (focusIndex === null) return
+    const id = window.setTimeout(() => setSettledFor(focusIndex), TWEEN_MS + 120)
+    return () => window.clearTimeout(id)
+  }, [focusIndex])
+
   const span = useMemo(
-    () => Math.min(hallWidth, surfaceSpan(viewportWidth, scale)),
-    [hallWidth, viewportWidth, scale],
+    () =>
+      Math.min(
+        hallWidth,
+        surfaceSpan(
+          viewportWidth,
+          scale,
+          settledFrame ? focusFill(settledFrame.h) : WALL_SCALE,
+        ),
+      ),
+    [hallWidth, viewportWidth, scale, settledFrame],
   )
   const surfaceRef = useRef({ span, hallWidth })
   /** Pencerenin en son taşındığı yer; her karede yeniden yazmamak için. */
   const placedRef = useRef(Number.NaN)
+  /** rAF dongusunun pencere tasiyicisi; render sonrasi da cagirabilmek icin. */
+  const placeRef = useRef<(camX: number) => void>(() => {})
   /** İlk kare rAF çalışmadan çizilir; pencere daha o anda doğru yerde dursun. */
   const startLeft = surfaceLeft(start, span, hallWidth)
 
   useEffect(() => {
     surfaceRef.current = { span, hallWidth }
-    // Ekran boyu degisti: React yuzeylere yeniden baslangic degerlerini yazdi,
-    // pencere bir sonraki karede kameranin gercek yerine geri tasinsin.
+  }, [span, hallWidth])
+
+  /**
+   * YUZEYLER HER RENDER'DAN SONRA KAMERANIN GERCEK YERINE GERI TASINIR.
+   *
+   * React yukaridaki `startLeft`i yaziyor ve o deger salonun GIRISINE gore
+   * hesaplanmis - dogru oldugu tek an ilk kare. Sonraki her render (ekran boyu
+   * degisimi, halkanin kaymasi, odak penceresinin daralmasi) zemini, tavani ve
+   * duvari bir anligina SERGININ BASINA tasiyordu; ziyaretci 60. eserin onunde
+   * dururken salon basa siciriyordu. rAF bir sonraki karede duzeltiyordu ama
+   * sicrama bir kare boyunca ekranda kaliyordu.
+   *
+   * Yerlestirme artik boyamadan ONCE, layout evresinde yapiliyor: goz hicbir
+   * ara konum gormuyor. İlk render'da `placeRef` henuz bos, zaten `startLeft`
+   * o an dogru deger.
+   */
+  useLayoutEffect(() => {
     placedRef.current = Number.NaN
-  }, [span, hallWidth, startLeft])
+    placeRef.current(cam.current.x)
+  })
 
   /**
    * Yalnızca bu aralıktaki eserler DOM'a girer ve dosyaları indirilir.
@@ -303,6 +350,7 @@ export function Gallery({
       if (left) left.style.display = camX - halfView < -hw / 2 + 160 ? '' : 'none'
       if (right) right.style.display = camX + halfView > hw / 2 - 160 ? '' : 'none'
     }
+    placeRef.current = placeSurfaces
 
     const loop = (now: number) => {
       const dt = Math.min(0.05, (now - last) / 1000)
