@@ -1684,7 +1684,15 @@ button {
 .corridor {
   position: fixed;
   inset: 0;
-  background: radial-gradient(ellipse 90% 60% at 50% 30%, #23252a 0%, #131418 48%, #08090b 100%);
+  background:
+    /*
+     * Kadrajin ortasindaki eserin duvara ve zemine dusen isigi. Eser ile zemin
+     * arasindaki duvar bombos ve karanlik kaliyordu; eser yukarida, ziyaretciler
+     * asagida, ikisinin arasinda hicbir sey yoktu. Bu yikama uc kati -eser,
+     * duvar, zemin- tek bir isik sutununda birlestirir.
+     */
+    radial-gradient(ellipse 48% 30% at 50% 80%, rgba(var(--light), 0.05), transparent 74%),
+    radial-gradient(ellipse 90% 60% at 50% 30%, #23252a 0%, #131418 48%, #08090b 100%);
   animation: hall-lights 1500ms ease-out both;
 }
 
@@ -1704,9 +1712,14 @@ button {
  * telefonda aralarinda bu satira yer kalmiyor. Alt bant, halinin hemen ustunde,
  * kimsenin yolunu kesmiyor.
  */
+/*
+ * Yan cevirme ipucu. Zeminde duruyordu; salon derinlesip ziyaretciler oraya
+ * yerlesince onlerini kesmeye basladi. Ustte, iki HUD dugmesinin hemen
+ * altinda kimsenin yolunu kesmiyor.
+ */
 .corridor-rotate {
   position: absolute;
-  bottom: calc(58px + env(safe-area-inset-bottom));
+  top: calc(58px + env(safe-area-inset-top));
   left: 50%;
   translate: -50% 0;
   z-index: 20;
@@ -1738,9 +1751,32 @@ button {
   color: rgba(var(--light), 0.8);
 }
 
+/*
+ * RAY ARTIK ZEMINI DE KAPSIYOR.
+ *
+ * Eskiden `inset: 0 0 148px` idi - zeminin ustunde bitiyordu. Ziyaretciler de
+ * zeminin icinde, AYRI bir katmanda yasiyordu: ray kaydirilinca eserler gecip
+ * gidiyor, figurler oldugu yerde kaliyordu. Ayni salonda degil, ust uste
+ * bindirilmis iki ayri sahne gibi duruyorlardi.
+ *
+ * Simdi figurler rayin KENDI icinde, mutlak konumlu cocuklar olarak duruyor ve
+ * her biri belirli bir eserin onune yerlesiyor. Kaydirmada onlari tarayicinin
+ * kendisi tasiyor: tek bir JS karesi harcanmiyor, kayma da olmuyor.
+ *
+ * `padding-bottom` kartlarin dikey ortalamasini eskisi gibi birakir - tasma
+ * kirpmasi DOLGU kenarindan yapildigi icin figurler o 148px'in icinde
+ * gorunmeye devam eder.
+ */
 .corridor-rail {
   position: absolute;
-  inset: 0 0 148px;
+  inset: 0;
+  /*
+   * Ust dolgu eserleri ASAGI ceker. Eser ile zemin arasinda 220px'lik olu bir
+   * duvar kaliyordu; ziyaretciler o boslugun altinda, ayri bir sahnede gibi
+   * duruyordu. Simdi eser zeminin hemen ustunde asili ve figurler tam onunda.
+   */
+  padding-top: 110px;
+  padding-bottom: 190px;
   display: flex;
   align-items: center;
   gap: 4vw;
@@ -1817,7 +1853,7 @@ button {
   width: auto;
   height: auto;
   max-width: 66vw;
-  max-height: 56vh;
+  max-height: 52vh;
   object-fit: contain;
 }
 
@@ -1863,23 +1899,23 @@ button {
   left: 0;
   right: 0;
   bottom: 0;
-  height: 148px;
+  height: 190px;
   overflow: hidden;
   background:
     /* uzaklastikca sikisan enine ek yerleri */
     linear-gradient(
       to top,
-      transparent 0 70px,
-      rgba(0, 0, 0, 0.3) 70px 71px,
-      transparent 71px 96px,
-      rgba(0, 0, 0, 0.26) 96px 97px,
-      transparent 97px 115px,
-      rgba(0, 0, 0, 0.22) 115px 116px,
-      transparent 116px 129px,
-      rgba(0, 0, 0, 0.18) 129px 130px,
-      transparent 130px 139px,
-      rgba(0, 0, 0, 0.14) 139px 140px,
-      transparent 140px
+      transparent 0 90px,
+      rgba(0, 0, 0, 0.3) 90px 91px,
+      transparent 91px 123px,
+      rgba(0, 0, 0, 0.26) 123px 124px,
+      transparent 124px 147px,
+      rgba(0, 0, 0, 0.22) 147px 148px,
+      transparent 148px 166px,
+      rgba(0, 0, 0, 0.18) 166px 167px,
+      transparent 167px 178px,
+      rgba(0, 0, 0, 0.14) 178px 179px,
+      transparent 179px
     ),
     /* cilanin genis parlamasi - duvar dibinde en guclu */
     radial-gradient(ellipse 66% 96% at 50% 0%, rgba(var(--light), 0.1), transparent 72%),
@@ -1938,7 +1974,7 @@ button {
   left: 50%;
   top: 7px;
   width: 44vw;
-  height: 68px;
+  height: 86px;
   translate: -50% 0;
   transform: scaleY(-1);
   background-position: center top;
@@ -1966,7 +2002,7 @@ button {
   left: 0;
   right: 0;
   bottom: 0;
-  height: 64px;
+  height: 78px;
   background:
     /* iki uc salonun karanligina karisir */
     linear-gradient(
@@ -2026,122 +2062,108 @@ button {
 }
 
 /* --------------------------------------------------------------------------
-   KORIDORDAKI ZIYARETCILER
+   SALONDAKI ZIYARETCILER
 
-   Eskiden dordu de ayni hatta, ayni opaklikta ve -yonu ne olursa olsun- ayni
-   yone yuruyordu: iki figur yuzu sola donuk halde saga kayiyordu. Duz bir
-   serit uzerinde dizilmis cikartmalar gibi duruyordu, salon gibi degil.
+   Onemli olan sayilari ya da derinlikleri degil, DUVARA BAGLI olmalari. Her
+   figur belirli bir eserin onunde durur; ray kaydirildiginda o eserle birlikte
+   gelir, birlikte gider. Yatay salonda ziyaretcilerin eserlerin onunde durup
+   onlara bakmasi neyse, burada da o.
 
-   Simdi uc DERINLIK SERIDI var. Uzaktaki kucuk, yuksekte, zeminin karanligina
-   karismis; ondeki buyuk, alcakta ve net. Boylar oyle secildi ki basLar ayni
-   hatta -duvarin dibine- yaklasiyor: ayni boydaki insanlarin uzaklastikca
-   baslarinin ufuk cizgisinde toplanmasi, perspektifin en guclu isareti.
-
-   Puslanma bulanikligla degil RENKLE yapiliyor: uzaktaki siluetin dolgusu
-   zeminin rengine yaklasir. Bedava, ve iOS'ta tek bir tampon bile istemez.
+   Derinlik iki sirayla sinirli - yatay salondaki on/arka katman ayrimiyla ayni.
+   Uc kademeli ve agir bir derinlik figurleri eserlerden KOPARIYORDU: ayri bir
+   sahnede, kendi hallerinde gezinen siluetler gibi duruyorlardi.
    -------------------------------------------------------------------------- */
 
-.corridor-walker,
-.corridor-stander {
+/*
+ * Boylar, baslari duvar-zemin hattinin USTUNE cikaracak kadar. Daha kisasinda
+ * figurler zemin bandinin icine hapsoluyor; odanin icinde duran insanlar degil,
+ * zemine yatirilmis siluetler gibi gorunuyorlardi. Eserle aralarindaki en
+ * kuvvetli bag bu: ayni duvarin onunde duruyor olmak.
+ */
+.corridor-visitor {
   position: absolute;
+  bottom: 38px;
+  /* "left" figurun MERKEZI olsun: olcumu eserin ortasindan yapiyoruz. */
+  margin-left: -32px;
   width: 64px;
   height: 172px;
   transform-origin: 50% 100%;
+  pointer-events: none;
+  --walk-scale: 0.92;
+  --walk-shadow: 0.36;
+  opacity: 0.74;
 }
-.corridor-walker {
-  left: -80px;
-  animation-name: stroll;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
+/* On sira: haliya daha yakin, biraz daha buyuk ve net. */
+.corridor-visitor.is-front {
+  bottom: 12px;
+  --walk-scale: 1.15;
+  --walk-shadow: 0.52;
+  opacity: 0.92;
 }
-
-/* Uc derinlik seridi: yukseklik, boy, koyuluk ve golge birlikte degisir. */
-.corridor-walker.is-far,
-.corridor-stander.is-far {
-  bottom: 78px;
-  --walk-scale: 0.38;
-  --walk-shadow: 0.3;
-  opacity: 0.6;
-}
-.corridor-walker.is-mid,
-.corridor-stander.is-mid {
-  bottom: 44px;
-  --walk-scale: 0.54;
-  --walk-shadow: 0.5;
-  opacity: 0.78;
-}
-.corridor-walker.is-near,
-.corridor-stander.is-near {
-  bottom: 4px;
-  --walk-scale: 0.66;
-  --walk-shadow: 0.6;
-  opacity: 0.88;
-}
-.corridor-walker.is-far .visitor-svg,
-.corridor-stander.is-far .visitor-svg {
-  fill: #1b1e25;
-}
-.corridor-walker.is-mid .visitor-svg,
-.corridor-stander.is-mid .visitor-svg {
-  fill: #121419;
+.corridor-visitor:not(.is-front) .visitor-svg {
+  fill: #14171c;
 }
 
-.corridor-walker::after,
-.corridor-stander::after {
+.corridor-visitor::after {
   content: '';
   position: absolute;
   left: 50%;
   bottom: -5px;
-  width: calc(52px * var(--walk-scale, 0.6));
-  height: calc(13px * var(--walk-scale, 0.6));
+  width: calc(52px * var(--walk-scale));
+  height: calc(13px * var(--walk-scale));
   translate: -50% 0;
   border-radius: 50%;
   background: radial-gradient(
     ellipse at center,
-    rgba(0, 0, 0, var(--walk-shadow, 0.5)) 0%,
+    rgba(0, 0, 0, var(--walk-shadow)) 0%,
     rgba(0, 0, 0, 0) 75%
   );
   filter: blur(2.5px);
 }
 
-.corridor-walker .visitor-svg,
-.corridor-stander .visitor-svg {
-  --face: var(--walk-dir, 1);
-  --scale: var(--walk-scale, 0.6);
-  --tilt: 0.55;
-}
-.corridor-walker .v-leg-a {
-  animation: step-a 0.86s ease-in-out infinite;
-}
-.corridor-walker .v-leg-b {
-  animation: step-b 0.86s ease-in-out infinite;
-}
-.corridor-walker .v-arm-a {
-  animation: swing-a 0.86s ease-in-out infinite;
-}
-.corridor-walker .v-arm-b {
-  animation: swing-b 0.86s ease-in-out infinite;
+.corridor-visitor .visitor-svg {
+  --scale: var(--walk-scale);
+  /* Bas duvardaki esere dogru kalkik. */
+  --tilt: 0.95;
 }
 
 /*
- * BIR ESERIN ONUNDE DURANLAR.
- *
- * Bir salonu muze yapan sey gecip gidenler degil, duranlardir. Bu iki figur
- * yurumez: elleri arkada kavusmus, baslari duvara dogru hafifce kalkik, cok
- * yavas bir nefes salinimiyla bekler. Kadrajin ortasi bilerek bos birakildi -
- * orada ziyaretcinin kendi sectigi eser duruyor.
+ * ESERE BAKANLAR: elleri arkada kavusmus, kipirdamadan duruyorlar. Bir salonu
+ * muze yapan sey budur; cok yavas bir nefes salinimi disinda hicbir hareket yok.
  */
-.corridor-stander {
+.corridor-visitor.is-still {
   animation: dwell 7.5s ease-in-out infinite;
 }
-.corridor-stander .visitor-svg {
-  --tilt: 0.95;
-}
-.corridor-stander .v-arm-a {
+.corridor-visitor.is-still .v-arm-a {
   transform: translateX(6px) rotate(5deg);
 }
-.corridor-stander .v-arm-b {
+.corridor-visitor.is-still .v-arm-b {
   transform: translateX(-6px) rotate(-5deg);
+}
+
+/*
+ * GEZINENLER: duvar boyunca agir agir yuruyup birkac eser oteye gecerler. Yol
+ * duvar koordinatinda olculur - yani ekranin degil, SALONUN icinde yuruyorlar.
+ * Basa donus iki ucta soluklasarak gizlenir, yoksa her turda kadrajin ortasinda
+ * beliriverirlerdi.
+ */
+.corridor-visitor.is-amble {
+  animation: amble var(--amble-dur, 54s) linear infinite;
+}
+.corridor-visitor.is-amble .visitor-svg {
+  --tilt: 0.5;
+}
+.corridor-visitor.is-amble .v-leg-a {
+  animation: step-a 0.86s ease-in-out infinite;
+}
+.corridor-visitor.is-amble .v-leg-b {
+  animation: step-b 0.86s ease-in-out infinite;
+}
+.corridor-visitor.is-amble .v-arm-a {
+  animation: swing-a 0.86s ease-in-out infinite;
+}
+.corridor-visitor.is-amble .v-arm-b {
+  animation: swing-b 0.86s ease-in-out infinite;
 }
 
 @keyframes dwell {
@@ -2154,9 +2176,20 @@ button {
   }
 }
 
-@keyframes stroll {
-  to {
-    transform: translateX(calc(100vw + 160px));
+@keyframes amble {
+  0% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+  7% {
+    opacity: 1;
+  }
+  93% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(var(--amble-far, 2400px));
+    opacity: 0;
   }
 }
 
@@ -2301,12 +2334,12 @@ button {
   }
   .hud-visitors {
     right: 14px;
-    bottom: 160px;
+    bottom: 204px;
     font-size: 10px;
     padding: 7px 12px;
   }
   .hud-hint {
-    bottom: 198px;
+    bottom: 242px;
     font-size: 10px;
     letter-spacing: 0.1em;
     max-width: calc(100vw - 28px);
@@ -2467,18 +2500,16 @@ button {
   .visitor[data-walking='yes'] .v-arm-a,
   .visitor[data-walking='yes'] .v-arm-b,
   .visitor[data-walking='yes'] .visitor-bb,
-  .corridor-stander,
+  .corridor-visitor.is-still,
   .hud-pulse,
   .gate-hint {
     animation: none;
   }
   /*
-   * Devinim istenmiyorsa yuruyenler salondan cekilir. Eskiden hepsi `left: 20%`
-   * ile ayni noktada durdurulurdu - ust uste binmis dort figur. Geriye eserin
-   * onunde duran iki ziyaretci kaliyor: salon bos gorunmuyor, hicbir sey de
-   * kipirdamiyor.
+   * Devinim istenmiyorsa gezinenler salondan cekilir; eserlerin onunde duran
+   * ziyaretciler kalir. Salon bos gorunmuyor, hicbir sey de kipirdamiyor.
    */
-  .corridor-walker {
+  .corridor-visitor.is-amble {
     display: none;
   }
 }
