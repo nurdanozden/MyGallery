@@ -12,12 +12,46 @@ import { Hud } from './components/Hud'
 import { MobileCorridor } from './components/MobileCorridor'
 import { Preload } from './components/Preload'
 
+/**
+ * SEKME OLURSE ZIYARETCI FOYEYE DEGIL SALONA DONER.
+ *
+ * iOS Safari bellek baskisi altinda sekmeyi oldurup sayfayi sessizce yeniden
+ * yukleyebiliyor. Sergi o zaman en bastan, bilet ekranindan basliyordu: eserine
+ * dokunan ziyaretci kendini girisde buluyor, olan biteni de anlamiyordu.
+ *
+ * Bilet bir kez koparildiysa AYNI SEKMEDE salon dogrudan aciliyor. sessionStorage
+ * secildi: yeni bir ziyaret (yeni sekme) yine fuayeden ve biletten basliyor.
+ *
+ * Odak bilerek saklanmiyor. Bir kare sekmeyi olduruyorsa acilista ayni kareye
+ * geri donmek sonsuz bir cokme dongusu olurdu; ziyaretci salona doner, karesini
+ * kendi secer.
+ */
+const ENTERED_KEY = 'mygallery:entered'
+
+function hasEntered() {
+  try {
+    return sessionStorage.getItem(ENTERED_KEY) === '1'
+  } catch {
+    // Gizli sekmede ya da depolama kapaliyken: sorun degil, bilet gosterilir.
+    return false
+  }
+}
+
+function rememberEntry() {
+  try {
+    sessionStorage.setItem(ENTERED_KEY, '1')
+  } catch {
+    /* yoksay */
+  }
+}
+
 export default function App() {
   const layout = useMemo(() => layoutFrames(photos), [])
   const frames = layout.frames
 
-  const [phase, setPhase] = useState<'gate' | 'hall'>('gate')
-  const [gateShown, setGateShown] = useState(true)
+  const [resumed] = useState(hasEntered)
+  const [phase, setPhase] = useState<'gate' | 'hall'>(resumed ? 'hall' : 'gate')
+  const [gateShown, setGateShown] = useState(!resumed)
   const [focusIndex, setFocusIndex] = useState<number | null>(null)
   const [hovered, setHovered] = useState<number | null>(null)
   const [audioOn, setAudioOn] = useState(false)
@@ -96,6 +130,7 @@ export default function App() {
 
   const enter = useCallback(() => {
     setPhase('hall')
+    rememberEntry()
     setAudio(true)
     const m = modeRef.current
     flash(
@@ -110,6 +145,24 @@ export default function App() {
   }, [setAudio, flash])
 
   useEffect(() => () => ambience.current?.stop(), [])
+
+  /*
+   * Yeniden yuklenip salona dogrudan donuldugunde de gezinme ipucu bir kez
+   * caksin - ziyaretci bilet ekranindaki yonergeyi bu sefer gormedi. Ambiyans
+   * sessiz baslar: ses icin tarayici bir dokunus bekliyor, HUD'daki dugme orada.
+   */
+  useEffect(() => {
+    if (!resumed) return
+    const m = modeRef.current
+    flash(
+      m.corridor
+        ? 'Kaydırın · esere dokunun'
+        : m.touch
+          ? 'Salonu parmağınızla sürükleyin · esere dokunun'
+          : 'Salonda gezinmek için kenarlara yaklaşın · esere tıklayın',
+      7500,
+    )
+  }, [resumed, flash])
 
   const step = useCallback(
     (dir: 1 | -1) => {

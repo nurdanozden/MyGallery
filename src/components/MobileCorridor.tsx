@@ -105,7 +105,7 @@ export function MobileCorridor({
   const focused = focusIndex !== null ? frames[focusIndex] : null
 
   return (
-    <div className="corridor">
+    <div className={`corridor${focused ? ' is-focused' : ''}`}>
       <div className="corridor-ceiling" aria-hidden="true" />
 
       {/*

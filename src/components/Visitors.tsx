@@ -163,6 +163,10 @@ export function Visitors({
       if (Math.abs(a.x - a.tx) > TELEPORT_AT) {
         a.x = a.tx + (a.x > a.tx ? 1 : -1) * rand(700, 1100)
         a.z = a.tz + rand(-40, 40)
+        // Serpinti WALK_NEAR i asabiliyordu: yuruyusun ilk adiminda nasil olsa
+        // geri cekiliyor ama aradaki karede siluet zeminin on sinirinin
+        // disinda duruyor - odak modunda bu, goz duzlemini asmak demek.
+        clampToRoom(a, hallWidth / 2)
       }
       a.phase = 'walk'
       a.moving = true

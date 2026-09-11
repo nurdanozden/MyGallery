@@ -1110,15 +1110,38 @@ button {
   width: 0;
   height: 0;
   transform-style: preserve-3d;
-  transition: opacity 900ms var(--ease-cam), filter 900ms var(--ease-cam);
+  /* Odaktan donerken zemin ve tavanla ayni gecikmeyle geri gelirler. */
+  transition:
+    opacity 520ms var(--ease-cam) 900ms,
+    visibility 0s linear 900ms;
 }
 .visitor-shadow,
 .visitor-bb {
   will-change: transform;
 }
+
+/*
+ * ODAKTA ZIYARETCILER DE TAMAMEN SONER - zemin ve tavanla ayni sebepten.
+ *
+ * Odak modunda kamera esere yaklasirken butun dunya one otelenir; en genis
+ * eserde bu 597px. Siluetler duvardan 415px'e kadar one gelebiliyor, yani
+ * goz duzleminin (perspective: 1050) 38px berisine: orada bir siluet 27 kat,
+ * zemine yatik (rotateX(90deg)) ve bulanik golgesinin on ucu 87 kat buyur.
+ * 84x26'lik bir elips boylece DPR 3'te 148 megapiksellik bir yuzeye donusur
+ * ve bu ALTI siluet icin birden olur; isinlanma aninda z bir an 415'i asarsa
+ * projeksiyon dogrudan sonsuza gider. iOS Safari sekmeyi oldurur, sergi
+ * bilet ekranindan yeniden baslar.
+ *
+ * %8 opaklikta, %35 parlaklikta ve odagin koyu vinyetinin altinda zaten
+ * gorunmuyorlardi; artik hic boyanmiyorlar. "visibility" opaklik sondukten
+ * SONRA kapanir, yoksa kaybolmak yerine bir anda silinirlerdi.
+ */
 .visitors.is-dimmed {
-  opacity: 0.08;
-  filter: brightness(0.35);
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 520ms var(--ease-cam),
+    visibility 0s linear 520ms;
 }
 
 .visitor {
@@ -1905,6 +1928,24 @@ button {
   }
 }
 
+/*
+ * TAM EKRAN KARE - ARKASINDA HICBIR SEY KALMAZ.
+ *
+ * Burada bir zamanlar "backdrop-filter: blur(14px)" vardi ve dik tutulan
+ * telefonda esere dokunan ziyaretciyi bilet ekranina dusuren sey oydu.
+ *
+ * backdrop-filter, ARKASINDAKI her seyi tek bir tampona toplayip bulandirmak
+ * zorundadir. Buradaki arka plan ise 95 kartlik koridor rayi: yatayda ~27.000px
+ * uzunlugunda, her kartta "filter: brightness()" ve her kartin uzerinde
+ * "mix-blend-mode: screen" ile 62vw x 60vh bulanik bir spot konisi. Blend modu
+ * ve filtre, tarayicinin rayi parca parca (tiled) boyamasini engelliyor:
+ * dokunuldugu anda DPR 3'te yuz megapikselleri bulan tek bir yuzey isteniyor.
+ * iOS Safari sekmeyi olduruyor, sergi bilet ekranindan yeniden basliyor.
+ *
+ * Ustelik gorsel katkisi sifirdi: zemin zaten %94 opak, yani bulanik goruntunun
+ * yalnizca %6'si simsiyahin altindan siziyordu. Zemin tam opak yapildi, filtre
+ * kaldirildi - kadraj birebir ayni gorunuyor.
+ */
 .sheet {
   position: fixed;
   inset: 0;
@@ -1913,9 +1954,20 @@ button {
   grid-template-rows: 1fr auto;
   gap: 14px;
   padding: 20px 16px calc(16px + env(safe-area-inset-bottom));
-  background: rgba(5, 5, 8, 0.94);
-  backdrop-filter: blur(14px);
+  background: #050508;
   animation: gate-in 380ms ease both;
+}
+
+/*
+ * Kare tam ekranken koridorun kendisi de bosuna boyanmasin: ustunu zaten opak
+ * bir zemin ortuyor. "visibility" secildi cunku "display: none" rayin kaydirma
+ * konumunu sifirlar - kunye kapatilinca ziyaretci sergiyi bastan bulurdu.
+ */
+.corridor.is-focused .corridor-ceiling,
+.corridor.is-focused .corridor-rotate,
+.corridor.is-focused .corridor-rail,
+.corridor.is-focused .corridor-floor {
+  visibility: hidden;
 }
 /*
  * Baski, kunyeden artan alana TAM oturmali. Izgara hucresi icinde yuzde
