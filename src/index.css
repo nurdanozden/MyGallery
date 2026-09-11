@@ -581,9 +581,20 @@ button {
  * havuzlari ve yansimalar dunyadaki yerlerinde durur, katman pencerenin
  * kaymasini `left` ile geri alir (rAF icinde, React'e ugramadan).
  */
+/*
+ * GENISLIK YOK - ve olmamali.
+ *
+ * Bu katman yalnizca bir KOORDINAT NOKTASI: cocuklari mutlak konumlu ve
+ * `left: f.u` ile duvar koordinatinda duruyorlar, yani kapsayicinin genisligi
+ * konumlarini hic etkilemiyor. Basta salon kadar (28.000px) genis yapilmisti;
+ * odak modunda kamera yaklasinca bu kutu buyuyup tek basina 277 MB'lik, gecis
+ * aninda iki tanesi 460'ar MB'lik yuzey bildiriyordu. iOS Safari'nin sekmeyi
+ * oldurup sergiyi bilet ekranindan yeniden baslatmasinin sebebi buydu.
+ */
 .surface-inner {
   position: absolute;
   top: 0;
+  width: 0;
   height: 100%;
 }
 /* Eserlerin translateZ'i duvarin 3B uzayinda kalsin. */

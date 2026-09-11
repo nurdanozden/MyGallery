@@ -565,7 +565,7 @@ export function Gallery({
               <div
                 ref={poolsRef}
                 className="surface-inner"
-                style={{ left: innerLeft, width: px(hallWidth) }}
+                style={{ left: innerLeft }}
               >
                 {hung.map((f) => (
                   <div
@@ -587,7 +587,7 @@ export function Gallery({
               <div
                 ref={reflectionsRef}
                 className="surface-inner"
-                style={{ left: innerLeft, width: px(hallWidth) }}
+                style={{ left: innerLeft }}
               >
                 {hung.map((f) => (
                   <div
@@ -665,7 +665,7 @@ export function Gallery({
               <div
                 ref={artsRef}
                 className="surface-inner surface-inner-3d"
-                style={{ left: innerLeft, width: px(hallWidth), height: px(ROOM.H) }}
+                style={{ left: innerLeft, height: px(ROOM.H) }}
               >
                 {hung.map((f, i) => (
                   <Artwork
