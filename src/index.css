@@ -2184,6 +2184,11 @@ button {
 .corridor-visitor {
   position: absolute;
   /*
+   * Ziyaretci duvardaki eserin ONUNDE durur: cerceve (z-index 1) basini
+   * ortemez. Tavanin (3), "yan cevirin" pilinin (20) ve arayuzun altinda kalir.
+   */
+  z-index: 2;
+  /*
    * KADRAJ DISINDAKI FIGUR HIC ISLENMEZ.
    *
    * Ray 18.000px uzunlugunda ve icinde seksen kusur siluet var; ekranda ise
