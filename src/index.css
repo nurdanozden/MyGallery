@@ -2218,12 +2218,21 @@ button {
    * deger birebir width/height ile ayni - rayin duzeni hic degismiyor.
    */
   content-visibility: auto;
-  contain-intrinsic-size: 64px 172px;
-  bottom: 78px;
+  /*
+   * KUTU FIGURDEN BUYUK OLMAK ZORUNDA.
+   *
+   * content-visibility boyamayi kutunun sinirina kirpar. Kutu 64x172 iken on
+   * siradaki figur ayaklarindan 1.15 kat buyutuluyor ve ustteki ~26px - yani
+   * tam olarak BAS - kutunun disina tasip kesiliyordu. Yuruyenin bacak
+   * salinimi ve ayak golgesi de ayni sekilde kirpiliyordu. Siluet artik
+   * genis bir kutunun dibine, ortasina oturuyor.
+   */
+  contain-intrinsic-size: 104px 220px;
+  bottom: 70px;
   /* "left" figurun MERKEZI olsun: olcumu eserin ortasindan yapiyoruz. */
-  margin-left: -32px;
-  width: 64px;
-  height: 172px;
+  margin-left: -52px;
+  width: 104px;
+  height: 220px;
   transform-origin: 50% 100%;
   pointer-events: none;
   --walk-scale: 0.92;
@@ -2232,7 +2241,7 @@ button {
 }
 /* On sira: haliya daha yakin, biraz daha buyuk ve net. */
 .corridor-visitor.is-front {
-  bottom: 30px;
+  bottom: 22px;
   --walk-scale: 1.15;
   --walk-shadow: 0.52;
   opacity: 0.92;
@@ -2245,7 +2254,7 @@ button {
   content: '';
   position: absolute;
   left: 50%;
-  bottom: -5px;
+  bottom: 3px;
   width: calc(52px * var(--walk-scale));
   height: calc(13px * var(--walk-scale));
   translate: -50% 0;
@@ -2259,6 +2268,12 @@ button {
 }
 
 .corridor-visitor .visitor-svg {
+  /* Kutunun dibinden 8px yukarida: eski "bottom" degerleriyle ayni ayak hatti. */
+  position: absolute;
+  left: 20px;
+  bottom: 8px;
+  width: 64px;
+  height: 172px;
   --scale: var(--walk-scale);
   /* Bas duvardaki esere dogru kalkik. */
   --tilt: 0.95;

@@ -94,33 +94,69 @@ function clampToRoom(a: Agent, half: number) {
   a.z = Math.max(WALK_FAR, Math.min(WALK_NEAR, a.z))
 }
 
+/**
+ * Eserin bir yaninda durulan nokta. Figur eserin KENDI yarim genisligi icinde
+ * kalir: once `w * 0.78-1.22` idi, yani eserin disina, araliga tasiyordu.
+ * Aralik 118cm, eserler 150-290cm; bir eserin sag yanindaki ile komsusunun
+ * sol yanindaki ayni boslukta ust uste biniyor, salon kume kume gorunuyordu.
+ */
+function spotX(f: FramePlacement, side: -1 | 1) {
+  return f.standing.x + side * f.w * 0.5 * rand(0.55, 0.95)
+}
+
 function makeAgents(frames: FramePlacement[], range?: [number, number]): Agent[] {
-  // Ziyaretciler salona kameranin gordugu bolumden dagilir.
-  const near = range ? frames.slice(range[0], range[1] + 1) : frames
-  const list = near.length ? near : frames
+  /*
+   * ILK DAGILIM DA YUVA YUVA.
+   *
+   * Once her figur bir eserin TAM ORTASINDA doguyor ve oraya yuruyordu: iki
+   * figur ayni eserde ayni x'te, halka darsa uc dort figur ayni noktada.
+   * Salona girildiginde herkes tepe tepeye duruyordu ve ancak ilk hedef
+   * degisiminden sonra dagiliyordu. Simdi her figur baska bir (eser x yan)
+   * yuvasinda, yerinde ve esere bakarken basliyor.
+   */
+  let lo = range ? range[0] : 0
+  let hi = range ? range[1] : frames.length - 1
+  // Halka dar kalirsa yuva yetsin diye iki uca dogru genislet.
+  while ((hi - lo + 1) * 2 < POOL && (lo > 0 || hi < frames.length - 1)) {
+    if (lo > 0) lo--
+    if (hi < frames.length - 1) hi++
+  }
+  const list = frames.slice(lo, hi + 1)
+  const slots = list.flatMap((f) => [
+    { f, side: -1 as const },
+    { f, side: 1 as const },
+  ])
   return Array.from({ length: POOL }, (_, i) => {
-    const f = list[Math.floor((i * list.length) / POOL) % Math.max(1, list.length)]
+    const slot = slots.length ? slots[Math.floor((i * slots.length) / POOL) % slots.length] : null
+    const f = slot?.f
+    const side = slot?.side ?? (i % 2 === 0 ? -1 : 1)
+    const layer = (i % 2) as 0 | 1
+    const depth = layer === 1 ? LAYER.front.offset : LAYER.back.offset
+    const x = f ? spotX(f, side) : 0
+    const z = Math.max(WALK_FAR, Math.min(WALK_NEAR, (f ? f.standing.z : 200) + depth + rand(-35, 35)))
     return {
       id: i,
-      x: f ? f.standing.x : 0,
-      z: rand(WALK_FAR + 40, WALK_NEAR - 60),
-      tx: f ? f.standing.x : 0,
-      tz: (f ? f.standing.z : 200) + (i % 2 === 1 ? LAYER.front.offset : LAYER.back.offset),
+      x,
+      z,
+      tx: x,
+      tz: z,
       target: f ? f.index : null,
-      phase: 'walk' as Phase,
-      t: rand(0, 2),
+      // Hepsi ayni anda yurumeye kalkmasin: sureleri kademeli.
+      phase: 'view' as Phase,
+      t: rand(0.5, 6),
       speed: SPEED * rand(0.8, 1.15),
       scale: rand(0.94, 1.06),
-      layer: (i % 2) as 0 | 1,
-      spot: (i % 2 === 0 ? -1 : 1) as -1 | 1,
+      layer,
+      spot: side,
       stance: (i % 3) as 0 | 1 | 2,
-      facing: 1,
+      // Eserin yaninda duran, esere donuk.
+      facing: -side,
       tilt: 0,
       side: 0,
       opacity: 1,
       avoiding: false,
       parked: null,
-      moving: true,
+      moving: false,
       stepClock: 0,
     }
   })
@@ -201,7 +237,7 @@ export function Visitors({
       a.spot = side
       // Eserin tam onunu kapatmasin diye her zaman bir miktar yana kaysin.
       const depth = a.layer === 1 ? LAYER.front.offset : LAYER.back.offset
-      a.tx = f.standing.x + side * f.w * rand(0.78, 1.22)
+      a.tx = spotX(f, side)
       a.tz = Math.max(WALK_FAR, Math.min(WALK_NEAR, f.standing.z + depth + rand(-35, 35)))
       // Uzun duvarda hedef cok uzaktaysa oraya yurumek dakikalar surer; siluet
       // zaten kadraj disinda oldugu icin kimse gormeden yaklastiriyoruz.
@@ -291,7 +327,7 @@ export function Visitors({
             a.phase = 'view'
             a.t = rand(3, 4.5)
             const f = a.target !== null ? list[a.target] : undefined
-            if (f) a.facing = f.wall === 'right' ? -1 : f.wall === 'left' ? 1 : a.facing
+            if (f) a.facing = f.wall === 'right' ? -1 : f.wall === 'left' ? 1 : -a.spot
           } else if (a.phase === 'approach') {
             a.phase = 'ponder'
             a.t = rand(1.6, 2.6)
