@@ -14,7 +14,9 @@ export function Plaque({ frame, total, onPrev, onNext, onClose, variant = 'wall'
   const { photo } = frame
   const { exif } = photo
   // Kunye alanlari otomatik doldugu icin bos kalabilir; bos satir gostermeyiz.
-  const origin = [photo.place, photo.year].filter(Boolean).join(', ')
+  // Cekim YILI kunyede de yer almiyor: her esere otomatik dusen tek deger oydu
+  // ve kunyeyi zenginlestirmiyordu - duvar boyunca tekrarlayan bir 2024 idi.
+  const origin = photo.place.trim()
   const specs = [exif.lens, exif.aperture, exif.shutter, exif.iso].filter(Boolean)
 
   return (

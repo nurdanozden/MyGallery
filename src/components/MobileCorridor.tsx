@@ -156,6 +156,16 @@ export function MobileCorridor({
 
   return (
     <div className={`corridor${focused ? ' is-focused' : ''}`}>
+      {/*
+        Duvarin kendisi. Dik telefonda salon eskiden kartlarin arkasinda duran
+        bos bir karanliktan ibaretti: eserler bir izgaraya dizilmis kupurler
+        gibi duruyor, aralarindaki bosluk bir SALONA degil bir listeye
+        benziyordu. Bu katman masaustundeki duvarin ayni boyasini tasiyor -
+        akis onun onunde kesintisiz suruyor.
+      */}
+      <div className="corridor-wall" aria-hidden="true">
+        <span className="corridor-wall-grain" />
+      </div>
       <div className="corridor-ceiling" aria-hidden="true" />
 
       {/*
@@ -190,9 +200,17 @@ export function MobileCorridor({
             type="button"
             className="corridor-art"
             onClick={() => onSelect(i)}
-            aria-label={`${f.photo.title} — ${f.photo.place}, ${f.photo.year}`}
+            aria-label={[f.photo.title, f.photo.place].filter(Boolean).join(' — ')}
           >
+            {/*
+              Spot artik eserin USTUNDE: armaturu tavanin hemen altinda
+              gorunur, konisi de asagi, baskinin uzerine acilir. Onceden koni
+              ekranin ustunde, kadrajin disinda kaliyordu - isik kaynagi
+              gorunmeyince eser de aydinlatilmis gibi durmuyordu.
+            */}
+            <span className="corridor-fixture" aria-hidden="true" />
             <span className="corridor-cone" aria-hidden="true" />
+            <span className="corridor-wash" aria-hidden="true" />
             <span className="corridor-frame">
               <PhotoImg
                 photo={f.photo}
@@ -204,9 +222,7 @@ export function MobileCorridor({
             </span>
             <span className="corridor-caption">
               <em>{f.photo.title}</em>
-              <i>
-                {[f.photo.place, f.photo.year].filter(Boolean).join(', ')}
-              </i>
+              {f.photo.place && <i>{f.photo.place}</i>}
             </span>
           </button>
         ))}

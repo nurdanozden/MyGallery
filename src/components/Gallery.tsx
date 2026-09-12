@@ -44,8 +44,26 @@ const TWEEN_MS = 1400
 /** Halka kaç ms'de bir yeniden hesaplansın (her karede değil). */
 const RING_MS = 140
 
-/** Kenarda tam yürüyüşte saniyede kaç ekran dolusu duvar geçilir. */
-const WALK_SPEED = 1.6
+/**
+ * Kenarda yürürken saniyede kaç ekran dolusu duvar geçilir.
+ *
+ * Hız artık imlecin kenara ne kadar yaklaştığına BAKMIYOR: kenar bölgesine
+ * girildiği anda yürüyüş bu tek hıza oturur. Eskiden imlecin konumu hızı
+ * sürekli değiştiriyordu - ekranın en ucunda akış takip edilemeyecek kadar
+ * hızlanıyor, birkaç piksel geri gelince duruyordu. Sabit hız hem öngörülebilir
+ * hem de bir ziyaretçinin gerçekten yürüdüğü tempoya yakın.
+ *
+ * Tempoyu değiştirmek isteyen tek yer burası: 1.6 eski (kenardaki en yüksek)
+ * değerdi, 0.6 yürüyüş temposu. Duvarın öbür ucuna hızlı gitmek isteyenin yolu
+ * zaten ayrı: oklar, Home/End ve tekerlek.
+ */
+const WALK_SPEED = 0.6
+
+/** Yürüyüşün başlayıp durması bu sürede yumuşar (saniye başına yaklaşma). */
+const WALK_EASE = 6
+
+/** İmlecin yürüyüşü başlatmak için geçmesi gereken orta ölü bölge (0..1). */
+const EDGE_DEAD = 0.34
 /** Tekerlek bir çentikte ne kadar ilerletir (ekran dolusu). */
 const WHEEL_STEP = 0.5
 
@@ -137,7 +155,7 @@ const Artwork = memo(function Artwork({
           e.stopPropagation()
           onSelect(f.index)
         }}
-        aria-label={`${f.photo.title} — ${f.photo.place}, ${f.photo.year}`}
+        aria-label={[f.photo.title, f.photo.place].filter(Boolean).join(' — ')}
       >
         <span className="frame-mat" style={{ padding: px(size.mat) }}>
           <PhotoImg
@@ -186,8 +204,13 @@ export function Gallery({
   const start = -panRange(hallWidth, viewportWidth, scale)
   const cam = useRef<Camera>({ ...WIDE_CAMERA, x: start })
   const pan = useRef(start)
-  /** İmlecin kenara ne kadar yaklaştığı (-1..1) — panoramanın yürüme hızı. */
+  /**
+   * Yürüyüşün YÖNÜ: -1 sola, 0 dur, +1 sağa. Büyüklük taşımaz - hız sabit.
+   * `walkNow` ise bu hedefe yumuşakça yetişen anlık değer; kalkış ve duruş
+   * yalnızca burada yuvarlanır, aradaki tempo hep aynı kalır.
+   */
   const walk = useRef(0)
+  const walkNow = useRef(0)
   /**
    * Dokunmatikte imleç diye bir şey yok, kenara yaklaşmak da yok: salon
    * parmakla sürüklenir. Fare kullananlarda kenar yürüyüşü aynen sürer.
@@ -357,12 +380,20 @@ export function Gallery({
       last = now
 
       const idx = focusRef.current
-      if (idx === null && walk.current !== 0) {
-        const v = viewRef.current
-        const visible = v.w / (v.scale * WALL_SCALE)
-        const lim = limitRef.current
-        const next = pan.current + walk.current * visible * WALK_SPEED * dt
-        pan.current = Math.max(-lim, Math.min(lim, next))
+      if (idx === null) {
+        // Sabit tempoya yumusak kalkis: hedef yon (-1/0/1) degismiyor, yalnizca
+        // ona ulasma ani yuvarlaniyor.
+        walkNow.current += (walk.current - walkNow.current) * (1 - Math.exp(-dt * WALK_EASE))
+        if (Math.abs(walkNow.current) < 0.002) walkNow.current = 0
+        if (walkNow.current !== 0) {
+          const v = viewRef.current
+          const visible = v.w / (v.scale * WALL_SCALE)
+          const lim = limitRef.current
+          const next = pan.current + walkNow.current * visible * WALK_SPEED * dt
+          pan.current = Math.max(-lim, Math.min(lim, next))
+        }
+      } else {
+        walkNow.current = 0
       }
       const target: Camera =
         idx === null ? { ...WIDE_CAMERA, x: pan.current } : focusCamera(framesRef.current[idx])
@@ -437,10 +468,16 @@ export function Gallery({
   }, [focusIndex, frames])
 
   /**
-   * Imlec kenarlara yaklastikca duvar boyunca YURUNUR; ortada genis bir olu
-   * bolge var. Imlecin konumu duvardaki konuma degil, yurume HIZINA baglanir:
+   * Imlec kenar bolgesine girince duvar boyunca YURUNUR; ortada genis bir olu
+   * bolge var. Imlecin konumu duvardaki konuma degil, yurume YONUNE baglanir:
    * 100 eserlik duvar 300 metreyi asiyor, mutlak esleme yapilsa bir piksel fare
-   * hareketi bir eseri atlardi. Hiz esleme her koleksiyon boyunda ayni his verir.
+   * hareketi bir eseri atlardi.
+   *
+   * Konum HIZI da belirlemiyor artik. Once kenara yaklastikca hizlanan bir
+   * rampa vardi: ekranin ucunda duvar takip edilemeyecek kadar akiyor, imlec
+   * birkac piksel geri gelince duruyordu - ziyaretci hizi degil, faresini
+   * yonetmeye calisiyordu. Simdi kenar tek bir dugme gibi: yon belli, tempo
+   * sabit (WALK_SPEED).
    */
   useEffect(() => {
     if (limit <= 0) {
@@ -479,8 +516,7 @@ export function Gallery({
         return
       }
       const n = (e.clientX / window.innerWidth) * 2 - 1
-      const dead = 0.24
-      walk.current = Math.abs(n) < dead ? 0 : (Math.sign(n) * (Math.abs(n) - dead)) / (1 - dead)
+      walk.current = Math.abs(n) < EDGE_DEAD ? 0 : (Math.sign(n) as 1 | -1)
     }
 
     const onUp = (e: PointerEvent) => {
