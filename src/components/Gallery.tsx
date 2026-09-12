@@ -53,11 +53,12 @@ const RING_MS = 140
  * hızlanıyor, birkaç piksel geri gelince duruyordu. Sabit hız hem öngörülebilir
  * hem de bir ziyaretçinin gerçekten yürüdüğü tempoya yakın.
  *
- * Tempoyu değiştirmek isteyen tek yer burası: 1.6 eski (kenardaki en yüksek)
- * değerdi, 0.6 yürüyüş temposu. Duvarın öbür ucuna hızlı gitmek isteyenin yolu
- * zaten ayrı: oklar, Home/End ve tekerlek.
+ * Tempoyu değiştirmek isteyen tek yer burası. 1.6 eski (kenardaki en yüksek)
+ * değerdi; 0.3 salonda oyalanan bir ziyaretçinin adımı. Duvarın öbür ucuna
+ * hızlı gitmek isteyenin yolu zaten ayrı ve orası kasten hızlı kaldı: oklar,
+ * Home/End ve tekerlek.
  */
-const WALK_SPEED = 0.6
+const WALK_SPEED = 0.3
 
 /** Yürüyüşün başlayıp durması bu sürede yumuşar (saniye başına yaklaşma). */
 const WALK_EASE = 6

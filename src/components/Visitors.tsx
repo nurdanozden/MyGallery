@@ -2,7 +2,19 @@ import { useEffect, useRef, useState } from 'react'
 import type { FramePlacement } from '../types'
 import { Silhouette } from './Silhouette'
 
-const POOL = 6
+/*
+ * SALONDAKI ZIYARETCI SAYISI.
+ *
+ * 6 idi ve ekranda aynı anda ancak ikisi görünüyordu: havuz görüş halkasının
+ * tamamına (yaklaşık iki ekran dolusu duvara) yayıldığı için çoğu hep kadraj
+ * dışında kalıyordu. 11'de kadrajda sürekli üç dört figür duruyor - bir müze
+ * salonunun kalabalığı bu.
+ *
+ * Üst sınırı belirleyen şey `pickTarget`: her figür bir eserin BIR YANINI
+ * tutuyor, yani halkadaki eser sayısının iki katı kadar yer var. Halkada
+ * tipik olarak 5-7 eser bulunuyor; 11 o kapasitenin altında kalıyor.
+ */
+const POOL = 11
 /** CSS yuruyus dongusu 0.86s = iki adim; ses de ayni tempoda dussun. */
 const STEP_PERIOD = 0.43
 const SPEED = 46
@@ -37,6 +49,12 @@ type Agent = {
   scale: number
   /** 0 = arka katman, 1 = on katman. */
   layer: 0 | 1
+  /**
+   * Hedef eserin TUTULAN YANI (-1 sol, +1 sag). Iki figurun ayni eserin ayni
+   * yanina binmesini engelleyen sey bu: rezervasyon esere degil, esere+yana
+   * yapiliyor.
+   */
+  spot: -1 | 1
   /** Kalici durus: 0 elleri arkada one egik, 1 hafif yan duran, 2 dik ve uzun. */
   stance: 0 | 1 | 2
   facing: number
@@ -94,6 +112,7 @@ function makeAgents(frames: FramePlacement[], range?: [number, number]): Agent[]
       speed: SPEED * rand(0.8, 1.15),
       scale: rand(0.94, 1.06),
       layer: (i % 2) as 0 | 1,
+      spot: (i % 2 === 0 ? -1 : 1) as -1 | 1,
       stance: (i % 3) as 0 | 1 | 2,
       facing: 1,
       tilt: 0,
@@ -146,15 +165,41 @@ export function Visitors({
       const r = rangeRef.current
       const near = r ? all.slice(r[0], r[1] + 1) : all
       const list = near.length ? near : all
+      /*
+       * REZERVASYON ESERE DEGIL, ESERIN BIR YANINA.
+       *
+       * Once yalnizca eser indeksi tutuluyordu: halkada ~6 eser, havuzda ise
+       * daha fazla figur oldugu icin "bos eser" listesi sik sik tukeniyor ve
+       * kod butun esereler arasindan rastgele secen yedege dusuyordu. Yan da
+       * ayrica rastgele secildiginden iki figur pekala ayni eserin ayni
+       * yanina denk gelip ust uste binebiliyordu.
+       *
+       * Yuvalar (eser x yan) olunca kapasite ikiye katlaniyor ve ayni esere
+       * dusen iki figur ZORUNLU olarak karsilikli yanlarda duruyor - bir
+       * muzede yan yana ayni kareye bakan iki kisi gibi.
+       */
       const taken = new Set(
-        agents.filter((o) => o !== a && o.target !== null).map((o) => o.target),
+        agents
+          .filter((o) => o !== a && o.target !== null)
+          .map((o) => `${o.target}:${o.spot}`),
       )
-      const free = list.filter((f) => !taken.has(f.index))
-      const pool = free.length ? free : list
-      const f = pool[Math.floor(Math.random() * pool.length)]
+      const slots: { f: FramePlacement; side: -1 | 1 }[] = []
+      for (const f of list) {
+        for (const side of [-1, 1] as const) {
+          if (!taken.has(`${f.index}:${side}`)) slots.push({ f, side })
+        }
+      }
+      const pick = slots.length
+        ? slots[Math.floor(Math.random() * slots.length)]
+        : {
+            f: list[Math.floor(Math.random() * list.length)],
+            side: (Math.random() < 0.5 ? -1 : 1) as -1 | 1,
+          }
+      const f = pick.f
+      const side = pick.side
       a.target = f.index
+      a.spot = side
       // Eserin tam onunu kapatmasin diye her zaman bir miktar yana kaysin.
-      const side = Math.random() < 0.5 ? -1 : 1
       const depth = a.layer === 1 ? LAYER.front.offset : LAYER.back.offset
       a.tx = f.standing.x + side * f.w * rand(0.78, 1.22)
       a.tz = Math.max(WALK_FAR, Math.min(WALK_NEAR, f.standing.z + depth + rand(-35, 35)))

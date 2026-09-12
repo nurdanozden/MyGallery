@@ -2039,18 +2039,22 @@ button {
 /* --------------------------------------------------------------------------
    KORIDOR ZEMINI
 
-   Dik tutulan telefonda 3B yok: zemin ekranin altinda 148px'lik duz bir serit.
-   Derinlik bu yuzden DONUSUMLE degil BOYAYLA uretiliyor - perspektifin kendisi
-   degil, resmi. Bedeli sifir: tek bir statik katman, hicbir 3B yuzey, hicbir
-   bulanik tampon. (Yan cevrilmis telefondaki gercek salonun iOS'a nelere mal
-   oldugunu dusunursek bu tercih bilincli.)
+   Dik tutulan telefonda 3B yok: zemin ekranin altinda duz bir serit. Derinlik
+   bu yuzden DONUSUMLE degil BOYAYLA uretiliyor - perspektifin kendisi degil,
+   resmi. Bedeli sifir: tek bir statik katman, hicbir 3B yuzey, hicbir bulanik
+   tampon.
 
-   Uc katman derinligi tasiyor:
-     1. Parkenin boyuna ek yerleri duvar hattindaki tek bir KACIS NOKTASINDAN
-        yayilir - konik gradyan tam olarak bunu yapar.
-     2. Enine ek yerleri uzaklastikca SIKISIR; araliklar elle daralan bir
-        dizi (26, 22, 18, 14, 11, 8 px).
-     3. Isik duvarin dibinde toplanir, izleyiciye dogru soner.
+   SALONDA ISIK YALNIZCA SPOTLARDAN GELIR.
+
+   Zeminin bir zamanlar kendi aydinlatmasi vardi: duvarin dibinde toplanan
+   genis bir elips, ortadaki eseri yansitan cilali bir katman ve tek bir kacis
+   noktasina kosan parke isinlari. Ucu de kadrajin TAM ORTASINDA birikiyor ve
+   ortada duran, hicbir armaturle aciklanamayan yapay bir parlaklik
+   uretiyorlardi - ziyaretci eserlere degil o lekeye bakiyordu.
+
+   Geriye yalnizca derinligi tasiyan iki sey kaldi: duvar dibinden on plana
+   dogru koyulasan dikey gecis ve uzaklastikca sikisan enine ek yerleri.
+   Ikisi de yatayda TEKDUZE, yani hicbir yerde bir "sicak nokta" yok.
    -------------------------------------------------------------------------- */
 
 .corridor-floor {
@@ -2080,8 +2084,6 @@ button {
       rgba(0, 0, 0, 0.055) 193px 194px,
       transparent 194px
     ),
-    /* cilanin genis parlamasi - duvar dibinde en guclu */
-    radial-gradient(ellipse 72% 100% at 50% 0%, rgba(var(--light), 0.13), transparent 74%),
     /*
      * Zeminin kendi isigi: duvarin dibi aydinlik, on plan karanlik. Ust ton
      * masaustundeki cilali zeminle ayni acikliga cekildi (#1c1f25 -> #2b2e35),
@@ -2105,74 +2107,6 @@ button {
   box-shadow:
     inset 0 1px 0 rgba(var(--light), 0.07),
     0 3px 9px rgba(0, 0, 0, 0.62);
-}
-
-/*
- * PARKENIN BOYUNA EK YERLERI - duvar hattindaki tek bir kacis noktasina kosar.
- *
- * Kendi katmaninda, cunku MASKELENMESI gerekiyor. Isinlar kacis noktasinda ic
- * ice gecer; maskesiz birakildiklarinda duvarin dibinde bir gunes patlamasina
- * donusuyorlardi - perspektif degil, radar ekrani. Maske onlari hem orada hem
- * de on planda soldurur, geriye yalnizca derinligin okundugu orta bant kalir.
- */
-.corridor-boards {
-  position: absolute;
-  inset: 0;
-  /*
-   * IZGARA BURADAN GELIYORDU.
-   *
-   * %5 opaklikta, 6,5 derecelik araliklarla cizilen isinlar enine ek yerleriyle
-   * kesisince parkenin perspektifi degil, zeminin uzerine serilmis bir TEL
-   * KAFES okunuyordu - mobil salonun en yapay duran yeri orasiydi. Uc olcu
-   * birden geriledi: opaklik %5 -> %1,6, aralik 6,5 -> 15 derece, maske de
-   * daraldi. Geriye kesisen cizgiler degil, zeminin derinligini ima eden
-   * seyrek bir doku kaliyor.
-   */
-  background: repeating-conic-gradient(
-    from 182deg at 50% 0%,
-    rgba(255, 246, 232, 0.016) 0deg 0.6deg,
-    transparent 0.6deg 15deg
-  );
-  -webkit-mask-image: linear-gradient(to top, transparent 16%, #000 46%, #000 60%, transparent 82%);
-  mask-image: linear-gradient(to top, transparent 16%, #000 46%, #000 60%, transparent 82%);
-  pointer-events: none;
-}
-
-/*
- * CILALI ZEMININ ORTADAKI ESERI YANSITMASI.
- *
- * Ayri bir istek yok: manifest'e gomulu 24px'lik on izleme kullaniliyor. Yansima
- * zaten bulanik ve %15 opak - gercek dosyadan ayirt edilemiyor. scaleY(-1) ile
- * cevrildigi icin maske de cevrilir: yerelde "yukari" solen gecis, ekranda
- * duvardan UZAKLASTIKCA soner.
- */
-.corridor-reflection {
-  position: absolute;
-  left: 50%;
-  top: 7px;
-  /* Sup ile halinin ust kenari arasinda kalan bant genisledi: 86 -> 100px. */
-  width: 52vw;
-  height: 100px;
-  /*
-   * ORTALAMA "transform"UN ICINDE OLMAK ZORUNDA.
-   *
-   * "translate: -50% 0" ile yaziliyordu ve gelistirmede calisiyordu; uretim
-   * derlemesinde ise CSS kucultucusu, ayni kuralda bir "transform" da varken
-   * "translate" bildirimini DUSURUYOR. Yansima o yuzden yalnizca yayinlanan
-   * surumde ekranin ortasindan degil, tam ortasindan SAGA dogru basliyor ve
-   * zeminde sert kenarli, acik gri bir dikdortgen gibi duruyordu.
-   *
-   * Ikisi tek bildirimde birlesince kucultucunun dokunacagi bir sey kalmiyor.
-   */
-  transform: translateX(-50%) scaleY(-1);
-  background-position: center top;
-  background-size: 100% auto;
-  background-repeat: no-repeat;
-  opacity: 0.2;
-  filter: blur(3px);
-  -webkit-mask-image: linear-gradient(to top, transparent 4%, #000 92%);
-  mask-image: linear-gradient(to top, transparent 4%, #000 92%);
-  pointer-events: none;
 }
 
 /*
@@ -2217,17 +2151,15 @@ button {
       rgba(6, 1, 1, 0.85) 100%
     ),
     /*
-     * Kadife havi. Masaustundeki periyot (8px) burada 1:1 olcekte duruyor -
-     * orada perspektif onu kucultup dokuya cevirirken burada dikey bir cizgi
-     * dizisi gibi okunuyordu. 11px'e acilip kontrasti yarilandi.
+     * KADIFE HAVI DA, SICAK SIZINTI DA GITTI.
+     *
+     * Hav 90 derecelik bir "repeating-linear-gradient"ti: masaustunde
+     * perspektif onu kucultup dokuya ceviriyor, burada ise 1:1 olcekte
+     * haliya boydan boya inen DIKEY CIZGILER dizisi olarak okunuyordu.
+     * Yaninda bir de ortada toplanan sicak bir elips vardi; salonun geri
+     * kalanindaki tek isik kaynagi spotlar oldugu icin o parlaklik da bir
+     * yerden gelmiyordu. Yolluk artik duz: tek bir kadife gecisi.
      */
-    repeating-linear-gradient(
-      90deg,
-      rgba(255, 255, 255, 0.012) 0 3px,
-      rgba(0, 0, 0, 0.02) 3px 11px
-    ),
-    /* tavandaki spotlarin yolluga dusen sicak sizintisi */
-    radial-gradient(ellipse 56% 120% at 50% 0%, rgba(255, 186, 140, 0.1), transparent 74%),
     /* kadife govde - masaustu salonunun rengi */
     linear-gradient(to bottom, #8c2020 0%, #7a1818 24%, #661414 58%, #500f0f 100%);
   box-shadow:
@@ -2239,33 +2171,12 @@ button {
     0 -10px 16px -6px rgba(0, 0, 0, 0.55);
 }
 /*
- * Kenar dikisleri. Pirinc seritlerdi; acik kirmizi kadifenin uzerinde pirinc
- * okunmuyordu - masaustundeki .carpet-stitch gibi KOYU bir dikise donustuler.
- * Desen 16px periyotlu, cunku kesik cizgi kaydirmada faz kaydirir.
+ * Kenar dikisleri buradaydi: halinin iki uzun kenari boyunca uzanan, 16px
+ * periyotlu kesik koyu cizgiler. Masaustunde perspektif onlari inceltip
+ * halinin kenarina yapistiriyor; dik telefonda ise kadrajin genisligince
+ * uzanan iki YATAY SIYAH KESIK CIZGI olarak okunuyorlardi. Yollugun uzerinde
+ * artik hicbir cizgi yok - rengi ve kalinligi kendi basina yetiyor.
  */
-.corridor-carpet::before,
-.corridor-carpet::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  height: 1.5px;
-  background: repeating-linear-gradient(
-    90deg,
-    rgba(34, 4, 4, 0.7) 0 6px,
-    transparent 6px 16px
-  );
-}
-/* uzak dikis: isigin icinde, biraz daha sonuk */
-.corridor-carpet::before {
-  top: 15px;
-  opacity: 0.6;
-}
-/* yakin dikis: golgede, belirgin */
-.corridor-carpet::after {
-  bottom: 15px;
-  opacity: 0.85;
-}
 
 /* --------------------------------------------------------------------------
    SALONDAKI ZIYARETCILER
@@ -2294,6 +2205,20 @@ button {
  */
 .corridor-visitor {
   position: absolute;
+  /*
+   * KADRAJ DISINDAKI FIGUR HIC ISLENMEZ.
+   *
+   * Ray 18.000px uzunlugunda ve icinde seksen kusur siluet var; ekranda ise
+   * ayni anda bir ya da iki tanesi duruyor. "content-visibility: auto" geri
+   * kalanin duzenini, boyamasini ve icerideki animasyonlarini (yuruyenlerin
+   * bacak/kol dongusu) tumuyle atlatiyor.
+   *
+   * "contain-intrinsic-size" sart: olculeri atlanan elemanin yer kaplamaya
+   * devam etmesi icin. Figurler mutlak konumlu ve sabit olculu oldugu icin
+   * deger birebir width/height ile ayni - rayin duzeni hic degismiyor.
+   */
+  content-visibility: auto;
+  contain-intrinsic-size: 64px 172px;
   bottom: 78px;
   /* "left" figurun MERKEZI olsun: olcumu eserin ortasindan yapiyoruz. */
   margin-left: -32px;
@@ -2340,12 +2265,18 @@ button {
 }
 
 /*
- * ESERE BAKANLAR: elleri arkada kavusmus, kipirdamadan duruyorlar. Bir salonu
- * muze yapan sey budur; cok yavas bir nefes salinimi disinda hicbir hareket yok.
+ * ESERE BAKANLAR: elleri arkada kavusmus, KIPIRDAMADAN duruyorlar.
+ *
+ * Burada bir "nefes" salinimi vardi: 7,5 saniyede 1,6 pikselluk bir dikey
+ * kayma. Telefonda gorulmesi imkansiz bir hareketti ve bedeli yuksekti -
+ * kalabalik siklastiginda duvar boyunca yetmis kusur sonsuz animasyon demeye
+ * basladi. Olctugumuzde kaydirmadaki p90 kare suresini 33 ms'den 266 ms'ye
+ * cikaran sey buydu; animasyonlar kapatildiginda seksen iki siluet, hic figur
+ * olmamasiyla AYNI maliyete duyuyordu.
+ *
+ * Salonda hareket artik yalnizca gercekten yuruyenlerde (.is-amble) - zaten
+ * gozun sectigi tek hareket oydu.
  */
-.corridor-visitor.is-still {
-  animation: dwell 7.5s ease-in-out infinite;
-}
 .corridor-visitor.is-still .v-arm-a {
   transform: translateX(6px) rotate(5deg);
 }
@@ -2376,16 +2307,6 @@ button {
 }
 .corridor-visitor.is-amble .v-arm-b {
   animation: swing-b 0.86s ease-in-out infinite;
-}
-
-@keyframes dwell {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-1.6px);
-  }
 }
 
 @keyframes amble {
@@ -2718,7 +2639,6 @@ button {
   .visitor[data-walking='yes'] .v-arm-a,
   .visitor[data-walking='yes'] .v-arm-b,
   .visitor[data-walking='yes'] .visitor-bb,
-  .corridor-visitor.is-still,
   .hud-pulse,
   .gate-hint {
     animation: none;

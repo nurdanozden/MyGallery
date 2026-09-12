@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef } from 'react'
 import type { FramePlacement } from '../types'
 import { PhotoImg } from './PhotoImg'
 import { Plaque } from './Plaque'
@@ -37,20 +37,53 @@ type Visitor = {
   amble: boolean
 }
 
-/** Kac eserde bir salona bir ziyaretci dusuyor. */
-const CROWD_STEP = 4
-
+/*
+ * SALONU DOLDURAN SEY SAYI DEGIL, ARALIK.
+ *
+ * Onceki yerlesim birkac eserde bir figur birakiyordu ve figurleri seyrek
+ * gosteren sey de buydu: dik telefonda kadraj ~390px, eserlerin araligi ise
+ * ~300px. Ucte bir eserde bir kisi demek, figurler arasi ~900px demek - yani
+ * ziyaretci zamanin dortte ucunde iki figur ARASINDA, bombos bir salonda
+ * kaliyordu. Duvarda kac kisi oldugu degil, KADRAJDA kac kisi kaldigi onemli.
+ *
+ * Simdi dort eserin ucunde biri duruyor (aralik ~400px, kadrajla ayni
+ * mertebede) ve arada bir ikinci kisi ayni karenin obur yanina ekleniyor.
+ * Bos birakilan dorduncu eser bilerek: herkesin onunde bir kisi olsaydi salon
+ * sira sira dizilmis gibi gorunurdu.
+ *
+ * Figurler kartin ortasina degil kenarina (±%42) yerlesiyor ve baslari duvar
+ * hatti hizasinda bitiyor - yani baskiyi kapatmiyorlar.
+ */
 function buildCrowd(total: number): Visitor[] {
   const out: Visitor[] = []
-  for (let i = 0, c = 1; c < total; i++, c += CROWD_STEP + (i % 3)) {
+  for (let c = 1; c < total; c++) {
+    if (c % 4 === 0) continue
+    const i = out.length
     out.push({
       card: c,
       variant: i % 5,
       side: i % 2 ? 1 : -1,
       front: i % 3 !== 0,
-      // Dortte biri geziniyor: bir muzede cogunluk durur, azinlik yurur.
-      amble: i % 4 === 1,
+      /*
+       * Onda biri geziniyor. Oran once dortte birdi; kalabalik dorte katlaninca
+       * ayni oran duvar boyunca yirmi kusur sonsuz CSS animasyonu demek
+       * oluyordu. Mutlak sayi eskisiyle ayni mertebede tutuldu - ustelik
+       * kalabalik bir muzede yuruyenlerin ORANI da zaten duser.
+       */
+      amble: i % 10 === 1,
     })
+    // Ara sira ayni karenin obur yaninda ikinci bir kisi: bir muzede insanlar
+    // esit araliklarla degil, kucuk kumeler halinde durur.
+    if (c % 7 === 3) {
+      const j = out.length
+      out.push({
+        card: c,
+        variant: (j + 2) % 5,
+        side: i % 2 ? -1 : 1,
+        front: j % 3 !== 0,
+        amble: false,
+      })
+    }
   }
   return out
 }
@@ -68,8 +101,6 @@ export function MobileCorridor({
 }: Props) {
   const rail = useRef<HTMLDivElement>(null)
   const visibleRef = useRef(-1)
-  /** Cilali zeminin yansitacagi eser: her zaman kadrajin ortasindaki. */
-  const [center, setCenter] = useState(0)
   const crowd = useMemo(() => buildCrowd(frames.length), [frames.length])
   const crowdNodes = useRef<(HTMLDivElement | null)[]>([])
 
@@ -127,7 +158,6 @@ export function MobileCorridor({
           if (cards[prev]) cards[prev].classList.remove('is-center')
           if (cards[best]) cards[best].classList.add('is-center')
           visibleRef.current = best
-          setCenter(best)
           onVisible(best)
         }
       })
@@ -182,13 +212,14 @@ export function MobileCorridor({
         Zemin rayin ALTINDA duruyor. Ziyaretciler rayin icinde yasadigi icin
         sira boyle olmak zorunda: yoksa zemin onlarin ustune boyanir ve
         figurler halinin altinda kalirdi.
+
+        Icinde yalnizca hali var. Bir zamanlar burada ortadaki eseri yansitan
+        cilali bir katman ve kacis noktasina kosan parke isinlari da vardi;
+        ikisi de zeminin TAM ORTASINDA, hicbir isik kaynagiyla aciklanamayan
+        bir parlaklik uretiyordu. Salonda isik artik yalnizca spotlardan ve
+        yalnizca eserlerin uzerine dusuyor.
       */}
       <div className="corridor-floor" aria-hidden="true">
-        <div className="corridor-boards" />
-        <div
-          className="corridor-reflection"
-          style={{ backgroundImage: `url("${frames[center]?.photo.lqip ?? ''}")` }}
-        />
         <div className="corridor-carpet" />
       </div>
 

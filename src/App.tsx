@@ -55,7 +55,13 @@ export default function App() {
   const [focusIndex, setFocusIndex] = useState<number | null>(null)
   const [hovered, setHovered] = useState<number | null>(null)
   const [audioOn, setAudioOn] = useState(false)
-  const [visitorCount, setVisitorCount] = useState(4)
+  /*
+   * Masaustu salonunda bu deger siluetlerin kendisinden geliyor (onVisitorCount).
+   * Dik telefonda ise Visitors hic calismiyor - koridorun kalabaligi CSS'te
+   * duruyor - ve HUD bu baslangic degerini gosteriyor. Salondaki gercek
+   * kalabaliga yakin dursun diye masaustu havuzuyla ayni mertebede tutuldu.
+   */
+  const [visitorCount, setVisitorCount] = useState(9)
   const [hint, setHint] = useState<string | null>(null)
 
   const viewport = useViewport()
