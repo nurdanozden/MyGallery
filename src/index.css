@@ -2014,28 +2014,6 @@ button {
   object-fit: contain;
 }
 
-.corridor-caption {
-  position: relative;
-  z-index: 1;
-  display: grid;
-  gap: 4px;
-  text-align: center;
-}
-.corridor-caption em {
-  font-family: var(--serif);
-  font-size: 19px;
-  font-style: normal;
-  font-weight: 600;
-  color: #efe8d8;
-}
-.corridor-caption i {
-  font-style: normal;
-  font-size: 10px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: rgba(232, 224, 206, 0.45);
-}
-
 /* --------------------------------------------------------------------------
    KORIDOR ZEMINI
 

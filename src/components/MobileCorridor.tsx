@@ -251,10 +251,6 @@ export function MobileCorridor({
                 priority={i < 2 ? 'high' : 'low'}
               />
             </span>
-            <span className="corridor-caption">
-              <em>{f.photo.title}</em>
-              {f.photo.place && <i>{f.photo.place}</i>}
-            </span>
           </button>
         ))}
         <div className="corridor-pad" aria-hidden="true" />
